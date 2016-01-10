@@ -1,20 +1,23 @@
 #include "stdafx.h"
 
-#include "OperatorVision.h"
+#include "IOperator.h"
 
-OperatorVision::OperatorVision()
-{ }
-
-void OperatorVision::updateLeftEyeImage(EyeImage eyeImage)
+namespace model
 {
-	m_leftEyeImage = eyeImage;
+	Operator::Operator()
+	{ }
 
-	Q_EMIT leftEyeImageUpdated(m_leftEyeImage);
-}
+	void Operator::updateLeftEyeImage(EyeImage eyeImage)
+	{
+		m_leftEyeImage = eyeImage;
 
-void OperatorVision::updateRightEyeImage(EyeImage eyeImage)
-{
-	m_rightEyeImage = eyeImage;
+		Q_EMIT leftEyeImageUpdated(m_leftEyeImage);
+	}
 
-	Q_EMIT rightEyeImageUpdated(m_rightEyeImage);
+	void Operator::updateRightEyeImage(EyeImage eyeImage)
+	{
+		m_rightEyeImage = eyeImage;
+
+		Q_EMIT rightEyeImageUpdated(m_rightEyeImage);
+	}
 }

@@ -7,11 +7,13 @@
 
 #include <qcoreapplication.h>
 #include <qimage.h>
-#include <qvector3d.h>
+#include <qopenglcontext.h>
+#include <qopengltexture.h>
 
 
 //
 // C++
 //
 
+#include <array>
 #include <memory>

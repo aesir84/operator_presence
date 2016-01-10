@@ -22,9 +22,6 @@
     <Filter Include="Source Files\model">
       <UniqueIdentifier>{e95ac530-ac04-4557-a8ea-9d476ca008e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\model">
-      <UniqueIdentifier>{f120045e-dd27-473f-8d2f-035886f6e448}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Generated Files\Debug">
       <UniqueIdentifier>{62e1f7ca-ca95-424f-9c1a-830c7159c76a}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
@@ -35,6 +32,15 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{d8860b7f-f407-4edf-9ef4-f8edb605c947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{9679b005-19d3-425b-8db8-f0e3f444c324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\models">
+      <UniqueIdentifier>{f120045e-dd27-473f-8d2f-035886f6e448}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -43,13 +49,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Operator.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_OperatorVision.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Operator.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_OperatorVision.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Operator.cpp">
+    <ClCompile Include="OperatorVision.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,8 +65,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Operator.h">
-      <Filter>Header Files\model</Filter>
+    <CustomBuild Include="OperatorVision.h">
+      <Filter>Header Files\models</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

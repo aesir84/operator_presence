@@ -43,13 +43,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_IOperator.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_Operator.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_IOperator.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_Operator.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="IOperator.cpp">
+    <ClCompile Include="Operator.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="IOperator.h">
+    <CustomBuild Include="Operator.h">
       <Filter>Header Files\model</Filter>
     </CustomBuild>
   </ItemGroup>

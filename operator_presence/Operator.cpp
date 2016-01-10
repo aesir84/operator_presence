@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "IOperator.h"
+#include "Operator.h"
 
 namespace model
 {

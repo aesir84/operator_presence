@@ -2,12 +2,15 @@
 
 namespace model
 {
-	class Operator
+	class Operator : public QObject
 	{
 		Q_OBJECT
 
 	public:
 		using EyeImage = std::shared_ptr<QImage>;
+
+	public:
+		Operator();
 
 	public:
 		void updateLeftEyeImage(EyeImage eyeImage);
@@ -22,4 +25,6 @@ namespace model
 		EyeImage m_rightEyeImage;
 	};
 }
+
+Q_DECLARE_METATYPE(model::Operator::EyeImage);
 

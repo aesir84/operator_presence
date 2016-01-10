@@ -5,4 +5,12 @@
 // Qt
 //
 
-#include <QCoreApplication>
+#include <qcoreapplication.h>
+#include <qimage.h>
+
+
+//
+// C++
+//
+
+#include <memory>

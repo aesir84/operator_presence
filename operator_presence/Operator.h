@@ -7,24 +7,25 @@ namespace model
 		Q_OBJECT
 
 	public:
-		using EyeImage = std::shared_ptr<QImage>;
-
-	public:
 		Operator();
 
 	public:
-		void updateLeftEyeImage(EyeImage eyeImage);
-		void updateRightEyeImage(EyeImage eyeImage);
+		void updatePosition(QVector3D const & position);
+
+		void updateLeftEyeImage(QImage const & eyeImage);
+		void updateRightEyeImage(QImage const & eyeImage);
 
 	Q_SIGNALS:
-		void leftEyeImageUpdated(EyeImage image);
-		void rightEyeImageUpdated(EyeImage image);
+		void positionUpdated(QVector3D const & position);
+
+		void leftEyeImageUpdated(QImage const & image);
+		void rightEyeImageUpdated(QImage const & image);
 
 	private:
-		EyeImage m_leftEyeImage;
-		EyeImage m_rightEyeImage;
+		QVector3D m_position;
+
+		QImage m_leftEyeImage;
+		QImage m_rightEyeImage;
 	};
 }
-
-Q_DECLARE_METATYPE(model::Operator::EyeImage);
 

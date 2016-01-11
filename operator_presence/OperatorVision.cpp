@@ -1,30 +1,52 @@
 #include "stdafx.h"
 
-#include "Operator.h"
+#include "OperatorVision.h"
+
+#include "IOperatorVisionObserver.h"
 
 namespace model
 {
-	Operator::Operator()
+	OperatorVision::OperatorVision()
 	{ }
 
-	void Operator::updatePosition(QVector3D const & position)
+	void OperatorVision::updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
 	{
-		m_position = position;
-
-		Q_EMIT positionUpdated(m_position);
+		m_leftEyeImage = leftEyeImage;
 	}
 
-	void Operator::updateLeftEyeImage(QImage const & eyeImage)
+	void OperatorVision::updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
 	{
-		m_leftEyeImage = eyeImage;
-
-		Q_EMIT leftEyeImageUpdated(m_leftEyeImage);
+		m_rightEyeImage = rightEyeImage;
 	}
 
-	void Operator::updateRightEyeImage(QImage const & eyeImage)
+	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)
 	{
-		m_rightEyeImage = eyeImage;
+		m_observers.push_back(observer);
+	}
 
-		Q_EMIT rightEyeImageUpdated(m_rightEyeImage);
+	void OperatorVision::notifyLeftEyeImageUpdate(std::shared_ptr<QImage> leftEyeImage)
+	{
+		for (auto & observer : m_observers)
+		{
+			auto existingObserver = observer.lock();
+
+			if (existingObserver)
+			{
+				existingObserver->updateLeftEyeImage(leftEyeImage);
+			}
+		}
+	}
+
+	void OperatorVision::notifyRightEyeImageUpdate(std::shared_ptr<QImage> rightEyeImage)
+	{
+		for (auto & observer : m_observers)
+		{
+			auto existingObserver = observer.lock();
+
+			if (existingObserver)
+			{
+				existingObserver->updateRightEyeImage(rightEyeImage);
+			}
+		}
 	}
 }

@@ -1,31 +1,32 @@
 #pragma once
 
+#include "IObservableOperatorVision.h"
+
 namespace model
 {
-	class Operator : public QObject
+	class OperatorVision : public IObservableOperatorVision
 	{
-		Q_OBJECT
 
 	public:
-		Operator();
+		OperatorVision();
 
 	public:
-		void updatePosition(QVector3D const & position);
-
-		void updateLeftEyeImage(QImage const & eyeImage);
-		void updateRightEyeImage(QImage const & eyeImage);
-
-	Q_SIGNALS:
-		void positionUpdated(QVector3D const & position);
-
-		void leftEyeImageUpdated(QImage const & image);
-		void rightEyeImageUpdated(QImage const & image);
+		void updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage);
+		void updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage);
 
 	private:
-		QVector3D m_position;
+		std::shared_ptr<QImage> m_leftEyeImage;
+		std::shared_ptr<QImage> m_rightEyeImage;
 
-		QImage m_leftEyeImage;
-		QImage m_rightEyeImage;
+	public:
+		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) override;
+
+	private:
+		virtual void notifyLeftEyeImageUpdate(std::shared_ptr<QImage> leftEyeImage) override;
+		virtual void notifyRightEyeImageUpdate(std::shared_ptr<QImage> rightEyeImage) override;
+
+	private:
+		std::vector<std::weak_ptr<IOperatorVisionObserver>> m_observers;
 	};
 }
 

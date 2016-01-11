@@ -5,10 +5,11 @@
 // Qt
 //
 
-#include <qcoreapplication.h>
-#include <qimage.h>
-#include <qopenglcontext.h>
-#include <qopengltexture.h>
+#include <QtCore\qcoreapplication.h>
+#include <QtCore\qobject.h>
+#include <QtGui\qimage.h>
+#include <QtGui\qopenglcontext.h>
+#include <QtGui\qopengltexture.h>
 
 
 //
@@ -17,3 +18,4 @@
 
 #include <array>
 #include <memory>
+#include <vector>

@@ -63,6 +63,9 @@
     <ClInclude Include="IOperatorVisionObserver.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
+    <ClInclude Include="IRenderer.h">
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

@@ -6,7 +6,6 @@ namespace model
 {
 	class OperatorVision : public IObservableOperatorVision
 	{
-
 	public:
 		OperatorVision();
 

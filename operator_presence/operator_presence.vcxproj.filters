@@ -41,6 +41,12 @@
     <Filter Include="Header Files\model">
       <UniqueIdentifier>{f120045e-dd27-473f-8d2f-035886f6e448}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\view\opengl">
+      <UniqueIdentifier>{64a98ceb-ee35-42ca-8246-87d3657b6179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view\opengl">
+      <UniqueIdentifier>{d0adc226-e01a-4667-812a-447d839a3b76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,17 +58,17 @@
     <ClCompile Include="OperatorVision.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLOperatorVisionRenderer.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLRendererFactory.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGLOperatorVisionRenderer.cpp">
+      <Filter>Source Files\view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLRendererFactory.cpp">
+      <Filter>Source Files\view\opengl</Filter>
+    </ClCompile>
     <ClCompile Include="OpenGLWindowRenderer.cpp">
-      <Filter>Source Files\view</Filter>
+      <Filter>Source Files\view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,12 +87,6 @@
     <ClInclude Include="IRendererFactory.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLOperatorVisionRenderer.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLRendererFactory.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
@@ -96,8 +96,14 @@
     <ClInclude Include="IWindowObserver.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
+    <ClInclude Include="OpenGLOperatorVisionRenderer.h">
+      <Filter>Header Files\view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLRendererFactory.h">
+      <Filter>Header Files\view\opengl</Filter>
+    </ClInclude>
     <ClInclude Include="OpenGLWindowRenderer.h">
-      <Filter>Header Files\view</Filter>
+      <Filter>Header Files\view\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

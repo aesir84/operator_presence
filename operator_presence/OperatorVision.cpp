@@ -12,11 +12,15 @@ namespace model
 	void OperatorVision::updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
 	{
 		m_leftEyeImage = leftEyeImage;
+
+		notifyLeftEyeImageUpdate(m_leftEyeImage);
 	}
 
 	void OperatorVision::updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
 	{
 		m_rightEyeImage = rightEyeImage;
+
+		notifyRightEyeImageUpdate(m_rightEyeImage);
 	}
 
 	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)

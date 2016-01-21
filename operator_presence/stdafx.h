@@ -9,7 +9,9 @@
 #include <QtCore\qobject.h>
 #include <QtGui\qimage.h>
 #include <QtGui\qopenglcontext.h>
+#include <QtGui\qopenglfunctions.h>
 #include <QtGui\qopengltexture.h>
+#include <QtGui\qwindow.h>
 
 
 //

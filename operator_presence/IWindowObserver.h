@@ -6,5 +6,8 @@ namespace model
 	{
 	public:
 		virtual ~IWindowObserver() { }
+
+	public:
+		virtual void updateSize(QSize const & size) = 0;
 	};
 }

@@ -58,16 +58,10 @@
     <ClCompile Include="OperatorVision.cpp">
       <Filter>Source Files\operator_model</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files\operator_model</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp">
       <Filter>Source Files\view\opengl</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLRendererFactory.cpp">
-      <Filter>Source Files\view\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLWindowRenderer.cpp">
       <Filter>Source Files\view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -87,22 +81,10 @@
     <ClInclude Include="IRendererFactory.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="IObservableWindow.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="IWindowObserver.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLOperatorVisionRenderer.h">
       <Filter>Header Files\view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLRendererFactory.h">
-      <Filter>Header Files\view\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLWindowRenderer.h">
       <Filter>Header Files\view\opengl</Filter>
     </ClInclude>
   </ItemGroup>

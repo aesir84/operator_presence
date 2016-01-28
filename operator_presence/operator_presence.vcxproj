@@ -80,19 +80,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OpenGLWindowRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLRendererFactory.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IObservableWindow.h" />
-    <ClInclude Include="IWindowObserver.h" />
-    <ClInclude Include="Window.h" />
     <CustomBuild Include="OperatorVision.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>
@@ -111,7 +106,6 @@
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IRendererFactory.h" />
-    <ClInclude Include="OpenGLWindowRenderer.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLRendererFactory.h" />
     <ClInclude Include="stdafx.h" />

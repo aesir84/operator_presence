@@ -21,8 +21,9 @@ namespace operator_view
 			};
 		}
 
-		OperatorVisionRenderer::OperatorVisionRenderer()
-			: m_verticesPositions(QOpenGLBuffer::VertexBuffer)
+		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IRenderer> rendererToDecorate)
+			: RendererDecorator(rendererToDecorate)
+			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
 		{ }
 
 		void OperatorVisionRenderer::initialize()
@@ -51,11 +52,13 @@ namespace operator_view
 
 		void OperatorVisionRenderer::renderLeftEye()
 		{
+			m_decoratedRenderer->renderLeftEye();
 			render(Eye::Left);
 		}
 
 		void OperatorVisionRenderer::renderRightEye()
 		{
+			m_decoratedRenderer->renderRightEye();
 			render(Eye::Right);
 		}
 

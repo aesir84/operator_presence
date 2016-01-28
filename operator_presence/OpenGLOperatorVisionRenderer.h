@@ -1,20 +1,19 @@
 #pragma once
 
 #include "IOperatorVisionObserver.h"
-#include "IRenderer.h"
-
+#include "RendererDecorator.h"
 #include "scoped_enum_as_integer.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorVisionRenderer : public IRenderer, public operator_model::IOperatorVisionObserver
+		class OperatorVisionRenderer : public RendererDecorator, public operator_model::IOperatorVisionObserver
 		{
 			friend class RendererFactory;
 
 		private:
-			OperatorVisionRenderer();
+			OperatorVisionRenderer(std::shared_ptr<IRenderer> rendererToDecorate);
 
 		private:
 			virtual void initialize() override;

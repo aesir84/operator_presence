@@ -70,6 +70,9 @@
     <ClCompile Include="OpenGLWindowRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="RendererDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -98,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="scoped_enum_as_integer.h">
       <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererDecorator.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

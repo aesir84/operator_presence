@@ -2,19 +2,21 @@
 
 #include "OpenGLRendererFactory.h"
 
-#include "IObservableOperatorVision.h"
 #include "OpenGLOperatorVisionRenderer.h"
+#include "OpenGLWindowRenderer.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IRenderer> RendererFactory::createOperatorVisionRenderer(operator_model::IObservableOperatorVision & operatorVision)
+		std::shared_ptr<IRenderer> RendererFactory::createWindowRenderer()
 		{
-			auto operatorVisionRenderer = std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer);
-			operatorVision.registerObserver(std::static_pointer_cast<operator_model::IOperatorVisionObserver>(operatorVisionRenderer));
+			return std::shared_ptr<WindowRenderer>(new WindowRenderer);
+		}
 
-			return operatorVisionRenderer;
+		std::shared_ptr<IRenderer> RendererFactory::createOperatorVisionRenderer()
+		{
+			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer);
 		}
 	}
 }

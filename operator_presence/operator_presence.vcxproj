@@ -82,6 +82,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLRendererFactory.cpp" />
+    <ClCompile Include="OpenGLWindowRenderer.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -108,6 +109,7 @@
     <ClInclude Include="IRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLRendererFactory.h" />
+    <ClInclude Include="OpenGLWindowRenderer.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

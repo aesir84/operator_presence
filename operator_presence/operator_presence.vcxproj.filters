@@ -64,6 +64,9 @@
     <ClCompile Include="OpenGLRendererFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGLWindowRenderer.cpp">
+      <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -85,6 +88,9 @@
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLRendererFactory.h">
+      <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindowRenderer.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
   </ItemGroup>

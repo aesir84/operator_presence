@@ -9,6 +9,8 @@ namespace operator_view
 
 	public:
 		virtual void initialize() = 0;
-		virtual void render() = 0;
+
+		virtual void renderLeftEye() = 0;
+		virtual void renderRightEye() = 0;
 	};
 }

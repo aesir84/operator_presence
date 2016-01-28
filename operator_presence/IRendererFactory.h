@@ -1,10 +1,5 @@
 #pragma once
 
-namespace operator_model
-{
-	class IObservableOperatorVision;
-}
-
 namespace operator_view
 {
 	class IRenderer;
@@ -18,6 +13,7 @@ namespace operator_view
 		virtual ~IRendererFactory() { }
 
 	public:
-		virtual std::shared_ptr<IRenderer> createOperatorVisionRenderer(operator_model::IObservableOperatorVision & operatorVision) = 0;
+		virtual std::shared_ptr<IRenderer> createWindowRenderer() = 0;
+		virtual std::shared_ptr<IRenderer> createOperatorVisionRenderer() = 0;
 	};
 }

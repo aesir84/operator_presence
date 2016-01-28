@@ -3,6 +3,8 @@
 #include "IOperatorVisionObserver.h"
 #include "IRenderer.h"
 
+#include "scoped_enum_as_integer.h"
+
 namespace operator_view
 {
 	namespace opengl
@@ -16,7 +18,22 @@ namespace operator_view
 
 		private:
 			virtual void initialize() override;
-			virtual void render() override;
+
+			virtual void renderLeftEye() override;
+			virtual void renderRightEye() override;
+
+		private:
+			enum class Eye : std::uint8_t
+			{
+				Left, Right,
+				Count
+			};
+
+		private:
+			std::array<std::unique_ptr<QOpenGLTexture>, helpers::as_integer(Eye::Count)> m_eyeTextures;
+
+		private:
+			void render(Eye eye);
 
 		private:
 			QOpenGLVertexArrayObject m_vao;
@@ -34,8 +51,7 @@ namespace operator_view
 			virtual void updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage) override;
 
 		private:
-			std::unique_ptr<QOpenGLTexture> m_leftEyeTexture;
-			std::unique_ptr<QOpenGLTexture> m_rightEyeTexture;
+			void updateEyeImage(Eye eye, std::shared_ptr<QImage> image);
 		};
 	}
 }

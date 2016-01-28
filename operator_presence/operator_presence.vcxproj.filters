@@ -47,6 +47,9 @@
     <Filter Include="Source Files\operator_view\opengl">
       <UniqueIdentifier>{d0adc226-e01a-4667-812a-447d839a3b76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\helpers">
+      <UniqueIdentifier>{e4865785-9717-4b1a-8d4d-859cd17dbf22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="OpenGLWindowRenderer.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="scoped_enum_as_integer.h">
+      <Filter>Header Files\helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

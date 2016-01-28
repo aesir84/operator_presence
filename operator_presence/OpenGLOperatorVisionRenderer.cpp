@@ -49,8 +49,27 @@ namespace operator_view
 			m_vao.release();
 		}
 
-		void OperatorVisionRenderer::render()
+		void OperatorVisionRenderer::renderLeftEye()
 		{
+			render(Eye::Left);
+		}
+
+		void OperatorVisionRenderer::renderRightEye()
+		{
+			render(Eye::Right);
+		}
+
+		void OperatorVisionRenderer::render(Eye eye)
+		{
+			m_shader.bind();
+			m_eyeTextures[helpers::as_integer(eye)]->bind();
+			m_vao.bind();
+
+			QOpenGLContext::currentContext()->functions()->glDrawArrays(GL_TRIANGLES, 0, 6);
+
+			m_vao.release();
+			m_eyeTextures[helpers::as_integer(eye)]->release();
+			m_shader.release();
 		}
 
 		void OperatorVisionRenderer::initShader()
@@ -80,10 +99,39 @@ namespace operator_view
 
 		void OperatorVisionRenderer::updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
 		{
+			updateEyeImage(Eye::Left, leftEyeImage);
 		}
 
 		void OperatorVisionRenderer::updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
 		{
+			updateEyeImage(Eye::Right, rightEyeImage);
+		}
+
+		void OperatorVisionRenderer::updateEyeImage(Eye eye, std::shared_ptr<QImage> image)
+		{
+			// Convert the image to a format which is used by OpenGL textures in Qt.
+			// RGBA8888 is a 32-bit byte-ordered RGBA format (8-8-8-8).
+			// This byte-by-byte interpretation suits OpenGL textures.
+			//
+			auto const textureImage = image->convertToFormat(QImage::Format_RGBA8888);
+
+
+			//
+			// Either create a new texture or refill the already existing one.
+			//
+
+			if (m_eyeTextures[helpers::as_integer(eye)] == nullptr)
+			{
+				// Create a texture from the supplied image.
+				//
+				m_eyeTextures[helpers::as_integer(eye)] = std::make_unique<QOpenGLTexture>(textureImage);
+			}
+			else
+			{
+				// Update the pixels of the existing texture.
+				//
+				m_eyeTextures[helpers::as_integer(eye)]->setData(QOpenGLTexture::RGBA, QOpenGLTexture::UInt8, textureImage.bits());
+			}
 		}
 	}
 }

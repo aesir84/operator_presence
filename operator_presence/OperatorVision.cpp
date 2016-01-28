@@ -4,7 +4,7 @@
 
 #include "IOperatorVisionObserver.h"
 
-namespace model
+namespace operator_model
 {
 	OperatorVision::OperatorVision()
 	{ }

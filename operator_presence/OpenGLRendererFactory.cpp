@@ -9,15 +9,10 @@ namespace view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IRenderer> RendererFactory::createWindowRenderer(model::IObservableWindow & window)
-		{
-			
-		}
-
-		std::shared_ptr<IRenderer> RendererFactory::createOperatorVisionRenderer(model::IObservableOperatorVision & operatorVision)
+		std::shared_ptr<IRenderer> RendererFactory::createOperatorVisionRenderer(operator_model::IObservableOperatorVision & operatorVision)
 		{
 			auto operatorVisionRenderer = std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer);
-			operatorVision.registerObserver(std::static_pointer_cast<model::IOperatorVisionObserver>(operatorVisionRenderer));
+			operatorVision.registerObserver(std::static_pointer_cast<operator_model::IOperatorVisionObserver>(operatorVisionRenderer));
 
 			return operatorVisionRenderer;
 		}

@@ -1,11 +1,11 @@
 #pragma once
 
-namespace model
+namespace operator_model
 {
 	class IOperatorVisionObserver;
 }
 
-namespace model
+namespace operator_model
 {
 	class IObservableOperatorVision
 	{

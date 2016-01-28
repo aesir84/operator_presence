@@ -7,7 +7,7 @@ namespace view
 {
 	namespace opengl
 	{
-		class OperatorVisionRenderer : public IRenderer, public model::IOperatorVisionObserver
+		class OperatorVisionRenderer : public IRenderer, public operator_model::IOperatorVisionObserver
 		{
 			friend class RendererFactory;
 

@@ -2,7 +2,7 @@
 
 #include "IObservableOperatorVision.h"
 
-namespace model
+namespace operator_model
 {
 	class OperatorVision : public IObservableOperatorVision
 	{

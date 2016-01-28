@@ -19,6 +19,17 @@ namespace view
 			virtual void render() override;
 
 		private:
+			QOpenGLVertexArrayObject m_vao;
+			QOpenGLBuffer m_verticesPositions;
+			GLuint m_vertexPositionAttribute;
+
+		private:
+			void initShader();
+
+		private:
+			QOpenGLShaderProgram m_shader;
+
+		private:
 			virtual void updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) override;
 			virtual void updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage) override;
 

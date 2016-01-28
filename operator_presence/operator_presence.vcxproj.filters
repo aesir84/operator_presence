@@ -29,23 +29,23 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Header Files\view">
-      <UniqueIdentifier>{d8860b7f-f407-4edf-9ef4-f8edb605c947}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\view">
-      <UniqueIdentifier>{9679b005-19d3-425b-8db8-f0e3f444c324}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\view\opengl">
-      <UniqueIdentifier>{64a98ceb-ee35-42ca-8246-87d3657b6179}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\view\opengl">
-      <UniqueIdentifier>{d0adc226-e01a-4667-812a-447d839a3b76}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\operator_model">
       <UniqueIdentifier>{f120045e-dd27-473f-8d2f-035886f6e448}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\operator_model">
       <UniqueIdentifier>{e95ac530-ac04-4557-a8ea-9d476ca008e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\operator_view">
+      <UniqueIdentifier>{d8860b7f-f407-4edf-9ef4-f8edb605c947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\operator_view\opengl">
+      <UniqueIdentifier>{64a98ceb-ee35-42ca-8246-87d3657b6179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\operator_view">
+      <UniqueIdentifier>{9679b005-19d3-425b-8db8-f0e3f444c324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\operator_view\opengl">
+      <UniqueIdentifier>{d0adc226-e01a-4667-812a-447d839a3b76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,10 +59,10 @@
       <Filter>Source Files\operator_model</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp">
-      <Filter>Source Files\view\opengl</Filter>
+      <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLRendererFactory.cpp">
-      <Filter>Source Files\view\opengl</Filter>
+      <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,16 +76,16 @@
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="IRenderer.h">
-      <Filter>Header Files\view</Filter>
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="IRendererFactory.h">
-      <Filter>Header Files\view</Filter>
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLOperatorVisionRenderer.h">
-      <Filter>Header Files\view\opengl</Filter>
+      <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLRendererFactory.h">
-      <Filter>Header Files\view\opengl</Filter>
+      <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

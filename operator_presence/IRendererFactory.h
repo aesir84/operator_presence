@@ -5,12 +5,12 @@ namespace operator_model
 	class IObservableOperatorVision;
 }
 
-namespace view
+namespace operator_view
 {
 	class IRenderer;
 }
 
-namespace view
+namespace operator_view
 {
 	class IRendererFactory
 	{

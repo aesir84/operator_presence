@@ -1,6 +1,6 @@
 #pragma once
 
-namespace view
+namespace operator_view
 {
 	class IRenderer
 	{

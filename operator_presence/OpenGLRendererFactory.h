@@ -2,7 +2,7 @@
 
 #include "IRendererFactory.h"
 
-namespace view
+namespace operator_view
 {
 	namespace opengl
 	{

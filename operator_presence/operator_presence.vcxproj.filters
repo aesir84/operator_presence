@@ -84,9 +84,6 @@
     <ClInclude Include="IOperatorVisionObserver.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="IRenderer.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IRendererFactory.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -103,6 +100,9 @@
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
     <ClInclude Include="RendererDecorator.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

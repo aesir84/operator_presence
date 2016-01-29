@@ -106,7 +106,7 @@
     </CustomBuild>
     <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
-    <ClInclude Include="IRenderer.h" />
+    <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLRendererFactory.h" />

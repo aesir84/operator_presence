@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IRenderer.h"
+#include "IOperatorRenderer.h"
 
 namespace operator_view
 {

@@ -24,3 +24,10 @@
 #include <array>
 #include <memory>
 #include <vector>
+
+
+//
+// Helpers
+//
+
+#include "scoped_enum_as_integer.h"

@@ -2,7 +2,6 @@
 
 #include "IOperatorVisionObserver.h"
 #include "OperatorRendererDecorator.h"
-#include "scoped_enum_as_integer.h"
 
 namespace operator_view
 {

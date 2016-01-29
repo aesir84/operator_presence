@@ -8,7 +8,7 @@ namespace operator_view
 	{
 		class OperatorRenderer : public IOperatorRenderer, public QWindow
 		{
-			friend class RendererFactory;
+			friend class OperatorRendererFactory;
 
 		private:
 			OperatorRenderer();

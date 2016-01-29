@@ -1,20 +1,20 @@
 #include "stdafx.h"
 
-#include "OpenGLRendererFactory.h"
+#include "OpenGLOperatorRendererFactory.h"
 
 #include "OpenGLOperatorVisionRenderer.h"
-#include "OpenGLWindowRenderer.h"
+#include "OpenGLOperatorRenderer.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IOperatorRenderer> RendererFactory::createOperatorRenderer()
+		std::shared_ptr<IOperatorRenderer> OperatorRendererFactory::createOperatorRenderer()
 		{
 			return std::shared_ptr<OperatorRenderer>(new OperatorRenderer);
 		}
 
-		std::shared_ptr<IOperatorRenderer> RendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
+		std::shared_ptr<IOperatorRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
 		{
 			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer(rendererToDecorate));
 		}

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "IRendererFactory.h"
+#include "IOperatorRendererFactory.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class RendererFactory : public IRendererFactory
+		class OperatorRendererFactory : public IOperatorRendererFactory
 		{
 		private:
 			virtual std::shared_ptr<IOperatorRenderer> createOperatorRenderer() override;

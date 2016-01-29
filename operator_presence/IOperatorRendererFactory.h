@@ -7,10 +7,10 @@ namespace operator_view
 
 namespace operator_view
 {
-	class IRendererFactory
+	class IOperatorRendererFactory
 	{
 	public:
-		virtual ~IRendererFactory() { }
+		virtual ~IOperatorRendererFactory() { }
 
 	public:
 		virtual std::shared_ptr<IOperatorRenderer> createOperatorRenderer() = 0;

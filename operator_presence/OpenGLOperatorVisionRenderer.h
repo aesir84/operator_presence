@@ -10,7 +10,7 @@ namespace operator_view
 	{
 		class OperatorVisionRenderer : public RendererDecorator, public operator_model::IOperatorVisionObserver
 		{
-			friend class RendererFactory;
+			friend class OperatorRendererFactory;
 
 		private:
 			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate);

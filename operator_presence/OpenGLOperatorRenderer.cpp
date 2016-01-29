@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "OpenGLWindowRenderer.h"
+#include "OpenGLOperatorRenderer.h"
 
 namespace operator_view
 {

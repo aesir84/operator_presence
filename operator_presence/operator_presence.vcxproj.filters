@@ -64,14 +64,14 @@
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="RendererDecorator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLOperatorRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorRendererDecorator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +90,6 @@
     <ClInclude Include="scoped_enum_as_integer.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
-    <ClInclude Include="RendererDecorator.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="OpenGLOperatorRendererFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorRendererDecorator.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

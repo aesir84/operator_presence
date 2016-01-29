@@ -84,7 +84,7 @@
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorRenderer.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
-    <ClCompile Include="RendererDecorator.cpp" />
+    <ClCompile Include="OperatorRendererDecorator.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -111,7 +111,7 @@
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorRenderer.h" />
-    <ClInclude Include="RendererDecorator.h" />
+    <ClInclude Include="OperatorRendererDecorator.h" />
     <ClInclude Include="scoped_enum_as_integer.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

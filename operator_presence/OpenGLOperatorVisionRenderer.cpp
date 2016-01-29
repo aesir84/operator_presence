@@ -64,6 +64,8 @@ namespace operator_view
 
 		void OperatorVisionRenderer::render(Eye eye)
 		{
+			std::lock_guard<std::mutex> textureAccess(m_eyeTextureMutexes[helpers::as_integer(eye)]);
+
 			m_shader.bind();
 			m_eyeTextures[helpers::as_integer(eye)]->bind();
 			m_vao.bind();
@@ -127,12 +129,14 @@ namespace operator_view
 			{
 				// Create a texture from the supplied image.
 				//
+				std::lock_guard<std::mutex> textureAccess(m_eyeTextureMutexes[helpers::as_integer(eye)]);
 				m_eyeTextures[helpers::as_integer(eye)] = std::make_unique<QOpenGLTexture>(textureImage);
 			}
 			else
 			{
 				// Update the pixels of the existing texture.
 				//
+				std::lock_guard<std::mutex> textureAccess(m_eyeTextureMutexes[helpers::as_integer(eye)]);
 				m_eyeTextures[helpers::as_integer(eye)]->setData(QOpenGLTexture::RGBA, QOpenGLTexture::UInt8, textureImage.bits());
 			}
 		}

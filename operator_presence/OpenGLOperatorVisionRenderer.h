@@ -29,6 +29,7 @@ namespace operator_view
 
 		private:
 			std::array<std::unique_ptr<QOpenGLTexture>, helpers::as_integer(Eye::Count)> m_eyeTextures;
+			std::array<std::mutex, helpers::as_integer(Eye::Count)> m_eyeTextureMutexes;
 
 		private:
 			void render(Eye eye);

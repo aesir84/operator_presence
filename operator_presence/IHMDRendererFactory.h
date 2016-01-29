@@ -5,6 +5,11 @@ namespace hmd_view
 	class IRiftHMDRenderer;
 }
 
+namespace operator_view
+{
+	class IOperatorRenderer;
+}
+
 namespace hmd_view
 {
 	class IHMDRendererFactory
@@ -13,6 +18,6 @@ namespace hmd_view
 		virtual ~IHMDRendererFactory() { }
 
 	public:
-		virtual std::shared_ptr<IRiftHMDRenderer> createRiftHMDRenderer() = 0;
+		virtual std::shared_ptr<IRiftHMDRenderer> createRiftHMDRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer) = 0;
 	};
 }

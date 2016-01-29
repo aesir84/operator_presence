@@ -53,6 +53,9 @@
     <Filter Include="Header Files\hmd_view">
       <UniqueIdentifier>{bf1d4afc-a733-4ae2-b170-dd8b79c9eceb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\hmd_view\opengl">
+      <UniqueIdentifier>{5dae5cb6-eceb-410f-9feb-2d828d2f4051}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="IOperatorVisionRenderer.cpp">
       <Filter>Source Files\operator_view</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLRiftHMDRenderer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="IRiftHMDRenderer.h">
       <Filter>Header Files\hmd_view</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLRiftHMDRenderer.h">
+      <Filter>Header Files\hmd_view\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

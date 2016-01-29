@@ -25,7 +25,7 @@ namespace operator_view
 		private:
 			QOpenGLContext m_context;
 
-		public:
+		private:
 			virtual void registerObserver(std::shared_ptr<IOperatorDisplayObserver> observer) override;
 
 		private:

@@ -22,7 +22,7 @@ namespace operator_view
 		}
 
 		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
-			: OperatorRendererDecorator(rendererToDecorate)
+			: IOperatorVisionRenderer(rendererToDecorate)
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
 		{ }
 

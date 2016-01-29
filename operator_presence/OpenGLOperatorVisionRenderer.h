@@ -1,13 +1,13 @@
 #pragma once
 
 #include "IOperatorVisionObserver.h"
-#include "OperatorRendererDecorator.h"
+#include "IOperatorVisionRenderer.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorVisionRenderer : public OperatorRendererDecorator, public operator_model::IOperatorVisionObserver
+		class OperatorVisionRenderer : public IOperatorVisionRenderer, public operator_model::IOperatorVisionObserver
 		{
 			friend class OperatorRendererFactory;
 

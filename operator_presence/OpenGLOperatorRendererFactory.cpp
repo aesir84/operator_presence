@@ -9,14 +9,14 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer()
+		std::shared_ptr<IOperatorDisplayRenderer> OperatorRendererFactory::createOperatorDisplayRenderer()
 		{
 			return std::shared_ptr<IOperatorDisplayRenderer>(new OperatorDisplayRenderer);
 		}
 
-		std::shared_ptr<IOperatorRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+		std::shared_ptr<IOperatorVisionRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
 		{
-			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
+			return std::shared_ptr<IOperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
 		}
 	}
 }

@@ -4,10 +4,11 @@
 
 namespace operator_view
 {
-	class OperatorRendererDecorator : public IOperatorRenderer
+	class IOperatorVisionRenderer : public IOperatorRenderer
 	{
 	public:
-		explicit OperatorRendererDecorator(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate);
+		IOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate);
+
 	protected:
 		std::shared_ptr<IOperatorRenderer> m_decoratedOperatorRenderer;
 	};

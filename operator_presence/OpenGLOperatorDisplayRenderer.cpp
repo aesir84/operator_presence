@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorRenderer.h"
+#include "OpenGLOperatorDisplayRenderer.h"
 
 #include "IOperatorDisplayObserver.h"
 

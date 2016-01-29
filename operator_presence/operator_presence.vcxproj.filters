@@ -67,11 +67,11 @@
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="OperatorRendererDecorator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="IOperatorVisionRenderer.cpp">
+      <Filter>Source Files\operator_view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +99,6 @@
     <ClInclude Include="OpenGLOperatorRendererFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="OperatorRendererDecorator.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorDisplayRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -110,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorVisionRenderer.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

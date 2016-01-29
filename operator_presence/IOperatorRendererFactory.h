@@ -14,6 +14,6 @@ namespace operator_view
 
 	public:
 		virtual std::shared_ptr<IOperatorRenderer> createOperatorRenderer() = 0;
-		virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate) = 0;
+		virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate) = 0;
 	};
 }

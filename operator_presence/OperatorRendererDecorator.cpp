@@ -1,10 +1,10 @@
 #include "stdafx.h"
 
-#include "RendererDecorator.h"
+#include "OperatorRendererDecorator.h"
 
 namespace operator_view
 {
-	RendererDecorator::RendererDecorator(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
-		: m_decoratedRenderer(rendererToDecorate)
+	OperatorRendererDecorator::OperatorRendererDecorator(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+		: m_decoratedOperatorRenderer(operatorRendererToDecorate)
 	{ }
 }

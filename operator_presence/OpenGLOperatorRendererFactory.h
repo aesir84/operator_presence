@@ -10,7 +10,7 @@ namespace operator_view
 		{
 		private:
 			virtual std::shared_ptr<IOperatorRenderer> createOperatorRenderer() override;
-			virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate) override;
+			virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate) override;
 		};
 	}
 }

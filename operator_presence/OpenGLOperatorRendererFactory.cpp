@@ -14,9 +14,9 @@ namespace operator_view
 			return std::shared_ptr<OperatorRenderer>(new OperatorRenderer);
 		}
 
-		std::shared_ptr<IOperatorRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
+		std::shared_ptr<IOperatorRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
 		{
-			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer(rendererToDecorate));
+			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
 		}
 	}
 }

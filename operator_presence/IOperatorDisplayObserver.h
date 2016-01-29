@@ -2,10 +2,10 @@
 
 namespace operator_view
 {
-	class IOperatorActionObserver
+	class IOperatorDisplayObserver
 	{
 	public:
-		virtual ~IOperatorActionObserver() { }
+		virtual ~IOperatorDisplayObserver() { }
 
 	public:
 		virtual void updateKeyPressed(Qt::Key key) = 0;

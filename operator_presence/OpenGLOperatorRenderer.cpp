@@ -2,16 +2,16 @@
 
 #include "OpenGLOperatorRenderer.h"
 
-#include "IOperatorActionObserver.h"
+#include "IOperatorDisplayObserver.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorRenderer::OperatorRenderer()
+		OperatorDisplayRenderer::OperatorDisplayRenderer()
 		{ }
 
-		void OperatorRenderer::initialize()
+		void OperatorDisplayRenderer::initialize()
 		{
 			// The window's surface type must be set to QSurface::OpenGLSurface
 			// to indicate that the window is to be used for OpenGL rendering.
@@ -39,27 +39,27 @@ namespace operator_view
 
 		}
 
-		void OperatorRenderer::renderLeftEye()
+		void OperatorDisplayRenderer::renderLeftEye()
 		{
 			render();
 		}
 
-		void OperatorRenderer::renderRightEye()
+		void OperatorDisplayRenderer::renderRightEye()
 		{
 			render();
 		}
 
-		void OperatorRenderer::render()
+		void OperatorDisplayRenderer::render()
 		{
 			m_context.makeCurrent(this);
 		}
 
-		void OperatorRenderer::registerObserver(std::shared_ptr<IOperatorActionObserver> observer)
+		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorDisplayObserver> observer)
 		{
 			m_observers.push_back(observer);
 		}
 
-		void OperatorRenderer::notifyKeyPressed(Qt::Key key)
+		void OperatorDisplayRenderer::notifyKeyPressed(Qt::Key key)
 		{
 			for (auto & observer : m_observers)
 			{
@@ -72,7 +72,7 @@ namespace operator_view
 			}
 		}
 
-		void OperatorRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
+		void OperatorDisplayRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
 		{
 			notifyKeyPressed(keyEvent->key);
 		}

@@ -19,6 +19,9 @@ namespace hmd_view
 			explicit RiftHMDRenderer(std::shared_ptr<operator_view::IOperatorRenderer> operatorRenderer);
 
 		private:
+			std::shared_ptr<operator_view::IOperatorRenderer> m_operatorRenderer;
+
+		private:
 			virtual void render() override;
 			virtual void shutdown() override;
 

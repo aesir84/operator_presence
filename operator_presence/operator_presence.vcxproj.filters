@@ -56,6 +56,12 @@
     <Filter Include="Header Files\hmd_view\opengl">
       <UniqueIdentifier>{5dae5cb6-eceb-410f-9feb-2d828d2f4051}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\hmd_view">
+      <UniqueIdentifier>{5b3012b1-55e2-420c-be8d-2b9d60860fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hmd_view\opengl">
+      <UniqueIdentifier>{b370411c-aea5-44df-a088-059eeffb98c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -80,7 +86,7 @@
       <Filter>Source Files\operator_view</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLRiftHMDRenderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\hmd_view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

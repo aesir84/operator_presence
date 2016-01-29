@@ -9,7 +9,8 @@ namespace hmd_view
 	namespace opengl
 	{
 		RiftHMDRenderer::RiftHMDRenderer(std::shared_ptr<operator_view::IOperatorRenderer> operatorRenderer)
-			: m_shutdown(false)
+			: m_operatorRenderer(operatorRenderer)
+			, m_shutdown(false)
 		{ }
 
 		void RiftHMDRenderer::render()

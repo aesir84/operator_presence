@@ -105,6 +105,12 @@
     <ClInclude Include="OperatorRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
+    <ClInclude Include="IObservableOperatorAction.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorActionObserver.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

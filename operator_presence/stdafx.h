@@ -7,6 +7,7 @@
 
 #include <QtCore\qcoreapplication.h>
 #include <QtCore\qobject.h>
+#include <QtGui\qevent.h>
 #include <QtGui\qimage.h>
 #include <QtGui\qopenglbuffer.h>
 #include <QtGui\qopenglcontext.h>

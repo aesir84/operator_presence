@@ -2,6 +2,8 @@
 
 #include "OpenGLOperatorRenderer.h"
 
+#include "IOperatorActionObserver.h"
+
 namespace operator_view
 {
 	namespace opengl
@@ -50,6 +52,29 @@ namespace operator_view
 		void OperatorRenderer::render()
 		{
 			m_context.makeCurrent(this);
+		}
+
+		void OperatorRenderer::registerObserver(std::shared_ptr<IOperatorActionObserver> observer)
+		{
+			m_observers.push_back(observer);
+		}
+
+		void OperatorRenderer::notifyKeyPressed(Qt::Key key)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateKeyPressed(key);
+				}
+			}
+		}
+
+		void OperatorRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
+		{
+			notifyKeyPressed(keyEvent->key);
 		}
 	}
 }

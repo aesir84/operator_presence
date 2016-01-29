@@ -6,12 +6,12 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class WindowRenderer : public IOperatorRenderer, public QWindow
+		class OperatorRenderer : public IOperatorRenderer, public QWindow
 		{
 			friend class RendererFactory;
 
 		private:
-			WindowRenderer();
+			OperatorRenderer();
 
 		private:
 			virtual void initialize() override;

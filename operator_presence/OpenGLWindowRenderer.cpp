@@ -6,10 +6,10 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		WindowRenderer::WindowRenderer()
+		OperatorRenderer::OperatorRenderer()
 		{ }
 
-		void WindowRenderer::initialize()
+		void OperatorRenderer::initialize()
 		{
 			// The window's surface type must be set to QSurface::OpenGLSurface
 			// to indicate that the window is to be used for OpenGL rendering.
@@ -37,23 +37,19 @@ namespace operator_view
 
 		}
 
-		void WindowRenderer::renderLeftEye()
+		void OperatorRenderer::renderLeftEye()
 		{
 			render();
 		}
 
-		void WindowRenderer::renderRightEye()
+		void OperatorRenderer::renderRightEye()
 		{
 			render();
 		}
 
-		void WindowRenderer::render()
+		void OperatorRenderer::render()
 		{
-			if (!m_context.makeCurrent(this))
-			{
-				Q_ASSERT(false);
-			}
-
+			m_context.makeCurrent(this);
 		}
 	}
 }

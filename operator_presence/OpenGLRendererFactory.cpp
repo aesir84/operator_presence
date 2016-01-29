@@ -9,9 +9,9 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IOperatorRenderer> RendererFactory::createWindowRenderer()
+		std::shared_ptr<IOperatorRenderer> RendererFactory::createOperatorRenderer()
 		{
-			return std::shared_ptr<WindowRenderer>(new WindowRenderer);
+			return std::shared_ptr<OperatorRenderer>(new OperatorRenderer);
 		}
 
 		std::shared_ptr<IOperatorRenderer> RendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)

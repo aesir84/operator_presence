@@ -104,9 +104,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <ClInclude Include="IObservableOperatorAction.h" />
     <ClInclude Include="IObservableOperatorVision.h" />
-    <ClInclude Include="IOperatorActionObserver.h" />
+    <ClInclude Include="IOperatorDisplayObserver.h" />
+    <ClInclude Include="IOperatorDisplayRenderer.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />

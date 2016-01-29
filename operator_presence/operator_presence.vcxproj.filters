@@ -105,10 +105,10 @@
     <ClInclude Include="OperatorRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IObservableOperatorAction.h">
+    <ClInclude Include="IOperatorDisplayRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorActionObserver.h">
+    <ClInclude Include="IOperatorDisplayObserver.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

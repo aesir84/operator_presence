@@ -13,7 +13,7 @@ namespace operator_view
 			friend class RendererFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IRenderer> rendererToDecorate);
+			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate);
 
 		private:
 			virtual void initialize() override;

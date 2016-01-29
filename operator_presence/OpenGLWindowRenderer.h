@@ -6,7 +6,7 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class WindowRenderer : public IRenderer, public QWindow
+		class WindowRenderer : public IOperatorRenderer, public QWindow
 		{
 			friend class RendererFactory;
 

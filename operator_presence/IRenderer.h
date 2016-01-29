@@ -2,10 +2,10 @@
 
 namespace operator_view
 {
-	class IRenderer
+	class IOperatorRenderer
 	{
 	public:
-		virtual ~IRenderer() { }
+		virtual ~IOperatorRenderer() { }
 
 	public:
 		virtual void initialize() = 0;

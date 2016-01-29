@@ -9,8 +9,8 @@ namespace operator_view
 		class RendererFactory : public IRendererFactory
 		{
 		private:
-			virtual std::shared_ptr<IRenderer> createWindowRenderer() override;
-			virtual std::shared_ptr<IRenderer> createOperatorVisionRenderer(std::shared_ptr<IRenderer> rendererToDecorate) override;
+			virtual std::shared_ptr<IOperatorRenderer> createWindowRenderer() override;
+			virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate) override;
 		};
 	}
 }

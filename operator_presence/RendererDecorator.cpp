@@ -4,7 +4,7 @@
 
 namespace operator_view
 {
-	RendererDecorator::RendererDecorator(std::shared_ptr<IRenderer> rendererToDecorate)
+	RendererDecorator::RendererDecorator(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
 		: m_decoratedRenderer(rendererToDecorate)
 	{ }
 }

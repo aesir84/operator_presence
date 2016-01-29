@@ -2,7 +2,7 @@
 
 namespace operator_view
 {
-	class IRenderer;
+	class IOperatorRenderer;
 }
 
 namespace operator_view
@@ -13,7 +13,7 @@ namespace operator_view
 		virtual ~IRendererFactory() { }
 
 	public:
-		virtual std::shared_ptr<IRenderer> createWindowRenderer() = 0;
-		virtual std::shared_ptr<IRenderer> createOperatorVisionRenderer(std::shared_ptr<IRenderer> rendererToDecorate) = 0;
+		virtual std::shared_ptr<IOperatorRenderer> createWindowRenderer() = 0;
+		virtual std::shared_ptr<IOperatorRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate) = 0;
 	};
 }

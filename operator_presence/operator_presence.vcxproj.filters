@@ -50,6 +50,9 @@
     <Filter Include="Header Files\helpers">
       <UniqueIdentifier>{e4865785-9717-4b1a-8d4d-859cd17dbf22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\hmd_view">
+      <UniqueIdentifier>{bf1d4afc-a733-4ae2-b170-dd8b79c9eceb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="IOperatorVisionRenderer.h">
       <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IHMDRendererFactory.h">
+      <Filter>Header Files\hmd_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IRiftHMDRenderer.h">
+      <Filter>Header Files\hmd_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

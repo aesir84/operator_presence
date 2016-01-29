@@ -104,6 +104,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
+    <ClInclude Include="IHMDRendererFactory.h" />
     <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorDisplayObserver.h" />
     <ClInclude Include="IOperatorDisplayRenderer.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
+    <ClInclude Include="IRiftHMDRenderer.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />

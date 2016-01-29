@@ -82,7 +82,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLRendererFactory.cpp" />
-    <ClCompile Include="OpenGLWindowRenderer.cpp" />
+    <ClCompile Include="OpenGLOperatorRenderer.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="RendererDecorator.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -110,7 +110,7 @@
     <ClInclude Include="IRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLRendererFactory.h" />
-    <ClInclude Include="OpenGLWindowRenderer.h" />
+    <ClInclude Include="OpenGLOperatorRenderer.h" />
     <ClInclude Include="RendererDecorator.h" />
     <ClInclude Include="scoped_enum_as_integer.h" />
     <ClInclude Include="stdafx.h" />

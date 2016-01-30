@@ -11,6 +11,7 @@ namespace operator_view
 		private:
 			virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer() override;
 			virtual std::shared_ptr<IOperatorVisionRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate) override;
+			virtual std::shared_ptr<IOperatorOculusRiftRenderer> createOperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate) override;
 		};
 	}
 }

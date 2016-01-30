@@ -79,8 +79,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IOperatorOculusRiftRenderer.cpp" />
     <ClCompile Include="IOperatorVisionRenderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
@@ -107,10 +109,12 @@
     <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorDisplayObserver.h" />
     <ClInclude Include="IOperatorDisplayRenderer.h" />
+    <ClInclude Include="IOperatorOculusRiftRenderer.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
+    <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />

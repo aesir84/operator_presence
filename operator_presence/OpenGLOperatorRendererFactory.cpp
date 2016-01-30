@@ -2,8 +2,8 @@
 
 #include "OpenGLOperatorRendererFactory.h"
 
-#include "IObservableOperatorVision.h"
 #include "OpenGLOperatorDisplayRenderer.h"
+#include "OpenGLOperatorOculusRiftRenderer.h"
 #include "OpenGLOperatorVisionRenderer.h"
 
 namespace operator_view
@@ -17,7 +17,12 @@ namespace operator_view
 
 		std::shared_ptr<IOperatorVisionRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
 		{
-			return std::shared_ptr<OperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
+			return std::shared_ptr<IOperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
+		}
+
+		std::shared_ptr<IOperatorOculusRiftRenderer> OperatorRendererFactory::createOperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+		{
+			return std::shared_ptr<IOperatorOculusRiftRenderer>(new OperatorOculusRiftRenderer(operatorRendererToDecorate));
 		}
 	}
 }

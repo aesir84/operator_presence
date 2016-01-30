@@ -84,7 +84,6 @@
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
-    <ClCompile Include="OpenGLRiftHMDRenderer.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -105,7 +104,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <ClInclude Include="IHMDRendererFactory.h" />
     <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorDisplayObserver.h" />
     <ClInclude Include="IOperatorDisplayRenderer.h" />
@@ -113,11 +111,9 @@
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
-    <ClInclude Include="IRiftHMDRenderer.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />
-    <ClInclude Include="OpenGLRiftHMDRenderer.h" />
     <ClInclude Include="scoped_enum_as_integer.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

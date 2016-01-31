@@ -12,6 +12,9 @@ namespace operator_view
 
 		void OperatorOculusRiftRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
+			// The HMD will override these values.
+			// Therefore, they are not used here.
+			//
 			Q_UNUSED(eyeResolutionWidth);
 			Q_UNUSED(eyeResolutionHeight);
 		}

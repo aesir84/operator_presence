@@ -123,6 +123,9 @@
     <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="scope_guard.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

@@ -31,6 +31,13 @@
 
 
 //
+// OculusVR
+//
+
+#include <OVR_CAPI.h>
+
+
+//
 // Helpers
 //
 

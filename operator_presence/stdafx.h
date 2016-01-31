@@ -15,6 +15,7 @@
 #include <QtGui\qopenglshaderprogram.h>
 #include <QtGui\qopengltexture.h>
 #include <QtGui\qopenglvertexarrayobject.h>
+#include <QtGui\qscreen.h>
 #include <QtGui\qwindow.h>
 
 

@@ -26,8 +26,17 @@ namespace operator_view
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
 		{ }
 
-		void OperatorVisionRenderer::initialize()
+		void OperatorVisionRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
+			// For now these parameters are not used.
+			//
+			Q_UNUSED(eyeResolutionWidth);
+			Q_UNUSED(eyeResolutionHeight);
+
+			// Firstly, let the decorated renderer (most likely the window) perform its initialization.
+			//
+			m_decoratedOperatorRenderer->initialize();
+
 			m_vao.create();
 			m_vao.bind();
 

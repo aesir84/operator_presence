@@ -14,7 +14,7 @@ namespace operator_view
 			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate);
 
 		private:
-			virtual void initialize() override;
+			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;

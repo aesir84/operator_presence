@@ -11,7 +11,7 @@ namespace operator_view
 		OperatorDisplayRenderer::OperatorDisplayRenderer()
 		{ }
 
-		void OperatorDisplayRenderer::initialize()
+		void OperatorDisplayRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
 			// The window's surface type must be set to QSurface::OpenGLSurface
 			// to indicate that the window is to be used for OpenGL rendering.
@@ -36,7 +36,9 @@ namespace operator_view
 			{
 				Q_ASSERT(false);
 			}
-
+			
+			setOperatorDisplaySize(eyeResolutionWidth, eyeResolutionHeight);
+			setVisible(true);
 		}
 
 		void OperatorDisplayRenderer::renderLeftEye()
@@ -52,6 +54,32 @@ namespace operator_view
 		void OperatorDisplayRenderer::render()
 		{
 			m_context.makeCurrent(this);
+		}
+
+		void OperatorDisplayRenderer::setOperatorDisplaySize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
+		{
+			// The eyes are ought to be displayed side by side,
+			// so in order to get the full display size which accomodates both eyes,
+			// we need to double the width, keeping the height as it is.
+			//
+			std::uint16_t operatorDisplayWidth = eyeResolutionWidth + eyeResolutionWidth;
+			std::uint16_t operatorDisplayHeight = eyeResolutionHeight;
+
+			// There can be different screen sizes, e.g. big, small, etc...
+			// In order to fit the operator display on a screen nicely
+			// we should check and decrease the operator display size as necessary.
+			//
+			std::uint16_t const screenWidth = static_cast<std::uint16_t>(screen()->size().width());
+			std::uint16_t const screenHeight = static_cast<std::uint16_t>(screen()->size().height());
+
+			while (operatorDisplayWidth >= screenWidth || operatorDisplayHeight >= screenHeight)
+			{
+				operatorDisplayWidth /= 2;
+				operatorDisplayHeight /= 2;
+			}
+
+			setWidth(operatorDisplayWidth);
+			setHeight(operatorDisplayHeight);
 		}
 
 		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorDisplayObserver> observer)

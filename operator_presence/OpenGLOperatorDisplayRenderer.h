@@ -30,12 +30,14 @@ namespace operator_view
 
 		private:
 			virtual void notifyKeyPressed(Qt::Key key) override;
+			virtual void notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
 
 		private:
 			std::vector<std::weak_ptr<IOperatorDisplayObserver>> m_observers;
 
 		private:
 			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;
+			virtual void resizeEvent(QResizeEvent * resizeEvent) override;
 		};
 	}
 }

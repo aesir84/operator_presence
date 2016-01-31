@@ -72,9 +72,43 @@ namespace operator_view
 			}
 		}
 
+		void OperatorDisplayRenderer::notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateSizeChanged(newWidth, newHeight);
+				}
+			}
+		}
+
 		void OperatorDisplayRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
 		{
-			notifyKeyPressed(keyEvent->key);
+			notifyKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
+		}
+
+		void OperatorDisplayRenderer::resizeEvent(QResizeEvent * resizeEvent)
+		{
+			// In order to trigger the resizing two requirements must be met:
+			//
+			// 1. the window must be exposed
+			// 2. OpenGL context must be already initialized
+			//
+			// The first requirement is needed, because the resize event
+			// comes even when the window is being closed, and it seems rather strange
+			// to apply any resizing logic when the window is about to be destroyed.
+			// The second requirement is imposed by the fact, that
+			// the observers may wait for this event to perform some OpenGL manipulations.
+			// It is therefore crucial to make sure that these observers can successfully
+			// call OpenGL API, i.e. the context must be created and valid.
+			//
+			if (isExposed() && m_context.isValid())
+			{
+				notifySizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
+			}
 		}
 	}
 }

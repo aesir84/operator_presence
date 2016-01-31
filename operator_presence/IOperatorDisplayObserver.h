@@ -9,5 +9,6 @@ namespace operator_view
 
 	public:
 		virtual void updateKeyPressed(Qt::Key key) = 0;
+		virtual void updateSizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) = 0;
 	};
 }

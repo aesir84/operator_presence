@@ -16,5 +16,6 @@ namespace operator_view
 
 	private:
 		virtual void notifyKeyPressed(Qt::Key key) = 0;
+		virtual void notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) = 0;
 	};
 }

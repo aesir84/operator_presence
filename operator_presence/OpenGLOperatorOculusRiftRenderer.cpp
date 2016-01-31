@@ -10,8 +10,10 @@ namespace operator_view
 			: IOperatorOculusRiftRenderer(operatorRendererToDecorate)
 		{ }
 
-		void OperatorOculusRiftRenderer::initialize()
+		void OperatorOculusRiftRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
+			Q_UNUSED(eyeResolutionWidth);
+			Q_UNUSED(eyeResolutionHeight);
 		}
 
 		void OperatorOculusRiftRenderer::renderLeftEye()

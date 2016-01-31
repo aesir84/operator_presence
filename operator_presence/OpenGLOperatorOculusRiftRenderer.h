@@ -14,7 +14,7 @@ namespace operator_view
 			OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate);
 
 		private:
-			virtual void initialize(std::uint16_t eyeResolutionWidth = 0, std::uint16_t eyeResolutionHeight = 0) override;
+			virtual void initialize() override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;

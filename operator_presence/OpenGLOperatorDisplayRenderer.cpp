@@ -13,13 +13,6 @@ namespace operator_view
 
 		void OperatorDisplayRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
-			// TODO
-			// For now let's not allow zero (default) values here.
-			// Later it can be evaluated if it is possible to
-			// use some custom values if the passed are zero.
-			//
-			Q_ASSERT(eyeResolutionWidth != 0 && eyeResolutionHeight != 0);
-
 			// The window's surface type must be set to QSurface::OpenGLSurface
 			// to indicate that the window is to be used for OpenGL rendering.
 			//
@@ -43,7 +36,7 @@ namespace operator_view
 			{
 				Q_ASSERT(false);
 			}
-
+			
 			setOperatorDisplaySize(eyeResolutionWidth, eyeResolutionHeight);
 			setVisible(true);
 		}

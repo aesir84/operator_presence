@@ -70,22 +70,19 @@
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="IOperatorVisionRenderer.cpp">
-      <Filter>Source Files\operator_view</Filter>
-    </ClCompile>
-    <ClCompile Include="IOperatorOculusRiftRenderer.cpp">
-      <Filter>Source Files\operator_view</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp">
+      <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorViewBuilder.cpp">
+      <Filter>Source Files\operator_view</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLOperatorViewBuilder.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IObservableOperatorVision.h">
-      <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorVisionObserver.h">
       <Filter>Header Files\operator_model</Filter>
@@ -108,9 +105,6 @@
     <ClInclude Include="IOperatorDisplayRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorDisplayObserver.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
@@ -124,6 +118,30 @@
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="scope_guard.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorViewBuilder.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorView.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewObserver.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorModel.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorVision.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLOperatorViewBuilder.h">
+      <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorRendererDecorator.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="threadsafe_queue.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
   </ItemGroup>

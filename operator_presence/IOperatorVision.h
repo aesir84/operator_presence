@@ -7,10 +7,10 @@ namespace operator_model
 
 namespace operator_model
 {
-	class IObservableOperatorVision
+	class IOperatorVision
 	{
 	public:
-		virtual ~IObservableOperatorVision() { }
+		virtual ~IOperatorVision() { }
 
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;

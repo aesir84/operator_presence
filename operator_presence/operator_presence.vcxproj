@@ -79,19 +79,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IOperatorOculusRiftRenderer.cpp" />
-    <ClCompile Include="IOperatorVisionRenderer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp" />
+    <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
+    <ClCompile Include="OperatorViewBuilder.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="threadsafe_queue.h" />
     <CustomBuild Include="OperatorVision.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>
@@ -106,18 +107,23 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <ClInclude Include="IObservableOperatorVision.h" />
-    <ClInclude Include="IOperatorDisplayObserver.h" />
     <ClInclude Include="IOperatorDisplayRenderer.h" />
+    <ClInclude Include="IOperatorModel.h" />
     <ClInclude Include="IOperatorOculusRiftRenderer.h" />
+    <ClInclude Include="IOperatorView.h" />
+    <ClInclude Include="IOperatorViewObserver.h" />
+    <ClInclude Include="IOperatorVision.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h" />
+    <ClInclude Include="OpenGLOperatorViewBuilder.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />
+    <ClInclude Include="IOperatorRendererDecorator.h" />
+    <ClInclude Include="OperatorViewBuilder.h" />
     <ClInclude Include="scoped_enum_as_integer.h" />
     <ClInclude Include="scope_guard.h" />
     <ClInclude Include="stdafx.h" />

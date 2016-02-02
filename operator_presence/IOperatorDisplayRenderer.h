@@ -4,7 +4,7 @@
 
 namespace operator_view
 {
-	class IOperatorDisplayObserver;
+	class IOperatorViewObserver;
 }
 
 namespace operator_view
@@ -12,7 +12,7 @@ namespace operator_view
 	class IOperatorDisplayRenderer : public IOperatorRenderer
 	{
 	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorDisplayObserver> observer) = 0;
+		virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) = 0;
 
 	private:
 		virtual void notifyKeyPressed(Qt::Key key) = 0;

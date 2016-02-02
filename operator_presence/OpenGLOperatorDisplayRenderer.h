@@ -27,14 +27,14 @@ namespace operator_view
 			QOpenGLContext m_context;
 
 		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorDisplayObserver> observer) override;
+			virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
 
 		private:
 			virtual void notifyKeyPressed(Qt::Key key) override;
 			virtual void notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
 
 		private:
-			std::vector<std::weak_ptr<IOperatorDisplayObserver>> m_observers;
+			std::vector<std::weak_ptr<IOperatorViewObserver>> m_observers;
 
 		private:
 			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;

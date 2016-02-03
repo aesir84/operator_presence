@@ -21,7 +21,7 @@ namespace operator_view
 		virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) = 0;
 
 	public:
-		virtual void notifyOrientationChanged(double yaw, double pitch, double roll) = 0;
+		virtual void notifyHeadOrientationChanged(double yaw, double pitch, double roll) = 0;
 		virtual void notifyErrorOccured(std::string const & errorDescription) = 0;
 	};
 }

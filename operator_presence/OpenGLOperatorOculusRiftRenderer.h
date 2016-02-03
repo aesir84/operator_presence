@@ -38,7 +38,7 @@ namespace operator_view
 		private:
 			virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
 
-			virtual void notifyOrientationChanged(double yaw, double pitch, double roll) override;
+			virtual void notifyHeadOrientationChanged(double yaw, double pitch, double roll) override;
 			virtual void notifyErrorOccured(std::string const & errorDescription) override;
 
 		private:

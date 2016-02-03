@@ -108,7 +108,7 @@ namespace operator_view
 			m_observers.push_back(observer);
 		}
 
-		void OperatorOculusRiftRenderer::notifyOrientationChanged(double yaw, double pitch, double roll)
+		void OperatorOculusRiftRenderer::notifyHeadOrientationChanged(double yaw, double pitch, double roll)
 		{
 			for (auto & observer : m_observers)
 			{
@@ -116,7 +116,7 @@ namespace operator_view
 
 				if (existingObserver)
 				{
-					existingObserver->updateOrientationChanged(yaw, pitch, roll);
+					existingObserver->updateHeadOrientationChanged(yaw, pitch, roll);
 				}
 			}
 		}

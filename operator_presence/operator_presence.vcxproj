@@ -85,6 +85,7 @@
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
+    <ClCompile Include="OperatorHeadOrientation.cpp" />
     <ClCompile Include="OperatorViewBuilder.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -92,6 +93,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IOperatorHeadOrientation.h" />
+    <ClInclude Include="IOperatorHeadOrientationObserver.h" />
+    <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="threadsafe_queue.h" />
     <CustomBuild Include="OperatorVision.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

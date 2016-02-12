@@ -13,10 +13,14 @@ namespace operator_model
 		virtual ~IOperatorVision() { }
 
 	public:
+		virtual void setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) = 0;
+		virtual void setRightEyeImage(std::shared_ptr<QImage> rightEyeImage) = 0;
+
+	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;
 
 	private:
-		virtual void notifyLeftEyeImageUpdate(std::shared_ptr<QImage> leftEyeImage) = 0;
-		virtual void notifyRightEyeImageUpdate(std::shared_ptr<QImage> rightEyeImage) = 0;
+		virtual void notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage) = 0;
+		virtual void notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage) = 0;
 	};
 }

@@ -10,7 +10,7 @@ namespace operator_model
 		OperatorHeadOrientation();
 
 	public:
-		virtual void updateHeadOrientation(double yaw, double pitch, double roll) override;
+		virtual void setHeadOrientation(double yaw, double pitch, double roll) override;
 
 	private:
 		double m_yaw;
@@ -24,6 +24,6 @@ namespace operator_model
 		std::vector<std::weak_ptr<IOperatorHeadOrientationObserver>> m_observers;
 
 	private:
-		virtual void notifyHeadOrientationUpdate(double yaw, double pitch, double roll) override;
+		virtual void notifyHeadOrientationChanged(double yaw, double pitch, double roll) override;
 	};
 }

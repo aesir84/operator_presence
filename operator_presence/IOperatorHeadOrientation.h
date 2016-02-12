@@ -13,12 +13,12 @@ namespace operator_model
 		virtual ~IOperatorHeadOrientation() { }
 
 	public:
-		virtual void updateHeadOrientation(double yaw, double pitch, double roll) = 0;
+		virtual void setHeadOrientation(double yaw, double pitch, double roll) = 0;
 
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer) = 0;
 
 	private:
-		virtual void notifyHeadOrientationUpdate(double yaw, double pitch, double roll) = 0;
+		virtual void notifyHeadOrientationChanged(double yaw, double pitch, double roll) = 0;
 	};
 }

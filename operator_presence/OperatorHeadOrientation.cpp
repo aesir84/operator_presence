@@ -12,13 +12,13 @@ namespace operator_model
 		, m_roll(0.0)
 	{ }
 
-	void OperatorHeadOrientation::updateHeadOrientation(double yaw, double pitch, double roll)
+	void OperatorHeadOrientation::setHeadOrientation(double yaw, double pitch, double roll)
 	{
 		m_yaw = yaw;
 		m_pitch = pitch;
 		m_roll = roll;
 
-		notifyHeadOrientationUpdate(m_yaw, m_pitch, m_roll);
+		notifyHeadOrientationChanged(m_yaw, m_pitch, m_roll);
 	}
 
 	void OperatorHeadOrientation::registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer)
@@ -26,7 +26,7 @@ namespace operator_model
 		m_observers.push_back(observer);
 	}
 
-	void OperatorHeadOrientation::notifyHeadOrientationUpdate(double yaw, double pitch, double roll)
+	void OperatorHeadOrientation::notifyHeadOrientationChanged(double yaw, double pitch, double roll)
 	{
 		for (auto & observer : m_observers)
 		{

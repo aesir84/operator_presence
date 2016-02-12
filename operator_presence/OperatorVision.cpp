@@ -9,18 +9,18 @@ namespace operator_model
 	OperatorVision::OperatorVision()
 	{ }
 
-	void OperatorVision::updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
+	void OperatorVision::setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
 	{
 		m_leftEyeImage = leftEyeImage;
 
-		notifyLeftEyeImageUpdate(m_leftEyeImage);
+		notifyLeftEyeImageChanged(m_leftEyeImage);
 	}
 
-	void OperatorVision::updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
+	void OperatorVision::setRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
 	{
 		m_rightEyeImage = rightEyeImage;
 
-		notifyRightEyeImageUpdate(m_rightEyeImage);
+		notifyRightEyeImageChanged(m_rightEyeImage);
 	}
 
 	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)
@@ -28,7 +28,7 @@ namespace operator_model
 		m_observers.push_back(observer);
 	}
 
-	void OperatorVision::notifyLeftEyeImageUpdate(std::shared_ptr<QImage> leftEyeImage)
+	void OperatorVision::notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage)
 	{
 		for (auto & observer : m_observers)
 		{
@@ -41,7 +41,7 @@ namespace operator_model
 		}
 	}
 
-	void OperatorVision::notifyRightEyeImageUpdate(std::shared_ptr<QImage> rightEyeImage)
+	void OperatorVision::notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage)
 	{
 		for (auto & observer : m_observers)
 		{

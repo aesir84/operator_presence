@@ -10,8 +10,8 @@ namespace operator_model
 		OperatorVision();
 
 	public:
-		void updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage);
-		void updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage);
+		virtual void setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) override;
+		virtual void setRightEyeImage(std::shared_ptr<QImage> rightEyeImage) override;
 
 	private:
 		std::shared_ptr<QImage> m_leftEyeImage;
@@ -21,8 +21,8 @@ namespace operator_model
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) override;
 
 	private:
-		virtual void notifyLeftEyeImageUpdate(std::shared_ptr<QImage> leftEyeImage) override;
-		virtual void notifyRightEyeImageUpdate(std::shared_ptr<QImage> rightEyeImage) override;
+		virtual void notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage) override;
+		virtual void notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage) override;
 
 	private:
 		std::vector<std::weak_ptr<IOperatorVisionObserver>> m_observers;

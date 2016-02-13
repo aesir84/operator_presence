@@ -3,7 +3,6 @@
 #include "OperatorViewBuilder.h"
 
 #include "IOperatorModel.h"
-#include "IOperatorVision.h"
 
 #include "IOperatorDisplayRenderer.h"
 #include "IOperatorOculusRiftRenderer.h"
@@ -22,7 +21,7 @@ namespace operator_view
 		operatorDisplayRenderer->registerObserver(observer);
 
 		auto operatorVisionRenderer = m_factory->createOperatorVisionRenderer(operatorDisplayRenderer);
-		model->getVision()->registerObserver(operatorVisionRenderer);
+		model->registerObserver(operatorVisionRenderer);
 
 		auto operatorOculusRiftRenderer = m_factory->createOperatorOculusRiftRenderer(operatorVisionRenderer);
 		operatorOculusRiftRenderer->registerObserver(observer);

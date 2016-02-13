@@ -2,8 +2,8 @@
 
 namespace operator_model
 {
-	class IOperatorHeadOrientation;
-	class IOperatorVision;
+	class IOperatorHeadOrientationObserver;
+	class IOperatorVisionObserver;
 }
 
 namespace operator_model
@@ -14,7 +14,14 @@ namespace operator_model
 		virtual ~IOperatorModel() { }
 
 	public:
-		virtual std::shared_ptr<IOperatorVision> getVision() const = 0;
-		virtual std::shared_ptr<IOperatorHeadOrientation> getHeadOrientation() const = 0;
+		virtual void turnBody(double yaw) = 0;
+		virtual void turnHead(double yaw, double pitch, double roll) = 0;
+
+	public:
+		virtual void switchVision(/* to what */) = 0;
+
+	public:
+		virtual void registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer) = 0;
+		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;
 	};
 }

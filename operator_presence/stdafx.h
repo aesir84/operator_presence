@@ -40,6 +40,13 @@
 
 
 //
+// OpenCV
+//
+
+#include <opencv2\core\mat.hpp>
+
+
+//
 // Helpers
 //
 

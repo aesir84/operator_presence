@@ -10,8 +10,48 @@ namespace operator_model
 		OperatorVision();
 
 	public:
-		virtual void setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) override;
-		virtual void setRightEyeImage(std::shared_ptr<QImage> rightEyeImage) override;
+		/// \brief Image input strategy setters
+		///
+		/// \pre the corresponding strategies are not executing at the same time
+		/// \param a strategy for input streaming the images
+		///
+		virtual void setLeftEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream) override;
+		virtual void setRightEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream) override;
+
+	private:
+		std::shared_ptr<utils::IImageInputStream> m_leftEyeInputStream;
+		std::shared_ptr<utils::IImageInputStream> m_rightEyeInputStream;
+
+	public:
+		/// \brief Left eye input streaming start
+		///
+		/// This method is blocking, thus, the client should run it in a separate thread.
+		///
+		virtual void startLeftEyeStreaming() override;
+
+		/// \brief Left eye input streaming stop
+		///
+		/// \pre left eye input streaming is currently running
+		/// The method tells the running input streaming to stop and returns.
+		///
+		virtual void stopLeftEyeStreaming() override;
+
+		/// \brief Right eye input streaming start
+		///
+		/// This method is blocking, thus, the client should run it in a separate thread.
+		///
+		virtual void startRightEyeStreaming() override;
+
+		/// \brief Right eye input streaming stop
+		///
+		/// \pre right eye input streaming is currently running
+		/// The method tells the running input streaming to stop and returns.
+		///
+		virtual void stopRightEyeStreaming() override;
+
+	private:
+		std::atomic<bool> m_leftEyeInputStreamingStopped;
+		std::atomic<bool> m_rightEyeInputStreamingStopped;
 
 	private:
 		std::shared_ptr<QImage> m_leftEyeImage;

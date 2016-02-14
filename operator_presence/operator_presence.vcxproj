@@ -95,6 +95,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IImageInputStream.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />

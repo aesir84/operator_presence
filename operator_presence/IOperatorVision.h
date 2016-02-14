@@ -7,14 +7,29 @@ namespace operator_model
 
 namespace operator_model
 {
+	namespace utils
+	{
+		class IImageInputStream;
+	}
+}
+
+namespace operator_model
+{
 	class IOperatorVision
 	{
 	public:
 		virtual ~IOperatorVision() { }
 
 	public:
-		virtual void setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) = 0;
-		virtual void setRightEyeImage(std::shared_ptr<QImage> rightEyeImage) = 0;
+		virtual void setLeftEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream) = 0;
+		virtual void setRightEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream) = 0;
+
+	public:
+		virtual void startLeftEyeStreaming() = 0;
+		virtual void stopLeftEyeStreaming() = 0;
+
+		virtual void startRightEyeStreaming() = 0;
+		virtual void stopRightEyeStreaming() = 0;
 
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;

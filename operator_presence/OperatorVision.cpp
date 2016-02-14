@@ -4,23 +4,77 @@
 
 #include "IOperatorVisionObserver.h"
 
+#include "IImageInputStream.h"
+
 namespace operator_model
 {
 	OperatorVision::OperatorVision()
+		: m_leftEyeInputStreamingStopped(true)
+		, m_rightEyeInputStreamingStopped(true)
 	{ }
 
-	void OperatorVision::setLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
+	void OperatorVision::setLeftEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream)
 	{
-		m_leftEyeImage = leftEyeImage;
+		if (!m_leftEyeInputStreamingStopped)
+		{
+			assert(false);
+			return;
+		}
 
-		notifyLeftEyeImageChanged(m_leftEyeImage);
+		m_leftEyeInputStream = stream;
 	}
 
-	void OperatorVision::setRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
+	void OperatorVision::setRightEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream)
 	{
-		m_rightEyeImage = rightEyeImage;
+		if (!m_rightEyeInputStreamingStopped)
+		{
+			assert(false);
+			return;
+		}
 
-		notifyRightEyeImageChanged(m_rightEyeImage);
+		m_rightEyeInputStream = stream;
+	}
+
+	void OperatorVision::startLeftEyeStreaming()
+	{
+		assert(m_leftEyeInputStreamingStopped);
+		assert(m_leftEyeInputStream != nullptr);
+
+		m_leftEyeInputStreamingStopped = false;
+
+		while (!m_leftEyeInputStreamingStopped)
+		{
+			m_leftEyeImage = m_leftEyeInputStream->read();
+
+			notifyLeftEyeImageChanged(m_leftEyeImage);
+		}
+	}
+
+	void OperatorVision::stopLeftEyeStreaming()
+	{
+		assert(!m_leftEyeInputStreamingStopped);
+
+		m_leftEyeInputStreamingStopped = true;
+	}
+
+	void OperatorVision::startRightEyeStreaming()
+	{
+		assert(m_rightEyeInputStreamingStopped);
+		assert(m_rightEyeInputStream != nullptr);
+
+		m_rightEyeInputStreamingStopped = false;
+
+		while (!m_rightEyeInputStreamingStopped)
+		{
+			m_rightEyeImage = m_rightEyeInputStream->read();
+
+			notifyRightEyeImageChanged(m_rightEyeImage);
+		}
+	}
+
+	void OperatorVision::stopRightEyeStreaming()
+	{
+		m_rightEyeInputStreamingStopped = true;
 	}
 
 	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)

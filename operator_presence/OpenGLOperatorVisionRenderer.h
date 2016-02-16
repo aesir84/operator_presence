@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IOperatorVisionRenderer.h"
+#include "OperatorEyeImageRenderType.h"
 
 namespace operator_view
 {
@@ -45,11 +46,11 @@ namespace operator_view
 			QOpenGLShaderProgram m_shader;
 
 		private:
-			virtual void updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage) override;
-			virtual void updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage) override;
+			virtual void updateLeftEyeImage(EyeImage leftEyeImage) override;
+			virtual void updateRightEyeImage(EyeImage rightEyeImage) override;
 
 		private:
-			void updateEyeImage(Eye eye, std::shared_ptr<QImage> image);
+			void updateEyeImage(Eye eye, EyeImage image);
 		};
 	}
 }

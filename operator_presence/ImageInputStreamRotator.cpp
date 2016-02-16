@@ -12,9 +12,9 @@ namespace operator_model
 			m_rotator.rotate(angle);
 		}
 
-		std::shared_ptr<QImage> ImageInputStreamRotator::read()
+		Image ImageInputStreamRotator::read()
 		{
-			return std::make_shared<QImage>(m_filteredImageInputStream->read()->transformed(m_rotator));
+			return m_filteredImageInputStream->read().transformed(m_rotator);
 		}
 	}
 }

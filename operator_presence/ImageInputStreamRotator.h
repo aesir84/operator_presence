@@ -12,7 +12,7 @@ namespace operator_model
 			ImageInputStreamRotator(std::shared_ptr<IImageInputStream> imageInputStreamToFilter, double angle);
 
 		public:
-			virtual std::shared_ptr<QImage> read() override;
+			virtual Image read() override;
 
 		private:
 			QTransform m_rotator;

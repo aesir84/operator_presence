@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OperatorEyeImageType.h"
+
 namespace operator_model
 {
 	class IOperatorVisionObserver;
@@ -35,7 +37,7 @@ namespace operator_model
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;
 
 	private:
-		virtual void notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage) = 0;
-		virtual void notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage) = 0;
+		virtual void notifyLeftEyeImageChanged(EyeImage leftEyeImage) = 0;
+		virtual void notifyRightEyeImageChanged(EyeImage rightEyeImage) = 0;
 	};
 }

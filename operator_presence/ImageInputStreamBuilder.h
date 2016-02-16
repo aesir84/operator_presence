@@ -25,7 +25,7 @@ namespace operator_model
 
 		public:
 			void rotateImage(double angle);
-			void shareImage(std::shared_ptr<helpers::threadsafe_queue<QImage>> sharepoint);
+			void shareImage(std::shared_ptr<helpers::threadsafe_queue<Image>> sharepoint);
 
 		public:
 			std::shared_ptr<IImageInputStream> build();

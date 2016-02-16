@@ -186,6 +186,15 @@
     <ClInclude Include="ImageInputStreamSharer.h">
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
+    <ClInclude Include="ImageType.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorEyeImageType.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorEyeImageRenderType.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

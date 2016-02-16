@@ -54,15 +54,15 @@ namespace operator_model
 		std::atomic<bool> m_rightEyeInputStreamingStopped;
 
 	private:
-		std::shared_ptr<QImage> m_leftEyeImage;
-		std::shared_ptr<QImage> m_rightEyeImage;
+		EyeImage m_leftEyeImage;
+		EyeImage m_rightEyeImage;
 
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) override;
 
 	private:
-		virtual void notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage) override;
-		virtual void notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage) override;
+		virtual void notifyLeftEyeImageChanged(EyeImage leftEyeImage) override;
+		virtual void notifyRightEyeImageChanged(EyeImage rightEyeImage) override;
 
 	private:
 		std::vector<std::weak_ptr<IOperatorVisionObserver>> m_observers;

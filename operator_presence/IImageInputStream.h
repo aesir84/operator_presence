@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ImageType.h"
+
 namespace operator_model
 {
 	namespace utils
@@ -10,7 +12,7 @@ namespace operator_model
 			virtual ~IImageInputStream() { }
 
 		public:
-			virtual std::shared_ptr<QImage> read() = 0;
+			virtual Image read() = 0;
 		};
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "ImageInputStreamRotator.h"
 #include "ImageInputStreamSharer.h"
+#include "ImageType.h"
 
 namespace operator_model
 {
@@ -18,7 +19,7 @@ namespace operator_model
 			m_stream = std::make_shared<ImageInputStreamRotator>(m_stream, angle);
 		}
 
-		void ImageInputStreamBuilder::shareImage(std::shared_ptr<helpers::threadsafe_queue<QImage>> sharepoint)
+		void ImageInputStreamBuilder::shareImage(std::shared_ptr<helpers::threadsafe_queue<Image>> sharepoint)
 		{
 			m_stream = std::make_shared<ImageInputStreamSharer>(m_stream, sharepoint);
 		}

@@ -106,23 +106,23 @@ namespace operator_view
 			m_shader.link();
 		}
 
-		void OperatorVisionRenderer::updateLeftEyeImage(std::shared_ptr<QImage> leftEyeImage)
+		void OperatorVisionRenderer::updateLeftEyeImage(EyeImage leftEyeImage)
 		{
 			updateEyeImage(Eye::Left, leftEyeImage);
 		}
 
-		void OperatorVisionRenderer::updateRightEyeImage(std::shared_ptr<QImage> rightEyeImage)
+		void OperatorVisionRenderer::updateRightEyeImage(EyeImage rightEyeImage)
 		{
 			updateEyeImage(Eye::Right, rightEyeImage);
 		}
 
-		void OperatorVisionRenderer::updateEyeImage(Eye eye, std::shared_ptr<QImage> image)
+		void OperatorVisionRenderer::updateEyeImage(Eye eye, EyeImage image)
 		{
 			// Convert the image to a format which is used by OpenGL textures in Qt.
 			// RGBA8888 is a 32-bit byte-ordered RGBA format (8-8-8-8).
 			// This byte-by-byte interpretation suits OpenGL textures.
 			//
-			auto const textureImage = image->convertToFormat(QImage::Format_RGBA8888);
+			auto const textureImage = image.convertToFormat(QImage::Format_RGBA8888);
 
 
 			//

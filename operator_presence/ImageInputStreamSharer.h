@@ -15,13 +15,13 @@ namespace operator_model
 		class ImageInputStreamSharer : public IImageInputStreamFilter
 		{
 		public:
-			ImageInputStreamSharer(std::shared_ptr<IImageInputStream> imageInputStreamToFilter, std::shared_ptr<helpers::threadsafe_queue<QImage>> sharepoint);
+			ImageInputStreamSharer(std::shared_ptr<IImageInputStream> imageInputStreamToFilter, std::shared_ptr<helpers::threadsafe_queue<Image>> sharepoint);
 
 		public:
-			virtual std::shared_ptr<QImage> read() override;
+			virtual Image read() override;
 
 		private:
-			std::shared_ptr<helpers::threadsafe_queue<QImage>> m_sharepoint;
+			std::shared_ptr<helpers::threadsafe_queue<Image>> m_sharepoint;
 		};
 	}
 }

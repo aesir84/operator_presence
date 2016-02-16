@@ -103,8 +103,11 @@
     <ClInclude Include="ImageInputStreamBuilder.h" />
     <ClInclude Include="ImageInputStreamRotator.h" />
     <ClInclude Include="ImageInputStreamSharer.h" />
+    <ClInclude Include="ImageType.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
+    <ClInclude Include="OperatorEyeImageRenderType.h" />
+    <ClInclude Include="OperatorEyeImageType.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="threadsafe_queue.h" />
     <CustomBuild Include="OperatorVision.h">

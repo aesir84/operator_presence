@@ -82,7 +82,7 @@ namespace operator_model
 		m_observers.push_back(observer);
 	}
 
-	void OperatorVision::notifyLeftEyeImageChanged(std::shared_ptr<QImage> leftEyeImage)
+	void OperatorVision::notifyLeftEyeImageChanged(EyeImage leftEyeImage)
 	{
 		for (auto & observer : m_observers)
 		{
@@ -95,7 +95,7 @@ namespace operator_model
 		}
 	}
 
-	void OperatorVision::notifyRightEyeImageChanged(std::shared_ptr<QImage> rightEyeImage)
+	void OperatorVision::notifyRightEyeImageChanged(EyeImage rightEyeImage)
 	{
 		for (auto & observer : m_observers)
 		{

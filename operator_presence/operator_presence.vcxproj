@@ -81,6 +81,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ImageInputStreamBuilder.cpp" />
+    <ClCompile Include="ImageInputStreamRotator.cpp" />
+    <ClCompile Include="ImageInputStreamSharer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
@@ -96,6 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageInputStream.h" />
+    <ClInclude Include="IImageInputStreamFilter.h" />
+    <ClInclude Include="ImageInputStreamBuilder.h" />
+    <ClInclude Include="ImageInputStreamRotator.h" />
+    <ClInclude Include="ImageInputStreamSharer.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />

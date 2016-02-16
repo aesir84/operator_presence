@@ -53,6 +53,9 @@
     <Filter Include="Header Files\operator_model\utils">
       <UniqueIdentifier>{c394a74e-ed22-4a72-a256-44f5732efc65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\operator_model\utils">
+      <UniqueIdentifier>{5ada2007-aa9b-4acf-b16f-268eaaab7ce8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,15 @@
     </ClCompile>
     <ClCompile Include="OperatorHeadOrientation.cpp">
       <Filter>Source Files\operator_model</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageInputStreamRotator.cpp">
+      <Filter>Source Files\operator_model\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageInputStreamBuilder.cpp">
+      <Filter>Source Files\operator_model\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageInputStreamSharer.cpp">
+      <Filter>Source Files\operator_model\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +172,18 @@
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="IImageInputStream.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageInputStreamBuilder.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageInputStreamRotator.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IImageInputStreamFilter.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageInputStreamSharer.h">
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
   </ItemGroup>

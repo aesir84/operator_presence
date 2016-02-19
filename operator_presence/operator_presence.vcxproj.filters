@@ -153,9 +153,6 @@
     <ClInclude Include="IOperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorVision.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLOperatorViewBuilder.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
@@ -205,6 +202,9 @@
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
     <ClInclude Include="IObservableOperatorVision.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="IStreamableOperatorVision.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IObservableOperatorVision.h"
-#include "IOperatorVision.h"
+#include "IStreamableOperatorVision.h"
 
 namespace operator_model
 {

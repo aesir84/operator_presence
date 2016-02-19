@@ -101,10 +101,12 @@
   <ItemGroup>
     <ClInclude Include="IImageInputStream.h" />
     <ClInclude Include="IImageInputStreamFilter.h" />
+    <ClInclude Include="IImageOutputStream.h" />
     <ClInclude Include="ImageInputStreamBuilder.h" />
     <ClInclude Include="ImageInputStreamRotator.h" />
     <ClInclude Include="ImageInputStreamSharer.h" />
     <ClInclude Include="ImageType.h" />
+    <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OperatorEyeImageRenderType.h" />

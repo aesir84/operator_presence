@@ -201,6 +201,12 @@
     <ClInclude Include="WebcamImageInputStreamBuilder.h">
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
+    <ClInclude Include="IImageOutputStream.h">
+      <Filter>Header Files\operator_model\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IObservableOperatorVision.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

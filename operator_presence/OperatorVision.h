@@ -1,10 +1,11 @@
 #pragma once
 
+#include "IObservableOperatorVision.h"
 #include "IOperatorVision.h"
 
 namespace operator_model
 {
-	class OperatorVision : public IOperatorVision
+	class OperatorVision : public IObservableOperatorVision, public IStreamableOperatorVision
 	{
 	public:
 		OperatorVision();

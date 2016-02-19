@@ -4,7 +4,6 @@
 
 #include "ImageInputStreamRotator.h"
 #include "ImageInputStreamSharer.h"
-#include "ImageType.h"
 
 namespace operator_model
 {

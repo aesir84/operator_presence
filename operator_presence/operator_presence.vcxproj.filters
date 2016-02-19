@@ -97,6 +97,9 @@
     <ClCompile Include="ImageInputStreamSharer.cpp">
       <Filter>Source Files\operator_model\utils</Filter>
     </ClCompile>
+    <ClCompile Include="WebcamImageInputStreamBuilder.cpp">
+      <Filter>Source Files\operator_model\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="OperatorEyeImageRenderType.h">
       <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="WebcamImageInputStreamBuilder.h">
+      <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

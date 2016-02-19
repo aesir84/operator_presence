@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ImageType.h"
+
 namespace helpers
 {
 	template<typename T>

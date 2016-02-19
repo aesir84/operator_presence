@@ -96,6 +96,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WebcamImageInputStreamBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IImageInputStream.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="OperatorEyeImageType.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="threadsafe_queue.h" />
+    <ClInclude Include="WebcamImageInputStreamBuilder.h" />
     <CustomBuild Include="OperatorVision.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>

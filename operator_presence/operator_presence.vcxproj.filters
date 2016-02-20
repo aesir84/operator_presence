@@ -204,7 +204,7 @@
     <ClInclude Include="IObservableOperatorVision.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="IStreamableOperatorVision.h">
+    <ClInclude Include="IOperatorVisionReader.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
   </ItemGroup>

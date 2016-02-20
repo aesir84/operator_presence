@@ -3,78 +3,35 @@
 #include "OperatorVision.h"
 
 #include "IOperatorVisionObserver.h"
-
 #include "IImageInputStream.h"
 
 namespace operator_model
 {
 	OperatorVision::OperatorVision()
-		: m_leftEyeInputStreamingStopped(true)
-		, m_rightEyeInputStreamingStopped(true)
 	{ }
 
-	void OperatorVision::setLeftEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream)
+	void OperatorVision::setInputStreams(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream)
 	{
-		if (!m_leftEyeInputStreamingStopped)
+		m_leftEyeInputStream = leftEyeStream;
+		m_rightEyeInputStream = rightEyeStream;
+	}
+
+	void OperatorVision::setOutputStreams(std::shared_ptr<utils::IImageOutputStream> leftEyeStream, std::shared_ptr<utils::IImageOutputStream> rightEyeStream)
+	{
+		m_leftEyeOutputStream = leftEyeStream;
+		m_rightEyeOutputStream = rightEyeStream;
+	}
+
+	void OperatorVision::startInputStreaming()
+	{
+		if (m_leftEyeInputStreamThread.joinable())
 		{
 			assert(false);
 			return;
 		}
 
-		m_leftEyeInputStream = stream;
-	}
-
-	void OperatorVision::setRightEyeInputStream(std::shared_ptr<utils::IImageInputStream> stream)
-	{
-		if (!m_rightEyeInputStreamingStopped)
-		{
-			assert(false);
-			return;
-		}
-
-		m_rightEyeInputStream = stream;
-	}
-
-	void OperatorVision::startLeftEyeStreaming()
-	{
-		assert(m_leftEyeInputStreamingStopped);
-		assert(m_leftEyeInputStream != nullptr);
-
-		m_leftEyeInputStreamingStopped = false;
-
-		while (!m_leftEyeInputStreamingStopped)
-		{
-			m_leftEyeImage = m_leftEyeInputStream->read();
-
-			notifyLeftEyeImageChanged(m_leftEyeImage);
-		}
-	}
-
-	void OperatorVision::stopLeftEyeStreaming()
-	{
-		assert(!m_leftEyeInputStreamingStopped);
-
-		m_leftEyeInputStreamingStopped = true;
-	}
-
-	void OperatorVision::startRightEyeStreaming()
-	{
-		assert(m_rightEyeInputStreamingStopped);
-		assert(m_rightEyeInputStream != nullptr);
-
-		m_rightEyeInputStreamingStopped = false;
-
-		while (!m_rightEyeInputStreamingStopped)
-		{
-			m_rightEyeImage = m_rightEyeInputStream->read();
-
-			notifyRightEyeImageChanged(m_rightEyeImage);
-		}
-	}
-
-	void OperatorVision::stopRightEyeStreaming()
-	{
-		m_rightEyeInputStreamingStopped = true;
+		m_leftEyeInputStreamThread = std::thread(&OperatorVision::runLeftEyeInputStream, this);
+		m_leftEyeInputStreamRequests.push(LeftEyeInputStreamRequest::Start);
 	}
 
 	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)

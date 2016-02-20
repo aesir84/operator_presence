@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ImageType.h"
+
 namespace operator_model
 {
 	namespace utils

@@ -109,6 +109,7 @@
     <ClInclude Include="IObservableOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
+    <ClInclude Include="IOperatorVisionReader.h" />
     <ClInclude Include="OperatorEyeImageRenderType.h" />
     <ClInclude Include="OperatorEyeImageType.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
@@ -133,7 +134,6 @@
     <ClInclude Include="IOperatorOculusRiftRenderer.h" />
     <ClInclude Include="IOperatorView.h" />
     <ClInclude Include="IOperatorViewObserver.h" />
-    <ClInclude Include="IStreamableOperatorVision.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />

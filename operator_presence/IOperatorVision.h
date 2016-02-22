@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OperatorEyeImageType.h"
+
 namespace operator_model
 {
 	namespace utils

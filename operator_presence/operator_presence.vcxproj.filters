@@ -56,6 +56,12 @@
     <Filter Include="Source Files\operator_model\utils">
       <UniqueIdentifier>{5ada2007-aa9b-4acf-b16f-268eaaab7ce8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\operator_model\detail">
+      <UniqueIdentifier>{00733e4b-b503-4207-86a4-8e7af12fea8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\operator_model\detail">
+      <UniqueIdentifier>{b6802b82-4412-42a7-8d5f-6cbe8d8e7b23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="WebcamImageInputStreamBuilder.cpp">
       <Filter>Source Files\operator_model\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorEyeImageReader.cpp">
+      <Filter>Source Files\operator_model\detail</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +212,9 @@
     </ClInclude>
     <ClInclude Include="IOperatorVision.h">
       <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorEyeImageReader.h">
+      <Filter>Header Files\operator_model\detail</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@ namespace operator_model
 	namespace detail
 	{
 		class OperatorEyeImageReader;
+		class OperatorEyeImageWriter;
 	}
 }
 
@@ -24,6 +25,10 @@ namespace operator_model
 	private:
 		std::unique_ptr<detail::OperatorEyeImageReader> m_leftEyeImageReader;
 		std::unique_ptr<detail::OperatorEyeImageReader> m_rightEyeImageReader;
+
+	private:
+		std::unique_ptr<detail::OperatorEyeImageWriter> m_leftEyeImageWriter;
+		std::unique_ptr<detail::OperatorEyeImageWriter> m_rightEyeImageWriter;
 
 	private:
 		void updateLeftEyeImage(EyeImage eyeImage);

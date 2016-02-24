@@ -109,6 +109,9 @@
     <ClCompile Include="OperatorEyeImageReader.cpp">
       <Filter>Source Files\operator_model\detail</Filter>
     </ClCompile>
+    <ClCompile Include="OperatorEyeImageWriter.cpp">
+      <Filter>Source Files\operator_model\detail</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -214,6 +217,9 @@
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="OperatorEyeImageReader.h">
+      <Filter>Header Files\operator_model\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorEyeImageWriter.h">
       <Filter>Header Files\operator_model\detail</Filter>
     </ClInclude>
   </ItemGroup>

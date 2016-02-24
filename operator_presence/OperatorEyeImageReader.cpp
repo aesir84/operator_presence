@@ -52,7 +52,7 @@ namespace operator_model
 
 		void OperatorEyeImageReader::startReading()
 		{
-			std::shared_ptr<utils::IImageInputStream> readingStrategy;
+			ReadingStrategy readingStrategy;
 
 			while (!isReadingStopped())
 			{
@@ -63,7 +63,7 @@ namespace operator_model
 
 		void OperatorEyeImageReader::stopReading()
 		{
-			if (!m_readingStopped)
+			if (m_readingThread.joinable())
 			{
 				m_readingStopped = true;
 				m_readingThread.join();

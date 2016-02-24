@@ -9,6 +9,9 @@ namespace operator_model
 	namespace detail
 	{
 		OperatorEyeImageWriter::OperatorEyeImageWriter()
+			: m_writingStopped(false)
+			, m_writingStrategyAvailable(false)
+			, m_eyeImageAvailable(false)
 		{ }
 
 		OperatorEyeImageWriter::~OperatorEyeImageWriter()

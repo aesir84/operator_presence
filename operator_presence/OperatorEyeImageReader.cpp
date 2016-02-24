@@ -11,6 +11,8 @@ namespace operator_model
 		OperatorEyeImageReader::OperatorEyeImageReader(OperatorVision & operatorVision, OperatorVisionCallbackPtr callback)
 			: m_operatorVision(operatorVision)
 			, m_callback(callback)
+			, m_readingStopped(false)
+			, m_readingStrategyAvailable(false)
 		{ }
 
 		OperatorEyeImageReader::~OperatorEyeImageReader()

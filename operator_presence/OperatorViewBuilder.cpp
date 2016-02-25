@@ -11,20 +11,29 @@
 
 namespace operator_view
 {
-	OperatorViewBuilder::OperatorViewBuilder(std::unique_ptr<IOperatorRendererFactory> factory)
-		: m_factory(std::move(factory))
-	{ }
-
-	std::shared_ptr<IOperatorView> OperatorViewBuilder::build(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IOperatorViewObserver> observer)
+	OperatorViewBuilder::OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IOperatorViewObserver> observer, std::unique_ptr<IOperatorRendererFactory> factory)
+		: m_model(model)
+		, m_observer(observer)
+		, m_factory(std::move(factory))
 	{
 		auto operatorDisplayRenderer = m_factory->createOperatorDisplayRenderer();
-		operatorDisplayRenderer->registerObserver(observer);
+		operatorDisplayRenderer->registerObserver(m_observer);
 
 		auto operatorVisionRenderer = m_factory->createOperatorVisionRenderer(operatorDisplayRenderer);
-		model->registerObserver(operatorVisionRenderer);
+		m_model->registerObserver(operatorVisionRenderer);
 
-		auto operatorOculusRiftRenderer = m_factory->createOperatorOculusRiftRenderer(operatorVisionRenderer);
-		operatorOculusRiftRenderer->registerObserver(observer);
+		m_renderer = operatorVisionRenderer;
+	}
+
+	void OperatorViewBuilder::displayHUD()
+	{
+		/* not implemented */
+	}
+
+	std::shared_ptr<IOperatorView> OperatorViewBuilder::build()
+	{
+		auto operatorOculusRiftRenderer = m_factory->createOperatorOculusRiftRenderer(m_renderer);
+		operatorOculusRiftRenderer->registerObserver(m_observer);
 
 		return operatorOculusRiftRenderer;
 	}

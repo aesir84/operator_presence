@@ -9,7 +9,7 @@ namespace operator_view
 		class OperatorViewBuilder : public operator_view::OperatorViewBuilder
 		{
 		public:
-			OperatorViewBuilder();
+			OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IOperatorViewObserver> observer);
 		};
 	}
 }

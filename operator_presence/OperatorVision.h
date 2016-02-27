@@ -4,31 +4,19 @@
 
 namespace operator_model
 {
-	namespace detail
-	{
-		class OperatorEyeImageReader;
-		class OperatorEyeImageWriter;
-	}
-}
-
-namespace operator_model
-{
 	class OperatorVision : public IOperatorVision
 	{
 	public:
 		OperatorVision();
 
 	public:
-		virtual void setInputStrategy(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream) override;
-		virtual void setOutputStrategy(std::shared_ptr<utils::IImageOutputStream> leftEyeStream, std::shared_ptr<utils::IImageOutputStream> rightEyeStream) override;
+		virtual void setUpdateStrategy(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream) override;
 
 	private:
-		std::unique_ptr<detail::OperatorEyeImageReader> m_leftEyeImageReader;
-		std::unique_ptr<detail::OperatorEyeImageReader> m_rightEyeImageReader;
+		class EyeImageUpdater;
 
-	private:
-		std::unique_ptr<detail::OperatorEyeImageWriter> m_leftEyeImageWriter;
-		std::unique_ptr<detail::OperatorEyeImageWriter> m_rightEyeImageWriter;
+		std::unique_ptr<EyeImageUpdater> m_leftEyeImageUpdater;
+		std::unique_ptr<EyeImageUpdater> m_rightEyeImageUpdater;
 
 	private:
 		void updateLeftEyeImage(EyeImage eyeImage);

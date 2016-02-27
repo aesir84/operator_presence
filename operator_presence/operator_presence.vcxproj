@@ -90,8 +90,6 @@
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
-    <ClCompile Include="OperatorEyeImageReader.cpp" />
-    <ClCompile Include="OperatorEyeImageWriter.cpp" />
     <ClCompile Include="OperatorHeadOrientation.cpp" />
     <ClCompile Include="OperatorViewBuilder.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
@@ -111,10 +109,8 @@
     <ClInclude Include="IOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
-    <ClInclude Include="OperatorEyeImageReader.h" />
     <ClInclude Include="OperatorEyeImageRenderType.h" />
     <ClInclude Include="OperatorEyeImageType.h" />
-    <ClInclude Include="OperatorEyeImageWriter.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="threadsafe_queue.h" />
     <ClInclude Include="WebcamImageInputStreamBuilder.h" />

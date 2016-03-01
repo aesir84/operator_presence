@@ -103,9 +103,6 @@
     <ClCompile Include="OperatorModel.cpp">
       <Filter>Source Files\operator_model</Filter>
     </ClCompile>
-    <ClCompile Include="MasterState.cpp">
-      <Filter>Source Files\operator_model</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -211,12 +208,6 @@
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="OperatorModel.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorState.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="MasterState.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
   </ItemGroup>

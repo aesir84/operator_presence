@@ -4,8 +4,6 @@
 
 #include "IImageInputStream.h"
 #include "IOperatorVisionObserver.h"
-#include "OperatorEyeImageReader.h"
-#include "OperatorEyeImageWriter.h"
 #include "threadsafe_queue.h"
 
 namespace operator_model

@@ -18,7 +18,7 @@ namespace operator_model
 		virtual void turnHead(double yaw, double pitch, double roll) = 0;
 
 	public:
-		virtual void switchVision(/* to what */) = 0;
+		virtual void switchVision(std::uint32_t visionId) = 0;
 
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer) = 0;

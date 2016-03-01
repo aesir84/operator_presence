@@ -34,7 +34,7 @@ namespace operator_model
 
 			if (existingObserver)
 			{
-				existingObserver->updateHeadOrientation(yaw, roll, pitch);
+				existingObserver->updateHeadOrientationChanged(yaw, roll, pitch);
 			}
 		}
 	}

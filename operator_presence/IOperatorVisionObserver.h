@@ -10,7 +10,7 @@ namespace operator_model
 		virtual ~IOperatorVisionObserver() { }
 
 	public:
-		virtual void updateLeftEyeImage(EyeImage leftEyeImage) = 0;
-		virtual void updateRightEyeImage(EyeImage rightEyeImage) = 0;
+		virtual void updateLeftEyeImageChanged(EyeImage leftEyeImage) = 0;
+		virtual void updateRightEyeImageChanged(EyeImage rightEyeImage) = 0;
 	};
 }

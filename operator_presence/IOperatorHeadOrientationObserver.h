@@ -8,6 +8,6 @@ namespace operator_model
 		virtual ~IOperatorHeadOrientationObserver() { }
 
 	public:
-		virtual void updateHeadOrientation(double yaw, double pitch, double roll) = 0;
+		virtual void updateHeadOrientationChanged(double yaw, double pitch, double roll) = 0;
 	};
 }

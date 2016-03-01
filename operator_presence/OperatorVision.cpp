@@ -145,7 +145,7 @@ namespace operator_model
 
 			if (existingObserver)
 			{
-				existingObserver->updateLeftEyeImage(leftEyeImage);
+				existingObserver->updateLeftEyeImageChanged(leftEyeImage);
 			}
 		}
 	}
@@ -158,7 +158,7 @@ namespace operator_model
 
 			if (existingObserver)
 			{
-				existingObserver->updateRightEyeImage(rightEyeImage);
+				existingObserver->updateRightEyeImageChanged(rightEyeImage);
 			}
 		}
 	}

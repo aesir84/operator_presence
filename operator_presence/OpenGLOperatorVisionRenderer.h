@@ -46,8 +46,8 @@ namespace operator_view
 			QOpenGLShaderProgram m_shader;
 
 		private:
-			virtual void updateLeftEyeImage(EyeImage leftEyeImage) override;
-			virtual void updateRightEyeImage(EyeImage rightEyeImage) override;
+			virtual void updateLeftEyeImageChanged(EyeImage leftEyeImage) override;
+			virtual void updateRightEyeImageChanged(EyeImage rightEyeImage) override;
 
 		private:
 			void updateEyeImage(Eye eye, EyeImage image);

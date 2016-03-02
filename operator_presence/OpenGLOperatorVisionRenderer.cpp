@@ -106,12 +106,12 @@ namespace operator_view
 			m_shader.link();
 		}
 
-		void OperatorVisionRenderer::updateLeftEyeImage(EyeImage leftEyeImage)
+		void OperatorVisionRenderer::updateLeftEyeImageChanged(EyeImage leftEyeImage)
 		{
 			updateEyeImage(Eye::Left, leftEyeImage);
 		}
 
-		void OperatorVisionRenderer::updateRightEyeImage(EyeImage rightEyeImage)
+		void OperatorVisionRenderer::updateRightEyeImageChanged(EyeImage rightEyeImage)
 		{
 			updateEyeImage(Eye::Right, rightEyeImage);
 		}

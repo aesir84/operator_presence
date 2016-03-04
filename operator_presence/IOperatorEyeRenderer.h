@@ -7,10 +7,10 @@ namespace operator_view
 	/// The operator has two eyes, so this interface allows to render the images for both eyes.
 	/// The interface also allows for delayed initialization.
 	///
-	class IOperatorRenderer
+	class IOperatorEyeRenderer
 	{
 	public:
-		virtual ~IOperatorRenderer() { }
+		virtual ~IOperatorEyeRenderer() { }
 
 	public:
 		virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) = 0;

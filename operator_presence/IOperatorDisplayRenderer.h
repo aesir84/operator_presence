@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOperatorRenderer.h"
+#include "IOperatorEyeRenderer.h"
 
 namespace operator_view
 {
@@ -9,7 +9,7 @@ namespace operator_view
 
 namespace operator_view
 {
-	/// \brief An interface for the operator's display
+	/// \brief An interface for the operator's display rendering
 	///
 	/// The interface inherits IOperatorRenderer interface so that the classes implementing
 	/// this interface must realize the rendering contract.
@@ -18,7 +18,7 @@ namespace operator_view
 	///
 	/// The interface provides the means to communicate with a mediator by defining the Observer pattern.
 	///
-	class IOperatorDisplayRenderer : public IOperatorRenderer
+	class IOperatorDisplayRenderer : public IOperatorEyeRenderer
 	{
 	public:
 		virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) = 0;

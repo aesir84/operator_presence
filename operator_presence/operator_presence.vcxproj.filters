@@ -156,9 +156,6 @@
     <ClInclude Include="OpenGLOperatorViewBuilder.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorRendererDecorator.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="threadsafe_queue.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
@@ -208,6 +205,9 @@
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorEyeRenderer.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorEyeRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

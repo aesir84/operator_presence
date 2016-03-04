@@ -19,10 +19,5 @@ namespace operator_view
 		{
 			return std::shared_ptr<IOperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate));
 		}
-
-		std::shared_ptr<IOperatorOculusRiftRenderer> OperatorRendererFactory::createOperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
-		{
-			return std::shared_ptr<IOperatorOculusRiftRenderer>(new OperatorOculusRiftRenderer(operatorRendererToDecorate));
-		}
 	}
 }

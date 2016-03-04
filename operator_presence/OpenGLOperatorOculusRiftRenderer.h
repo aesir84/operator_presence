@@ -13,7 +13,7 @@ namespace operator_view
 	{
 		class OperatorOculusRiftRenderer : public IOperatorOculusRiftRenderer
 		{
-			friend class OperatorRendererFactory;
+			friend class OperatorViewRendererFactory;
 
 		private:
 			OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer);

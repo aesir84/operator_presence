@@ -2,15 +2,17 @@
 
 #include "OpenGLOperatorOculusRiftRenderer.h"
 
-#include "IOperatorViewObserver.h"
+#include "IOperatorRenderer.h"
+#include "IOperatorRendererObserver.h"
+
 #include "scope_guard.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftRenderer::OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
-			: IOperatorOculusRiftRenderer(operatorRendererToDecorate)
+		OperatorOculusRiftRenderer::OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer)
+			: m_operatorRenderer(operatorRenderer)
 		{ }
 
 		OperatorOculusRiftRenderer::~OperatorOculusRiftRenderer()
@@ -18,92 +20,24 @@ namespace operator_view
 			ovr_Shutdown();
 		}
 
-		void OperatorOculusRiftRenderer::open()
+		void OperatorOculusRiftRenderer::initialize()
 		{
-			m_events.push(Event::Open);
+			startOculusVR();
+
+			std::uint16_t const eyeResolutionWidth = m_ovrHMDDescriptor.Resolution.w / 2; // divide by two because OVR gives the resolution width for both eyes
+			std::uint16_t const eyeResolutionHeight = m_ovrHMDDescriptor.Resolution.h;
+
+			m_operatorRenderer->initialize(eyeResolutionWidth, eyeResolutionHeight);
+
+			// TODO: configure Oculus Rift rendering...
 		}
 
-		void OperatorOculusRiftRenderer::close()
+		void OperatorOculusRiftRenderer::render()
 		{
-			m_events.push(Event::Close);
+			// TODO: render
 		}
 
-		void OperatorOculusRiftRenderer::exec()
-		{
-			bool stopExecuting = false;
-
-			while (!stopExecuting)
-			{
-				auto event = *m_events.wait_and_pop();
-
-				switch (event)
-				{
-					case Event::Open:
-					{
-						try
-						{
-							startOculusVR();
-
-							std::uint16_t const eyeResolutionWidth = m_ovrHMDDescriptor.Resolution.w / 2; // divide by two because OVR gives the resolution width for both eyes
-							std::uint16_t const eyeResolutionHeight = m_ovrHMDDescriptor.Resolution.h;
-
-							initialize(eyeResolutionWidth, eyeResolutionHeight);
-
-							// TODO: configure Oculus Rift rendering...
-
-							m_events.push(Event::Render);
-						}
-						catch (std::exception const & exc)
-						{
-							notifyErrorOccured(exc.what());
-						}
-					}
-					break;
-
-					case Event::Render:
-					{
-						// TODO: dp the rendering...
-
-						m_events.push(Event::Render);
-					}
-					break;
-
-					case Event::Close:
-					{
-						stopExecuting = true;
-					}
-					break;
-
-					default:
-					{
-						Q_ASSERT(false);
-					}
-				}
-			}
-		}
-
-		void OperatorOculusRiftRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
-		{
-			// Delegate initialization to the decorated objects.
-			//
-			m_decoratedOperatorRenderer->initialize(eyeResolutionWidth, eyeResolutionHeight);
-		}
-
-		void OperatorOculusRiftRenderer::renderLeftEye()
-		{
-			// Delegate the rendering of the left eye to the decorated object.
-			//
-			m_decoratedOperatorRenderer->renderLeftEye();
-		}
-
-		void OperatorOculusRiftRenderer::renderRightEye()
-		{
-			// Delegate the rendering of the right eye to the decorated object.
-			//
-			m_decoratedOperatorRenderer->renderRightEye();
-		}
-
-		void OperatorOculusRiftRenderer::registerObserver(std::shared_ptr<IOperatorViewObserver> observer)
+		void OperatorOculusRiftRenderer::registerObserver(std::shared_ptr<IOperatorRendererObserver> observer)
 		{
 			m_observers.push_back(observer);
 		}
@@ -117,19 +51,6 @@ namespace operator_view
 				if (existingObserver)
 				{
 					existingObserver->updateHeadOrientationChanged(yaw, pitch, roll);
-				}
-			}
-		}
-
-		void OperatorOculusRiftRenderer::notifyErrorOccured(std::string const & errorDescription)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateErrorOccured(errorDescription);
 				}
 			}
 		}

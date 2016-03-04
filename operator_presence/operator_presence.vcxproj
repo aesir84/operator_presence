@@ -144,7 +144,7 @@
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />
-    <ClInclude Include="IOperatorEyeRendererDecorator.h" />
+    <ClInclude Include="IOperatorViewRendererDecorator.h" />
     <ClInclude Include="OperatorViewBuilder.h" />
     <ClInclude Include="scoped_enum_as_integer.h" />
     <ClInclude Include="scope_guard.h" />

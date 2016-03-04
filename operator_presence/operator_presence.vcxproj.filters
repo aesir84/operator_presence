@@ -201,13 +201,13 @@
     <ClInclude Include="OperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorEyeRendererDecorator.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorViewRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorViewRendererObserver.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

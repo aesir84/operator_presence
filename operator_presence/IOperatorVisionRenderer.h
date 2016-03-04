@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IOperatorViewRendererDecorator.h"
+#include "IOperatorRendererDecorator.h"
 #include "IOperatorVisionObserver.h"
 
 namespace operator_view
 {
-	class IOperatorViewRendererObserver;
+	class IOperatorRendererObserver;
 }
 
 namespace operator_view
@@ -18,14 +18,14 @@ namespace operator_view
 	/// The interface also inherits the interface of the model observer in order to receive the images for the vision.
 	/// Additionally, the interface provides the means to communicate with a mediator through the Observer pattern.
 	///
-	class IOperatorVisionRenderer : public IOperatorViewRendererDecorator, public operator_model::IOperatorVisionObserver
+	class IOperatorVisionRenderer : public IOperatorRendererDecorator, public operator_model::IOperatorVisionObserver
 	{
 	public:
-		IOperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> operatorViewRendererToDecorate)
-			: IOperatorViewRendererDecorator(operatorViewRendererToDecorate)
+		IOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+			: IOperatorRendererDecorator(operatorRendererToDecorate)
 		{ }
 
 	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer) = 0;
+		virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) = 0;
 	};
 }

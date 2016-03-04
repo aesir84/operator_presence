@@ -14,14 +14,14 @@ namespace operator_view
 			OperatorDisplayRenderer();
 
 		private:
-			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
+			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;
 
 		private:
 			void render();
-			void setOperatorDisplaySize(std::uint16_t width, std::uint16_t height);
+			void setOperatorDisplaySize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight);
 
 		private:
 			QOpenGLContext m_context;

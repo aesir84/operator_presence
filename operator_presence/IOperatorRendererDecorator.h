@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOperatorViewRenderer.h"
+#include "IOperatorRenderer.h"
 
 namespace operator_view
 {
@@ -10,14 +10,14 @@ namespace operator_view
 	/// The decorators must not depend on a concrete windowing subsystem,
 	/// all they have to care about is drawing their 3-D scenes using one low level 3-D API or another.
 	///
-	class IOperatorViewRendererDecorator : public IOperatorViewRenderer
+	class IOperatorRendererDecorator : public IOperatorRenderer
 	{
 	public:
-		IOperatorViewRendererDecorator(std::shared_ptr<IOperatorViewRenderer> operatorViewRendererToDecorate)
-			: m_decoratedOperatorViewRenderer(operatorViewRendererToDecorate)
+		IOperatorRendererDecorator(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+			: m_decoratedOperatorRenderer(operatorRendererToDecorate)
 		{ }
 
 	protected:
-		std::shared_ptr<IOperatorViewRenderer> m_decoratedOperatorViewRenderer;
+		std::shared_ptr<IOperatorRenderer> m_decoratedOperatorRenderer;
 	};
 }

@@ -12,10 +12,10 @@ namespace operator_view
 			friend class OperatorRendererFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> operatorViewRendererToDecorate);
+			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate);
 
 		private:
-			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
+			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;
@@ -53,10 +53,10 @@ namespace operator_view
 			void updateEyeImage(Eye eye, EyeImage image);
 
 		public:
-			virtual void registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer) override;
+			virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) override;
 
 		private:
-			std::vector<std::weak_ptr<IOperatorViewRendererObserver>> m_observers;
+			std::vector<std::weak_ptr<IOperatorRendererObserver>> m_observers;
 		};
 	}
 }

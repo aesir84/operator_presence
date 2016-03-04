@@ -12,10 +12,10 @@ namespace operator_view
 			friend class OperatorRendererFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate);
+			OperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> operatorViewRendererToDecorate);
 
 		private:
-			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
+			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;

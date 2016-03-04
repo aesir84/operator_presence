@@ -21,16 +21,16 @@ namespace operator_view
 			};
 		}
 
-		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> rendererToDecorate)
-			: IOperatorVisionRenderer(rendererToDecorate)
+		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> operatorViewRendererToDecorate)
+			: IOperatorVisionRenderer(operatorViewRendererToDecorate)
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
 		{ }
 
-		void OperatorVisionRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
+		void OperatorVisionRenderer::initialize(std::uint16_t width, std::uint16_t height)
 		{
 			// Firstly, let the decorated renderer (most likely the window) perform its initialization.
 			//
-			m_decoratedOperatorRenderer->initialize(eyeResolutionWidth, eyeResolutionHeight);
+			m_decoratedOperatorViewRenderer->initialize(width, height);
 
 			m_vao.create();
 			m_vao.bind();
@@ -56,13 +56,13 @@ namespace operator_view
 
 		void OperatorVisionRenderer::renderLeftEye()
 		{
-			m_decoratedOperatorRenderer->renderLeftEye();
+			m_decoratedOperatorViewRenderer->renderLeftEye();
 			render(Eye::Left);
 		}
 
 		void OperatorVisionRenderer::renderRightEye()
 		{
-			m_decoratedOperatorRenderer->renderRightEye();
+			m_decoratedOperatorViewRenderer->renderRightEye();
 			render(Eye::Right);
 		}
 

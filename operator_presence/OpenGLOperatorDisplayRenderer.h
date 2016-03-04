@@ -14,27 +14,27 @@ namespace operator_view
 			OperatorDisplayRenderer();
 
 		private:
-			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
+			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;
 
 		private:
 			void render();
-			void setOperatorDisplaySize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight);
+			void setOperatorDisplaySize(std::uint16_t width, std::uint16_t height);
 
 		private:
 			QOpenGLContext m_context;
 
 		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
+			virtual void registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer) override;
 
 		private:
 			virtual void notifyKeyPressed(Qt::Key key) override;
 			virtual void notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
 
 		private:
-			std::vector<std::weak_ptr<IOperatorViewObserver>> m_observers;
+			std::vector<std::weak_ptr<IOperatorViewRendererObserver>> m_observers;
 
 		private:
 			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;

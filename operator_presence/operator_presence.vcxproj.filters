@@ -147,9 +147,6 @@
     <ClInclude Include="IOperatorView.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorViewObserver.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
@@ -208,6 +205,9 @@
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorViewRenderer.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewRendererObserver.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

@@ -136,7 +136,7 @@
     <ClInclude Include="IOperatorView.h" />
     <ClInclude Include="IOperatorViewObserver.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
-    <ClInclude Include="IOperatorEyeRenderer.h" />
+    <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h" />

@@ -204,10 +204,10 @@
     <ClInclude Include="OperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorEyeRenderer.h">
+    <ClInclude Include="IOperatorEyeRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorEyeRendererDecorator.h">
+    <ClInclude Include="IOperatorViewRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

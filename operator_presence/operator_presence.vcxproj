@@ -107,6 +107,7 @@
     <ClInclude Include="ImageInputStreamRotator.h" />
     <ClInclude Include="ImageInputStreamSharer.h" />
     <ClInclude Include="ImageType.h" />
+    <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />

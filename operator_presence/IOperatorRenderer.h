@@ -2,6 +2,11 @@
 
 namespace operator_view
 {
+	/// \brief An interface for rendering the operator's eye visions
+	///
+	/// The operator has two eyes, so this interface allows to render the images for both eyes.
+	/// The interface also allows for delayed initialization.
+	///
 	class IOperatorRenderer
 	{
 	public:

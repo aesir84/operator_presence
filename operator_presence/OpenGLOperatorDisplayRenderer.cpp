@@ -2,7 +2,7 @@
 
 #include "OpenGLOperatorDisplayRenderer.h"
 
-#include "IOperatorViewRendererObserver.h"
+#include "IOperatorRendererObserver.h"
 
 namespace operator_view
 {
@@ -78,7 +78,7 @@ namespace operator_view
 			setHeight(operatorDisplayHeight);
 		}
 
-		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer)
+		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorRendererObserver> observer)
 		{
 			m_observers.push_back(observer);
 		}

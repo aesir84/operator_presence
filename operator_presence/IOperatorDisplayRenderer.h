@@ -1,10 +1,10 @@
 #pragma once
 
-#include "IOperatorViewRenderer.h"
+#include "IOperatorRenderer.h"
 
 namespace operator_view
 {
-	class IOperatorViewRendererObserver;
+	class IOperatorRendererObserver;
 }
 
 namespace operator_view
@@ -17,10 +17,10 @@ namespace operator_view
 	///
 	/// The interface also provides the means to communicate with a mediator by defining the Observer pattern.
 	///
-	class IOperatorDisplayRenderer : public IOperatorViewRenderer
+	class IOperatorDisplayRenderer : public IOperatorRenderer
 	{
 	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer) = 0;
+		virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) = 0;
 
 	private:
 		virtual void notifyKeyPressed(Qt::Key key) = 0;

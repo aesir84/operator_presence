@@ -21,6 +21,7 @@ namespace operator_view
 		: m_operatorModel(operatorModel)
 		, m_operatorViewRendererFactory(std::move(operatorViewRendererFactory))
 		, m_operatorRendererFactory(std::move(operatorRendererFactory))
+		, m_operatorViewBuilt(false)
 	{
 		m_operatorView = std::shared_ptr<OperatorView>(new OperatorView);
 
@@ -38,8 +39,15 @@ namespace operator_view
 
 	std::shared_ptr<IOperatorView> OperatorViewBuilder::build()
 	{
+		if (m_operatorViewBuilt)
+		{
+			assert(false); return m_operatorView;
+		}
+
 		auto operatorOculusRiftRenderer = m_operatorViewRendererFactory->createOperatorOculusRiftRenderer(m_operatorRenderer, m_operatorView);
 		m_operatorView->setRenderingStrategy(operatorOculusRiftRenderer);
+
+		m_operatorViewBuilt = true;
 
 		return m_operatorView;
 	}

@@ -59,5 +59,7 @@ namespace operator_view
 	private:
 		std::shared_ptr<IOperatorRenderer> m_operatorRenderer;
 		std::shared_ptr<OperatorView> m_operatorView;
+
+		bool m_operatorViewBuilt;
 	};
 }

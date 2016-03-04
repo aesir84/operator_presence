@@ -144,5 +144,10 @@ namespace operator_view
 				m_eyeTextures[helpers::as_integer(eye)]->setData(QOpenGLTexture::RGBA, QOpenGLTexture::UInt8, textureImage.bits());
 			}
 		}
+
+		void OperatorVisionRenderer::registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer)
+		{
+			m_observers.push_back(observer);
+		}
 	}
 }

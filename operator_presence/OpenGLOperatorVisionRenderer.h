@@ -51,6 +51,12 @@ namespace operator_view
 
 		private:
 			void updateEyeImage(Eye eye, EyeImage image);
+
+		public:
+			virtual void registerObserver(std::shared_ptr<IOperatorViewRendererObserver> observer) override;
+
+		private:
+			std::vector<std::weak_ptr<IOperatorViewRendererObserver>> m_observers;
 		};
 	}
 }

@@ -117,9 +117,6 @@
     <ClInclude Include="scoped_enum_as_integer.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorRenderer.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorRendererFactory.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -209,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="OperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorEyeRenderer.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

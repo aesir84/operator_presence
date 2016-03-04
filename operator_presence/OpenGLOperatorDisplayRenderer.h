@@ -4,6 +4,11 @@
 
 namespace operator_view
 {
+	class IOperatorViewMediator;
+}
+
+namespace operator_view
+{
 	namespace opengl
 	{
 		class OperatorDisplayRenderer : public QWindow, public IOperatorDisplayRenderer
@@ -11,7 +16,13 @@ namespace operator_view
 			friend class OperatorRendererFactory;
 
 		private:
-			OperatorDisplayRenderer();
+			OperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator);
+
+		public:
+			~OperatorDisplayRenderer();
+
+		private:
+			std::shared_ptr<IOperatorViewMediator> m_operatorViewMediator;
 
 		private:
 			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
@@ -25,16 +36,6 @@ namespace operator_view
 
 		private:
 			QOpenGLContext m_context;
-
-		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) override;
-
-		private:
-			virtual void notifyKeyPressed(Qt::Key key) override;
-			virtual void notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
-
-		private:
-			std::vector<std::weak_ptr<IOperatorRendererObserver>> m_observers;
 
 		private:
 			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;

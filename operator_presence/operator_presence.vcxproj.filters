@@ -207,9 +207,6 @@
     <ClInclude Include="IOperatorRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorRendererObserver.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -221,6 +218,15 @@
     </ClInclude>
     <ClInclude Include="OpenGLOperatorViewRendererFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewObserver.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorView.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewMediator.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

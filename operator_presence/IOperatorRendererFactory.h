@@ -4,6 +4,7 @@ namespace operator_view
 {
 	class IOperatorDisplayRenderer;
 	class IOperatorRenderer;
+	class IOperatorViewMediator;
 	class IOperatorVisionRenderer;
 }
 
@@ -20,7 +21,7 @@ namespace operator_view
 		virtual ~IOperatorRendererFactory() { }
 
 	public:
-		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer() = 0;
-		virtual std::shared_ptr<IOperatorVisionRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate) = 0;
+		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator) = 0;
+		virtual std::shared_ptr<IOperatorVisionRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator) = 0;
 	};
 }

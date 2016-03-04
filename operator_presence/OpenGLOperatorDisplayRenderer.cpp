@@ -2,14 +2,22 @@
 
 #include "OpenGLOperatorDisplayRenderer.h"
 
-#include "IOperatorRendererObserver.h"
+#include "IOperatorViewMediator.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorDisplayRenderer::OperatorDisplayRenderer()
-		{ }
+		OperatorDisplayRenderer::OperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
+			: m_operatorViewMediator(operatorViewMediator)
+		{
+			m_operatorViewMediator->registerOperatorDisplayRenderer(this);
+		}
+
+		OperatorDisplayRenderer::~OperatorDisplayRenderer()
+		{
+			m_operatorViewMediator->unregisterOperatorDisplayRenderer();
+		}
 
 		void OperatorDisplayRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
@@ -82,40 +90,9 @@ namespace operator_view
 			setHeight(operatorDisplayHeight);
 		}
 
-		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorRendererObserver> observer)
-		{
-			m_observers.push_back(observer);
-		}
-
-		void OperatorDisplayRenderer::notifyKeyPressed(Qt::Key key)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateKeyPressed(key);
-				}
-			}
-		}
-
-		void OperatorDisplayRenderer::notifySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateSizeChanged(newWidth, newHeight);
-				}
-			}
-		}
-
 		void OperatorDisplayRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
 		{
-			notifyKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
+			m_operatorViewMediator->mediateKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
 		}
 
 		void OperatorDisplayRenderer::resizeEvent(QResizeEvent * resizeEvent)
@@ -135,7 +112,7 @@ namespace operator_view
 			//
 			if (isExposed() && m_context.isValid())
 			{
-				notifySizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
+				m_operatorViewMediator->mediateDisplaySizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
 			}
 		}
 	}

@@ -108,6 +108,8 @@
     <ClInclude Include="ImageInputStreamRotator.h" />
     <ClInclude Include="ImageInputStreamSharer.h" />
     <ClInclude Include="ImageType.h" />
+    <ClInclude Include="IOperatorViewMediator.h" />
+    <ClInclude Include="IOperatorViewObserver.h" />
     <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorViewRendererFactory.h" />
     <ClInclude Include="IOperatorVision.h" />
@@ -118,6 +120,7 @@
     <ClInclude Include="OperatorEyeImageType.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="OperatorModel.h" />
+    <ClInclude Include="OperatorView.h" />
     <ClInclude Include="threadsafe_queue.h" />
     <ClInclude Include="WebcamImageInputStreamBuilder.h" />
     <CustomBuild Include="OperatorVision.h">
@@ -138,7 +141,6 @@
     <ClInclude Include="IOperatorModel.h" />
     <ClInclude Include="IOperatorOculusRiftRenderer.h" />
     <ClInclude Include="IOperatorView.h" />
-    <ClInclude Include="IOperatorRendererObserver.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorRenderer.h" />
     <ClInclude Include="IOperatorRendererFactory.h" />

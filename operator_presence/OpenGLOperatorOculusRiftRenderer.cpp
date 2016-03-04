@@ -3,7 +3,7 @@
 #include "OpenGLOperatorOculusRiftRenderer.h"
 
 #include "IOperatorRenderer.h"
-#include "IOperatorRendererObserver.h"
+#include "IOperatorViewMediator.h"
 
 #include "scope_guard.h"
 
@@ -11,12 +11,16 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftRenderer::OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer)
+		OperatorOculusRiftRenderer::OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer, std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
 			: m_operatorRenderer(operatorRenderer)
-		{ }
+			, m_operatorViewMediator(operatorViewMediator)
+		{
+			m_operatorViewMediator->registerOperatorOculusRiftRenderer(this);
+		}
 
 		OperatorOculusRiftRenderer::~OperatorOculusRiftRenderer()
 		{
+			m_operatorViewMediator->unregisterOperatorOculusRiftRenderer();
 			ovr_Shutdown();
 		}
 
@@ -34,25 +38,8 @@ namespace operator_view
 
 		void OperatorOculusRiftRenderer::render()
 		{
+			// TODO: mediate the headset orientation
 			// TODO: render
-		}
-
-		void OperatorOculusRiftRenderer::registerObserver(std::shared_ptr<IOperatorRendererObserver> observer)
-		{
-			m_observers.push_back(observer);
-		}
-
-		void OperatorOculusRiftRenderer::notifyHeadOrientationChanged(double yaw, double pitch, double roll)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateHeadOrientationChanged(yaw, pitch, roll);
-				}
-			}
 		}
 
 		void OperatorOculusRiftRenderer::startOculusVR()

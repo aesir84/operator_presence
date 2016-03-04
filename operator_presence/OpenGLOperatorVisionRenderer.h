@@ -5,6 +5,11 @@
 
 namespace operator_view
 {
+	class IOperatorViewMediator;
+}
+
+namespace operator_view
+{
 	namespace opengl
 	{
 		class OperatorVisionRenderer : public IOperatorVisionRenderer
@@ -12,7 +17,13 @@ namespace operator_view
 			friend class OperatorRendererFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate);
+			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator);
+
+		public:
+			~OperatorVisionRenderer();
+
+		private:
+			std::shared_ptr<IOperatorViewMediator> m_operatorViewMediator;
 
 		private:
 			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
@@ -51,12 +62,6 @@ namespace operator_view
 
 		private:
 			void updateEyeImage(Eye eye, EyeImage image);
-
-		public:
-			virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) override;
-
-		private:
-			std::vector<std::weak_ptr<IOperatorRendererObserver>> m_observers;
 		};
 	}
 }

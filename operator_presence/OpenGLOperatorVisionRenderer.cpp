@@ -2,6 +2,8 @@
 
 #include "OpenGLOperatorVisionRenderer.h"
 
+#include "IOperatorViewMediator.h"
+
 namespace operator_view
 {
 	namespace opengl
@@ -21,10 +23,18 @@ namespace operator_view
 			};
 		}
 
-		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate)
+		OperatorVisionRenderer::OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
 			: IOperatorVisionRenderer(operatorRendererToDecorate)
+			, m_operatorViewMediator(operatorViewMediator)
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
-		{ }
+		{
+			m_operatorViewMediator->registerOperatorVisionRenderer(this);
+		}
+
+		OperatorVisionRenderer::~OperatorVisionRenderer()
+		{
+			m_operatorViewMediator->unregisterOperatorVisionRenderer();
+		}
 
 		void OperatorVisionRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
 		{
@@ -143,11 +153,6 @@ namespace operator_view
 				std::lock_guard<std::mutex> textureAccess(m_eyeTextureMutexes[helpers::as_integer(eye)]);
 				m_eyeTextures[helpers::as_integer(eye)]->setData(QOpenGLTexture::RGBA, QOpenGLTexture::UInt8, textureImage.bits());
 			}
-		}
-
-		void OperatorVisionRenderer::registerObserver(std::shared_ptr<IOperatorRendererObserver> observer)
-		{
-			m_observers.push_back(observer);
 		}
 	}
 }

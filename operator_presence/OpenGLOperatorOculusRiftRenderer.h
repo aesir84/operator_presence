@@ -5,6 +5,7 @@
 namespace operator_view
 {
 	class IOperatorRenderer;
+	class IOperatorViewMediator;
 }
 
 namespace operator_view
@@ -16,26 +17,18 @@ namespace operator_view
 			friend class OperatorViewRendererFactory;
 
 		private:
-			OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer);
-
-		private:
-			std::shared_ptr<IOperatorRenderer> m_operatorRenderer;
+			OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer, std::shared_ptr<IOperatorViewMediator> operatorViewMediator);
 
 		public:
 			~OperatorOculusRiftRenderer();
 
 		private:
+			std::shared_ptr<IOperatorRenderer> m_operatorRenderer;
+			std::shared_ptr<IOperatorViewMediator> m_operatorViewMediator;
+
+		private:
 			virtual void initialize() override;
 			virtual void render() override;
-
-		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorRendererObserver> observer) override;
-
-		private:
-			std::vector<std::weak_ptr<IOperatorRendererObserver>> m_observers;
-
-		private:
-			virtual void notifyHeadOrientationChanged(double yaw, double pitch, double roll) override;
 
 		private:
 			void startOculusVR();

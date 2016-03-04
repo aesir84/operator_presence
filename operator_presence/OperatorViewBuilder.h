@@ -10,7 +10,9 @@ namespace operator_view
 	class IOperatorRenderer;
 	class IOperatorRendererFactory;
 	class IOperatorView;
-	class IOperatorViewObserver;
+	class IOperatorViewRenderer;
+	class IOperatorViewRendererFactory;
+	class OperatorView;
 }
 
 namespace operator_view
@@ -22,19 +24,24 @@ namespace operator_view
 	///
 	/// The class must be instantiated through derived classes,
 	/// hence the protected constructor.
-	/// The only purpose of the derived classes is to supply a proper abstract factory object
+	/// The only purpose of the derived classes is to supply a proper abstract factory objects
 	/// to this class, so that appropriate rendering objects - OpenGL, Direct3D, etc - can be created.
 	///
 	class OperatorViewBuilder
 	{
 	protected:
-		OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IOperatorViewObserver> observer, std::unique_ptr<IOperatorRendererFactory> factory);
+		OperatorViewBuilder
+			(
+				std::shared_ptr<operator_model::IOperatorModel> operatorModel,
+				std::unique_ptr<IOperatorViewRendererFactory> operatorViewRendererFactory,
+				std::unique_ptr<IOperatorRendererFactory> operatorRendererFactory
+			);
 
 	private:
-		std::shared_ptr<operator_model::IOperatorModel> m_model;
-		std::shared_ptr<IOperatorViewObserver> m_observer;
+		std::shared_ptr<operator_model::IOperatorModel> m_operatorModel;
 
-		std::unique_ptr<IOperatorRendererFactory> m_factory;
+		std::unique_ptr<IOperatorViewRendererFactory> m_operatorViewRendererFactory;
+		std::unique_ptr<IOperatorRendererFactory> m_operatorRendererFactory;
 
 	public:
 		/// \brief Additional views to display
@@ -44,17 +51,13 @@ namespace operator_view
 	public:
 		/// \brief The final result output
 		///
-		/// The main purpose of this method is to take what has already been built and
-		/// add the final layer of an HMD renderer. This guarantees that the HMD layer
-		/// is always there and is always on the top - exactly like it should be in
-		/// order to properly control the flow of rendering.
-		///
 		/// The method returns a pointer to the interface IOperatorView which is an
 		/// abstraction meant to be used by other system parts like the operator controller.
 		///
 		std::shared_ptr<IOperatorView> build();
 
 	private:
-		std::shared_ptr<IOperatorRenderer> m_renderer;
+		std::shared_ptr<IOperatorRenderer> m_operatorRenderer;
+		std::shared_ptr<OperatorView> m_operatorView;
 	};
 }

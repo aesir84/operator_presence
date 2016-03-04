@@ -4,37 +4,43 @@
 
 #include "IOperatorModel.h"
 
-#include "IOperatorDisplayRenderer.h"
-#include "IOperatorOculusRiftRenderer.h"
 #include "IOperatorRendererFactory.h"
+
+#include "IOperatorDisplayRenderer.h"
 #include "IOperatorVisionRenderer.h"
+
+#include "IOperatorViewRendererFactory.h"
+
+#include "IOperatorOculusRiftRenderer.h"
+
+#include "OperatorView.h"
 
 namespace operator_view
 {
-	OperatorViewBuilder::OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IOperatorViewObserver> observer, std::unique_ptr<IOperatorRendererFactory> factory)
-		: m_model(model)
-		, m_observer(observer)
-		, m_factory(std::move(factory))
+	OperatorViewBuilder::OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> operatorModel, std::unique_ptr<IOperatorViewRendererFactory> operatorViewRendererFactory, std::unique_ptr<IOperatorRendererFactory> operatorRendererFactory)
+		: m_operatorModel(operatorModel)
+		, m_operatorViewRendererFactory(std::move(operatorViewRendererFactory))
+		, m_operatorRendererFactory(std::move(operatorRendererFactory))
 	{
-		auto operatorDisplayRenderer = m_factory->createOperatorDisplayRenderer();
-		operatorDisplayRenderer->registerObserver(m_observer);
+		m_operatorView = std::shared_ptr<OperatorView>(new OperatorView);
 
-		auto operatorVisionRenderer = m_factory->createOperatorVisionRenderer(operatorDisplayRenderer);
-		m_model->registerObserver(operatorVisionRenderer);
-
-		m_renderer = operatorVisionRenderer;
+		auto operatorDisplayRenderer = m_operatorRendererFactory->createOperatorDisplayRenderer(m_operatorView);
+		auto operatorVisionRenderer = m_operatorRendererFactory->createOperatorVisionRenderer(operatorDisplayRenderer, m_operatorView);
+		
+		m_operatorModel->registerObserver(operatorVisionRenderer);
+		m_operatorRenderer = operatorVisionRenderer;
 	}
 
 	void OperatorViewBuilder::displayHUD()
 	{
-		/* not implemented */
+		/* not yet implemented */
 	}
 
 	std::shared_ptr<IOperatorView> OperatorViewBuilder::build()
 	{
-		auto operatorOculusRiftRenderer = m_factory->createOperatorOculusRiftRenderer(m_renderer);
-		operatorOculusRiftRenderer->registerObserver(m_observer);
+		auto operatorOculusRiftRenderer = m_operatorViewRendererFactory->createOperatorOculusRiftRenderer(m_operatorRenderer, m_operatorView);
+		m_operatorView->setRenderingStrategy(operatorOculusRiftRenderer);
 
-		return operatorOculusRiftRenderer;
+		return m_operatorView;
 	}
 }

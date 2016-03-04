@@ -4,6 +4,7 @@ namespace operator_view
 {
 	class IOperatorOculusRiftRenderer;
 	class IOperatorRenderer;
+	class IOperatorViewMediator;
 }
 
 namespace operator_view
@@ -23,6 +24,6 @@ namespace operator_view
 		virtual ~IOperatorViewRendererFactory() { }
 
 	public:
-		virtual std::shared_ptr<IOperatorOculusRiftRenderer> createOperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer) = 0;
+		virtual std::shared_ptr<IOperatorOculusRiftRenderer> createOperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer, std::shared_ptr<IOperatorViewMediator> operatorViewMediator) = 0;
 	};
 }

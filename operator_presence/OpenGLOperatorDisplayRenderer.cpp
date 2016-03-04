@@ -2,7 +2,7 @@
 
 #include "OpenGLOperatorDisplayRenderer.h"
 
-#include "IOperatorViewObserver.h"
+#include "IOperatorViewRendererObserver.h"
 
 namespace operator_view
 {

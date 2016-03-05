@@ -76,9 +76,6 @@
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp">
-      <Filter>Source Files\operator_view\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="OperatorViewBuilder.cpp">
       <Filter>Source Files\operator_view</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
     <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGLOperatorOculusRiftStrategy.cpp">
+      <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -131,9 +131,6 @@
     </ClInclude>
     <ClInclude Include="IOperatorVisionRenderer.h">
       <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h">
-      <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="scope_guard.h">
       <Filter>Header Files\helpers</Filter>
@@ -218,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="IOperatorOculusRiftStrategy.h">
       <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLOperatorOculusRiftStrategy.h">
+      <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -85,7 +85,7 @@
     <ClCompile Include="ImageInputStreamRotator.cpp" />
     <ClCompile Include="ImageInputStreamSharer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OpenGLOperatorOculusRiftRenderer.cpp" />
+    <ClCompile Include="OpenGLOperatorOculusRiftStrategy.cpp" />
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
     <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
@@ -142,7 +142,7 @@
     <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorViewFactory.h" />
     <ClInclude Include="IOperatorVisionRenderer.h" />
-    <ClInclude Include="OpenGLOperatorOculusRiftRenderer.h" />
+    <ClInclude Include="OpenGLOperatorOculusRiftStrategy.h" />
     <ClInclude Include="OpenGLOperatorViewBuilder.h" />
     <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />

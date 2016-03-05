@@ -3,8 +3,9 @@
 namespace operator_view
 {
 	class IOperatorDisplayRenderer;
+	class IOperatorOculusRiftStrategy;
 	class IOperatorViewRenderer;
-	class IOperatorVisionRenderer;
+	class IOperatorVisionDecorator;
 }
 
 namespace operator_view
@@ -16,7 +17,7 @@ namespace operator_view
 
 	public:
 		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer() = 0;
-		virtual std::shared_ptr<IOperatorVisionRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> renderer) = 0;
 		virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer) = 0;
+		virtual std::shared_ptr<IOperatorVisionDecorator> createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer) = 0;
 	};
 }

@@ -106,9 +106,6 @@
     <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="OperatorView.cpp">
-      <Filter>Source Files\operator_view</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -213,22 +210,10 @@
     <ClInclude Include="IOperatorRendererDecorator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorViewRenderer.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorViewRendererFactory.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLOperatorViewRendererFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorViewObserver.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
-    <ClInclude Include="OperatorView.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorViewMediator.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

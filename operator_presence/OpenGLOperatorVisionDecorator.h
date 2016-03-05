@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOperatorVisionRenderer.h"
+#include "IOperatorVisionDecorator.h"
 
 #include "OperatorViewImageType.h"
 
@@ -8,12 +8,12 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorVisionRenderer : public IOperatorVisionRenderer
+		class OperatorVisionDecorator : public IOperatorVisionDecorator
 		{
 			friend class OperatorViewFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> renderer);
+			OperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer);
 
 		private:
 			virtual void initialize(std::uint16_t width, std::uint16_t height) override;

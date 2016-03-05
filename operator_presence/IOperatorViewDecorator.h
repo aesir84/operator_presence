@@ -13,8 +13,8 @@ namespace operator_view
 	class IOperatorViewDecorator : public IOperatorViewRenderer
 	{
 	public:
-		IOperatorViewDecorator(std::shared_ptr<IOperatorViewRenderer> renderer)
-			: m_decoratedRenderer(renderer)
+		IOperatorViewDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer)
+			: m_decoratedRenderer(decoratedRenderer)
 		{ }
 
 	protected:

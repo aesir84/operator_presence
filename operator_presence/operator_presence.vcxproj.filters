@@ -186,9 +186,6 @@
     <ClInclude Include="OperatorEyeImageType.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
-    <ClInclude Include="OperatorEyeImageRenderType.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="WebcamImageInputStreamBuilder.h">
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
@@ -214,6 +211,9 @@
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorViewFactory.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorViewImageType.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>

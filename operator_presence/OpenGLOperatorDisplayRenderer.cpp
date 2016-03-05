@@ -2,24 +2,16 @@
 
 #include "OpenGLOperatorDisplayRenderer.h"
 
-#include "IOperatorViewMediator.h"
+#include "IOperatorViewObserver.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorDisplayRenderer::OperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
-			: m_operatorViewMediator(operatorViewMediator)
-		{
-			m_operatorViewMediator->registerOperatorDisplayRenderer(this);
-		}
+		OperatorDisplayRenderer::OperatorDisplayRenderer()
+		{ }
 
-		OperatorDisplayRenderer::~OperatorDisplayRenderer()
-		{
-			m_operatorViewMediator->unregisterOperatorDisplayRenderer();
-		}
-
-		void OperatorDisplayRenderer::initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
+		void OperatorDisplayRenderer::initialize(std::uint16_t width, std::uint16_t height)
 		{
 			// The window's surface type must be set to QSurface::OpenGLSurface
 			// to indicate that the window is to be used for OpenGL rendering.
@@ -45,9 +37,8 @@ namespace operator_view
 				Q_ASSERT(false);
 			}
 			
-			setOperatorDisplaySize(eyeResolutionWidth, eyeResolutionHeight);
+			setOperatorDisplaySize(width, height);
 			setVisible(true);
-			m_operatorViewMediator->mediateWindowCreated(winId());
 		}
 
 		void OperatorDisplayRenderer::renderLeftEye()
@@ -65,14 +56,10 @@ namespace operator_view
 			m_context.makeCurrent(this);
 		}
 
-		void OperatorDisplayRenderer::setOperatorDisplaySize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight)
+		void OperatorDisplayRenderer::setOperatorDisplaySize(std::uint16_t width, std::uint16_t height)
 		{
-			// The eyes are ought to be displayed side by side,
-			// so in order to get the full display size which accomodates both eyes,
-			// we need to double the width, keeping the height as it is.
-			//
-			std::uint16_t operatorDisplayWidth = eyeResolutionWidth + eyeResolutionWidth;
-			std::uint16_t operatorDisplayHeight = eyeResolutionHeight;
+			std::uint16_t operatorDisplayWidth = width;
+			std::uint16_t operatorDisplayHeight = height;
 
 			// There can be different screen sizes, e.g. big, small, etc...
 			// In order to fit the operator display on a screen nicely
@@ -91,9 +78,63 @@ namespace operator_view
 			setHeight(operatorDisplayHeight);
 		}
 
+		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorViewObserver> observer)
+		{
+			m_observers.push_back(observer);
+		}
+
+		void OperatorDisplayRenderer::notifyKeyPressed(Qt::Key key)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateKeyPressed(key);
+				}
+			}
+		}
+
+		void OperatorDisplayRenderer::notifyWindowExposed(WId windowId)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateWindowExposed(windowId);
+				}
+			}
+		}
+
+		void OperatorDisplayRenderer::notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateWindowSizeChanged(width, height);
+				}
+			}
+		}
+
+		void OperatorDisplayRenderer::exposeEvent(QExposeEvent * exposeEvent)
+		{
+			Q_UNUSED(exposeEvent);
+
+			if (isExposed())
+			{
+				notifyWindowExposed(winId());
+			}
+		}
+
 		void OperatorDisplayRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
 		{
-			m_operatorViewMediator->mediateKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
+			notifyKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
 		}
 
 		void OperatorDisplayRenderer::resizeEvent(QResizeEvent * resizeEvent)
@@ -113,7 +154,7 @@ namespace operator_view
 			//
 			if (isExposed() && m_context.isValid())
 			{
-				m_operatorViewMediator->mediateWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
+				notifyWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
 			}
 		}
 	}

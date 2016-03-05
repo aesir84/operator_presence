@@ -113,7 +113,7 @@
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OpenGLOperatorViewRendererFactory.h" />
-    <ClInclude Include="OperatorEyeImageRenderType.h" />
+    <ClInclude Include="OperatorViewImageType.h" />
     <ClInclude Include="OperatorEyeImageType.h" />
     <ClInclude Include="OperatorHeadOrientation.h" />
     <ClInclude Include="OperatorModel.h" />

@@ -47,6 +47,7 @@ namespace operator_view
 			
 			setOperatorDisplaySize(eyeResolutionWidth, eyeResolutionHeight);
 			setVisible(true);
+			m_operatorViewMediator->mediateWindowCreated(winId());
 		}
 
 		void OperatorDisplayRenderer::renderLeftEye()
@@ -112,7 +113,7 @@ namespace operator_view
 			//
 			if (isExposed() && m_context.isValid())
 			{
-				m_operatorViewMediator->mediateDisplaySizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
+				m_operatorViewMediator->mediateWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
 			}
 		}
 	}

@@ -16,6 +16,9 @@ namespace operator_view
 		virtual void setRenderingStrategy(std::shared_ptr<IOperatorViewRenderer> renderingStrategy) override;
 
 	private:
+		std::shared_ptr<IOperatorViewRenderer> m_renderingStrategy;
+
+	private:
 		virtual void open() override;
 		virtual void close() override;
 
@@ -24,6 +27,9 @@ namespace operator_view
 
 	private:
 		virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
+
+	private:
+		std::vector<std::weak_ptr<IOperatorViewObserver>> m_observers;
 
 	private:
 		virtual void notifyHeadsetOrientationChanged(double yaw, double pitch, double roll) override;
@@ -45,8 +51,9 @@ namespace operator_view
 		IOperatorVisionRenderer * m_operatorVisionRenderer;
 
 	private:
-		virtual void mediateKeyPressed(Qt::Key key) override;
 		virtual void mediateHeadsetOrientationChanged(double yaw, double pitch, double roll) override;
-		virtual void mediateDisplaySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
+		virtual void mediateKeyPressed(Qt::Key key) override;
+		virtual void mediateWindowCreated(WId winId) override;
+		virtual void mediateWindowSizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) override;
 	};
 }

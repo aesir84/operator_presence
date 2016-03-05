@@ -93,6 +93,7 @@
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
     <ClCompile Include="OperatorHeadOrientation.cpp" />
     <ClCompile Include="OperatorModel.cpp" />
+    <ClCompile Include="OperatorView.cpp" />
     <ClCompile Include="OperatorViewBuilder.cpp" />
     <ClCompile Include="OperatorVision.cpp" />
     <ClCompile Include="stdafx.cpp">

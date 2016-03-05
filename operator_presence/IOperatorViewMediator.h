@@ -25,8 +25,9 @@ namespace operator_view
 		virtual void unregisterOperatorVisionRenderer() = 0;
 
 	public:
-		virtual void mediateKeyPressed(Qt::Key key) = 0;
 		virtual void mediateHeadsetOrientationChanged(double yaw, double pitch, double roll) = 0;
-		virtual void mediateDisplaySizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) = 0;
+		virtual void mediateKeyPressed(Qt::Key key) = 0;
+		virtual void mediateWindowCreated(WId winId) = 0;
+		virtual void mediateWindowSizeChanged(std::uint16_t newWidth, std::uint16_t newHeight) = 0;
 	};
 }

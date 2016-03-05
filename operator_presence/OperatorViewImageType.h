@@ -2,5 +2,5 @@
 
 namespace operator_view
 {
-	using EyeImage = QImage;
+	using Image = QImage;
 }

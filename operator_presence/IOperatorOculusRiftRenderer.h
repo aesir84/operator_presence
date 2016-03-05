@@ -1,14 +1,25 @@
 #pragma once
 
-#include "IOperatorViewRenderer.h"
+#include "IOperatorViewStrategy.h"
 
 namespace operator_view
 {
-	/// \brief An interface for Oculus Rift renderer
+	class IOperatorViewObserver;
+}
+
+namespace operator_view
+{
+	/// \brief An interface for rendering the operator's view using Oculus Rift
 	///
 	/// The reason to provide this layer of abstraction is that Oculus Rift
-	/// can be configured for either OpenGL or Direct3D rendering.
+	/// can be configured to use either OpenGL or Direct3D for rendering.
 	///
-	class IOperatorOculusRiftRenderer : public IOperatorViewRenderer
-	{ }; // currently the interface is empty, but it still is a placeholder for future enhacements
+	class IOperatorOculusRiftRenderer : public IOperatorViewStrategy
+	{
+	public:
+		virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) = 0;
+
+	private:
+		virtual void notifyHeadsetOrientationChanged(double yaw, double pitch, double roll) = 0;
+	};
 }

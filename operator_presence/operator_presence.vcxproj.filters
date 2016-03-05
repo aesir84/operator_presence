@@ -216,6 +216,9 @@
     <ClInclude Include="OperatorViewImageType.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
+    <ClInclude Include="IOperatorViewStrategy.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OperatorVision.h">

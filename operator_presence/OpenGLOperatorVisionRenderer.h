@@ -1,12 +1,8 @@
 #pragma once
 
 #include "IOperatorVisionRenderer.h"
-#include "OperatorEyeImageRenderType.h"
 
-namespace operator_view
-{
-	class IOperatorViewMediator;
-}
+#include "OperatorViewImageType.h"
 
 namespace operator_view
 {
@@ -14,19 +10,13 @@ namespace operator_view
 	{
 		class OperatorVisionRenderer : public IOperatorVisionRenderer
 		{
-			friend class OperatorRendererFactory;
+			friend class OperatorViewFactory;
 
 		private:
-			OperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator);
-
-		public:
-			~OperatorVisionRenderer();
+			OperatorVisionRenderer(std::shared_ptr<IOperatorViewRenderer> renderer);
 
 		private:
-			std::shared_ptr<IOperatorViewMediator> m_operatorViewMediator;
-
-		private:
-			virtual void initialize(std::uint16_t eyeResolutionWidth, std::uint16_t eyeResolutionHeight) override;
+			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;
@@ -57,11 +47,11 @@ namespace operator_view
 			QOpenGLShaderProgram m_shader;
 
 		private:
-			virtual void updateLeftEyeImageChanged(EyeImage leftEyeImage) override;
-			virtual void updateRightEyeImageChanged(EyeImage rightEyeImage) override;
+			virtual void updateLeftEyeImageChanged(Image leftEyeImage) override;
+			virtual void updateRightEyeImageChanged(Image rightEyeImage) override;
 
 		private:
-			void updateEyeImage(Eye eye, EyeImage image);
+			void updateEyeImage(Eye eye, Image image);
 		};
 	}
 }

@@ -16,7 +16,7 @@ namespace operator_view
 			friend class OperatorViewFactory;
 
 		private:
-			OperatorOculusRiftStrategy();
+			explicit OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer);
 
 		public:
 			~OperatorOculusRiftStrategy();

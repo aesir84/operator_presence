@@ -11,7 +11,8 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy()
+		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer)
+			: m_renderer(renderer)
 		{ }
 
 		OperatorOculusRiftStrategy::~OperatorOculusRiftStrategy()

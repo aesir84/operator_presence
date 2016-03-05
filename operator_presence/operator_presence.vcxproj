@@ -88,7 +88,7 @@
     <ClCompile Include="OpenGLOperatorOculusRiftStrategy.cpp" />
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
     <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp" />
-    <ClCompile Include="OpenGLOperatorVisionRenderer.cpp" />
+    <ClCompile Include="OpenGLOperatorVisionDecorator.cpp" />
     <ClCompile Include="OpenGLOperatorRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
     <ClCompile Include="OperatorHeadOrientation.cpp" />
@@ -141,10 +141,10 @@
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorViewFactory.h" />
-    <ClInclude Include="IOperatorVisionRenderer.h" />
+    <ClInclude Include="IOperatorVisionDecorator.h" />
     <ClInclude Include="OpenGLOperatorOculusRiftStrategy.h" />
     <ClInclude Include="OpenGLOperatorViewBuilder.h" />
-    <ClInclude Include="OpenGLOperatorVisionRenderer.h" />
+    <ClInclude Include="OpenGLOperatorVisionDecorator.h" />
     <ClInclude Include="OpenGLOperatorRendererFactory.h" />
     <ClInclude Include="OpenGLOperatorDisplayRenderer.h" />
     <ClInclude Include="IOperatorViewDecorator.h" />

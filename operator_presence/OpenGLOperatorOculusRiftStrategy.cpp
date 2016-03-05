@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorOculusRiftRenderer.h"
+#include "OpenGLOperatorOculusRiftStrategy.h"
 
-#include "IOperatorRenderer.h"
-#include "IOperatorViewMediator.h"
+#include "IOperatorViewObserver.h"
+#include "IOperatorViewRenderer.h"
 
 #include "scope_guard.h"
 
@@ -11,38 +11,33 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftRenderer::OperatorOculusRiftRenderer(std::shared_ptr<IOperatorRenderer> operatorRenderer, std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
-			: m_operatorRenderer(operatorRenderer)
-			, m_operatorViewMediator(operatorViewMediator)
-		{
-			m_operatorViewMediator->registerOperatorOculusRiftRenderer(this);
-		}
+		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy()
+		{ }
 
-		OperatorOculusRiftRenderer::~OperatorOculusRiftRenderer()
+		OperatorOculusRiftStrategy::~OperatorOculusRiftStrategy()
 		{
-			m_operatorViewMediator->unregisterOperatorOculusRiftRenderer();
 			ovr_Shutdown();
 		}
 
-		void OperatorOculusRiftRenderer::initialize()
+		void OperatorOculusRiftStrategy::initialize()
 		{
 			startOculusVR();
 
-			std::uint16_t const eyeResolutionWidth = m_ovrHMDDescriptor.Resolution.w / 2; // divide by two because OVR gives the resolution width for both eyes
-			std::uint16_t const eyeResolutionHeight = m_ovrHMDDescriptor.Resolution.h;
+			std::uint16_t const width = m_ovrHMDDescriptor.Resolution.w;
+			std::uint16_t const height = m_ovrHMDDescriptor.Resolution.h;
 
-			m_operatorRenderer->initialize(eyeResolutionWidth, eyeResolutionHeight);
+			m_renderer->initialize(width, height);
 
 			// TODO: configure Oculus Rift rendering...
 		}
 
-		void OperatorOculusRiftRenderer::render()
+		void OperatorOculusRiftStrategy::render()
 		{
-			// TODO: mediate the headset orientation
+			// TODO: notify the headset orientation
 			// TODO: render
 		}
 
-		void OperatorOculusRiftRenderer::startOculusVR()
+		void OperatorOculusRiftStrategy::startOculusVR()
 		{
 			ovrResult result = ovrSuccess;
 
@@ -72,6 +67,24 @@ namespace operator_view
 
 			ovrCreationReverse.dismiss();
 			ovrInitializationReverse.dismiss();
+		}
+
+		void OperatorOculusRiftStrategy::registerObserver(std::shared_ptr<IOperatorViewObserver> observer)
+		{
+			m_observers.push_back(observer);
+		}
+
+		void OperatorOculusRiftStrategy::notifyHeadsetOrientationChanged(double yaw, double pitch, double roll)
+		{
+			for (auto & observer : m_observers)
+			{
+				auto existingObserver = observer.lock();
+
+				if (existingObserver)
+				{
+					existingObserver->updateHeadsetOrientationChanged(yaw, pitch, roll);
+				}
+			}
 		}
 	}
 }

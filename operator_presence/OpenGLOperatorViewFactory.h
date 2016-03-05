@@ -1,16 +1,17 @@
 #pragma once
 
-#include "IOperatorRendererFactory.h"
+#include "IOperatorViewFactory.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorRendererFactory : public IOperatorRendererFactory
+		class OperatorViewFactory : public IOperatorViewFactory
 		{
 		private:
-			virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator) override;
-			virtual std::shared_ptr<IOperatorVisionRenderer> createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator) override;
+			virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer() override;
+			virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer) override;
+			virtual std::shared_ptr<IOperatorVisionDecorator> createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer) override;
 		};
 	}
 }

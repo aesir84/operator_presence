@@ -1,22 +1,28 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorRendererFactory.h"
+#include "OpenGLOperatorViewFactory.h"
 
 #include "OpenGLOperatorDisplayRenderer.h"
-#include "OpenGLOperatorVisionRenderer.h"
+#include "OpenGLOperatorOculusRiftStrategy.h"
+#include "OpenGLOperatorVisionDecorator.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IOperatorDisplayRenderer> OperatorRendererFactory::createOperatorDisplayRenderer(std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
+		std::shared_ptr<IOperatorDisplayRenderer> OperatorViewFactory::createOperatorDisplayRenderer()
 		{
-			return std::shared_ptr<IOperatorDisplayRenderer>(new OperatorDisplayRenderer(operatorViewMediator));
+			return std::shared_ptr<IOperatorDisplayRenderer>(new OperatorDisplayRenderer);
 		}
 
-		std::shared_ptr<IOperatorVisionRenderer> OperatorRendererFactory::createOperatorVisionRenderer(std::shared_ptr<IOperatorRenderer> operatorRendererToDecorate, std::shared_ptr<IOperatorViewMediator> operatorViewMediator)
+		std::shared_ptr<IOperatorOculusRiftStrategy> OperatorViewFactory::createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer)
 		{
-			return std::shared_ptr<IOperatorVisionRenderer>(new OperatorVisionRenderer(operatorRendererToDecorate, operatorViewMediator));
+			return std::shared_ptr<IOperatorOculusRiftStrategy>(new OperatorOculusRiftStrategy(renderer));
+		}
+
+		std::shared_ptr<IOperatorVisionDecorator> OperatorViewFactory::createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer)
+		{
+			return std::shared_ptr<IOperatorVisionDecorator>(new OperatorVisionDecorator(decoratedRenderer));
 		}
 	}
 }

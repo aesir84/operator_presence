@@ -56,6 +56,9 @@
     <Filter Include="Source Files\operator_model\utils">
       <UniqueIdentifier>{5ada2007-aa9b-4acf-b16f-268eaaab7ce8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\operator_controller">
+      <UniqueIdentifier>{a52ffc0c-b69b-43db-82f2-573c81d369ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -105,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="OpenGLOperatorViewFactory.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorView.cpp">
+      <Filter>Source Files\operator_view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +192,6 @@
     <ClInclude Include="OpenGLOperatorViewRendererFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorViewObserver.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="IOperatorViewRenderer.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
@@ -218,6 +221,18 @@
     </ClInclude>
     <ClInclude Include="OpenGLOperatorViewFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorView.h">
+      <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorController.h">
+      <Filter>Header Files\operator_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorDisplay.h">
+      <Filter>Header Files\operator_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorHeadset.h">
+      <Filter>Header Files\operator_controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

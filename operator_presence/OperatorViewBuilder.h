@@ -1,5 +1,10 @@
 #pragma once
 
+namespace operator_controller
+{
+	class IOperatorController;
+}
+
 namespace operator_model
 {
 	class IOperatorModel;
@@ -30,11 +35,13 @@ namespace operator_view
 	class OperatorViewBuilder
 	{
 	protected:
-		OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> operatorModel, std::unique_ptr<IOperatorViewFactory> operatorViewFactory);
+		OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<operator_controller::IOperatorController> controller, std::unique_ptr<IOperatorViewFactory> viewFactory);
 
 	private:
-		std::shared_ptr<operator_model::IOperatorModel> m_operatorModel;
-		std::unique_ptr<IOperatorViewFactory> m_operatorViewFactory;
+		std::shared_ptr<operator_model::IOperatorModel> m_model;
+		std::shared_ptr<operator_controller::IOperatorController> m_controller;
+
+		std::unique_ptr<IOperatorViewFactory> m_viewFactory;
 
 	public:
 		/// \brief Additional views
@@ -52,8 +59,6 @@ namespace operator_view
 		std::shared_ptr<IOperatorView> build(Strategy strategy);
 
 	private:
-		std::shared_ptr<IOperatorViewRenderer> m_renderer;
-
-		std::weak_ptr<IOperatorOculusRiftStrategy> m_cachedOperatorOculusRiftStrategy;
+		std::shared_ptr<IOperatorViewRenderer> m_viewRenderer;
 	};
 }

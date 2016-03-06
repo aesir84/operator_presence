@@ -1,6 +1,12 @@
 #pragma once
 
+#include "IOperatorHeadset.h"
 #include "IOperatorOculusRiftStrategy.h"
+
+namespace operator_controller
+{
+	class IOperatorController;
+}
 
 namespace operator_view
 {
@@ -11,18 +17,19 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorOculusRiftStrategy : public IOperatorOculusRiftStrategy
+		class OperatorOculusRiftStrategy : public IOperatorOculusRiftStrategy, public operator_controller::IOperatorHeadset
 		{
 			friend class OperatorViewFactory;
 
 		private:
-			explicit OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer);
+			explicit OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller);
 
 		public:
 			~OperatorOculusRiftStrategy();
 
 		private:
 			std::shared_ptr<IOperatorViewRenderer> m_renderer;
+			std::shared_ptr<operator_controller::IOperatorController> m_controller;
 
 		private:
 			virtual void initialize() override;
@@ -35,15 +42,6 @@ namespace operator_view
 			ovrSession m_ovrSession;
 			ovrGraphicsLuid m_luid;
 			ovrHmdDesc m_ovrHMDDescriptor;
-
-		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
-
-		private:
-			std::vector<std::weak_ptr<IOperatorViewObserver>> m_observers;
-
-		private:
-			virtual void notifyHeadsetOrientationChanged(double yaw, double pitch, double roll) override;
 		};
 	}
 }

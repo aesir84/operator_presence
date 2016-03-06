@@ -15,11 +15,5 @@ namespace operator_view
 	/// can be configured to use either OpenGL or Direct3D for rendering.
 	///
 	class IOperatorOculusRiftStrategy : public IOperatorViewStrategy
-	{
-	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) = 0;
-
-	private:
-		virtual void notifyHeadsetOrientationChanged(double yaw, double pitch, double roll) = 0;
-	};
+	{ };
 }

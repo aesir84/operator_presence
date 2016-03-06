@@ -2,14 +2,17 @@
 
 #include "OpenGLOperatorDisplayRenderer.h"
 
-#include "IOperatorViewObserver.h"
+#include "IOperatorController.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorDisplayRenderer::OperatorDisplayRenderer()
-		{ }
+		OperatorDisplayRenderer::OperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller)
+			: m_controller(controller)
+		{
+			m_controller->registerOperatorDisplay(this);
+		}
 
 		void OperatorDisplayRenderer::initialize(std::uint16_t width, std::uint16_t height)
 		{
@@ -78,63 +81,19 @@ namespace operator_view
 			setHeight(operatorDisplayHeight);
 		}
 
-		void OperatorDisplayRenderer::registerObserver(std::shared_ptr<IOperatorViewObserver> observer)
-		{
-			m_observers.push_back(observer);
-		}
-
-		void OperatorDisplayRenderer::notifyKeyPressed(Qt::Key key)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateKeyPressed(key);
-				}
-			}
-		}
-
-		void OperatorDisplayRenderer::notifyWindowExposed(WId windowId)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateWindowExposed(windowId);
-				}
-			}
-		}
-
-		void OperatorDisplayRenderer::notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateWindowSizeChanged(width, height);
-				}
-			}
-		}
-
 		void OperatorDisplayRenderer::exposeEvent(QExposeEvent * exposeEvent)
 		{
 			Q_UNUSED(exposeEvent);
 
 			if (isExposed())
 			{
-				notifyWindowExposed(winId());
+				m_controller->updateWindowExposed(winId());
 			}
 		}
 
 		void OperatorDisplayRenderer::keyReleaseEvent(QKeyEvent * keyEvent)
 		{
-			notifyKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
+			m_controller->updateKeyPressed(static_cast<Qt::Key>(keyEvent->key()));
 		}
 
 		void OperatorDisplayRenderer::resizeEvent(QResizeEvent * resizeEvent)
@@ -154,7 +113,7 @@ namespace operator_view
 			//
 			if (isExposed() && m_context.isValid())
 			{
-				notifyWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
+				m_controller->updateWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
 			}
 		}
 	}

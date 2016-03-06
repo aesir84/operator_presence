@@ -2,7 +2,7 @@
 
 #include "OpenGLOperatorOculusRiftStrategy.h"
 
-#include "IOperatorViewObserver.h"
+#include "IOperatorController.h"
 #include "IOperatorViewRenderer.h"
 
 #include "scope_guard.h"
@@ -11,9 +11,12 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer)
+		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller)
 			: m_renderer(renderer)
-		{ }
+			, m_controller(controller)
+		{
+			m_controller->registerOperatorHeadset(this);
+		}
 
 		OperatorOculusRiftStrategy::~OperatorOculusRiftStrategy()
 		{
@@ -34,7 +37,7 @@ namespace operator_view
 
 		void OperatorOculusRiftStrategy::render()
 		{
-			// TODO: notify the headset orientation
+			// TODO: update the headset orientation
 			// TODO: render
 		}
 
@@ -68,24 +71,6 @@ namespace operator_view
 
 			ovrCreationReverse.dismiss();
 			ovrInitializationReverse.dismiss();
-		}
-
-		void OperatorOculusRiftStrategy::registerObserver(std::shared_ptr<IOperatorViewObserver> observer)
-		{
-			m_observers.push_back(observer);
-		}
-
-		void OperatorOculusRiftStrategy::notifyHeadsetOrientationChanged(double yaw, double pitch, double roll)
-		{
-			for (auto & observer : m_observers)
-			{
-				auto existingObserver = observer.lock();
-
-				if (existingObserver)
-				{
-					existingObserver->updateHeadsetOrientationChanged(yaw, pitch, roll);
-				}
-			}
 		}
 	}
 }

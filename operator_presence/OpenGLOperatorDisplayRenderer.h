@@ -1,17 +1,26 @@
 #pragma once
 
+#include "IOperatorDisplay.h"
 #include "IOperatorDisplayRenderer.h"
+
+namespace operator_controller
+{
+	class IOperatorController;
+}
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorDisplayRenderer : public QWindow, public IOperatorDisplayRenderer
+		class OperatorDisplayRenderer : public QWindow, public IOperatorDisplayRenderer, public operator_controller::IOperatorDisplay
 		{
 			friend class OperatorViewFactory;
 
 		private:
-			OperatorDisplayRenderer();
+			OperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller);
+
+		private:
+			std::shared_ptr<operator_controller::IOperatorController> m_controller;
 
 		private:
 			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
@@ -25,17 +34,6 @@ namespace operator_view
 
 		private:
 			QOpenGLContext m_context;
-
-		private:
-			virtual void registerObserver(std::shared_ptr<IOperatorViewObserver> observer) override;
-
-		private:
-			std::vector<std::weak_ptr<IOperatorViewObserver>> m_observers;
-
-		private:
-			virtual void notifyKeyPressed(Qt::Key key) override;
-			virtual void notifyWindowExposed(WId windowId) override;
-			virtual void notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height) override;
 
 		private:
 			virtual void exposeEvent(QExposeEvent * exposeEvent) override;

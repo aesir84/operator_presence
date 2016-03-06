@@ -1,5 +1,10 @@
 #pragma once
 
+namespace operator_controller
+{
+	class IOperatorController;
+}
+
 namespace operator_view
 {
 	class IOperatorDisplayRenderer;
@@ -16,8 +21,8 @@ namespace operator_view
 		virtual ~IOperatorViewFactory() { }
 
 	public:
-		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer() = 0;
-		virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer) = 0;
+		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller) = 0;
+		virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller) = 0;
 		virtual std::shared_ptr<IOperatorVisionDecorator> createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer) = 0;
 	};
 }

@@ -59,6 +59,9 @@
     <Filter Include="Header Files\operator_controller">
       <UniqueIdentifier>{a52ffc0c-b69b-43db-82f2-573c81d369ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\operator_controller">
+      <UniqueIdentifier>{17874823-ede7-4025-8643-70726006306e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,6 +114,9 @@
     </ClCompile>
     <ClCompile Include="OperatorView.cpp">
       <Filter>Source Files\operator_view</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorController.cpp">
+      <Filter>Source Files\operator_controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +238,9 @@
       <Filter>Header Files\operator_controller</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorHeadset.h">
+      <Filter>Header Files\operator_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorController.h">
       <Filter>Header Files\operator_controller</Filter>
     </ClInclude>
   </ItemGroup>

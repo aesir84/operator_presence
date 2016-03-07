@@ -37,6 +37,22 @@ namespace operator_view
 	protected:
 		OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<operator_controller::IOperatorController> controller, std::unique_ptr<IOperatorViewFactory> viewFactory);
 
+	public:
+		/// \brief A destructor
+		///
+		/// Here it is mandatory to provide a destructor,
+		/// which definition must be in the source file (cpp).
+		/// Failing to do so will result in a complile-time
+		/// error due to the incomplete types used for the
+		/// smart pointers present in this class definition.
+		/// For example, std::unique_ptr fails to delete its
+		/// managed object in case of an incomplete type.
+		/// Therefore, it is important to put the definition
+		/// of the class's destructor in the source file,
+		/// because the source file has the required includes.
+		///
+		~OperatorViewBuilder();
+
 	private:
 		std::shared_ptr<operator_model::IOperatorModel> m_model;
 		std::shared_ptr<operator_controller::IOperatorController> m_controller;

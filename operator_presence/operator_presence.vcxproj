@@ -91,6 +91,7 @@
     <ClCompile Include="OpenGLOperatorVisionDecorator.cpp" />
     <ClCompile Include="OpenGLOperatorViewFactory.cpp" />
     <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp" />
+    <ClCompile Include="OperatorController.cpp" />
     <ClCompile Include="OperatorHeadOrientation.cpp" />
     <ClCompile Include="OperatorModel.cpp" />
     <ClCompile Include="OperatorView.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OpenGLOperatorViewRendererFactory.h" />
+    <ClInclude Include="OperatorController.h" />
     <ClInclude Include="OperatorView.h" />
     <ClInclude Include="OperatorViewImageType.h" />
     <ClInclude Include="OperatorEyeImageType.h" />

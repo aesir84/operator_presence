@@ -28,6 +28,8 @@ namespace operator_view
 		m_viewRenderer = visionDecorator;
 	}
 
+	OperatorViewBuilder::~OperatorViewBuilder() = default;
+
 	std::shared_ptr<IOperatorView> OperatorViewBuilder::build(Strategy strategy)
 	{
 		//
@@ -50,6 +52,8 @@ namespace operator_view
 			}
 		}
 
+		// Return the view parametrized with the requested strategy.
+		//
 		return std::shared_ptr<IOperatorView>(new OperatorView(viewStrategy));
 	}
 }

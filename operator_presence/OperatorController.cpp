@@ -2,6 +2,8 @@
 
 #include "OperatorController.h"
 
+#include "IOperatorDisplay.h"
+#include "IOperatorHeadset.h"
 #include "IOperatorModel.h"
 #include "IOperatorView.h"
 
@@ -21,6 +23,8 @@ namespace operator_controller
 		: m_model(model)
 		, m_operatorDisplay(nullptr)
 		, m_operatorHeadset(nullptr)
+		, m_exposedWindowId(0)
+		, m_state(ControlState::Initializing)
 	{ }
 
 	void OperatorController::initializeView()
@@ -45,16 +49,87 @@ namespace operator_controller
 
 	void OperatorController::updateKeyPressed(Qt::Key key)
 	{
-		// TODO: corresponding UI logic goes here
+		m_pressedKey = key;
+		control(ControlSignal::KeyPressed);
 	}
 
 	void OperatorController::updateWindowExposed(WId windowId)
 	{
-		// TODO: corresponding UI logic goes here
+		m_exposedWindowId = windowId;
+		control(ControlSignal::WindowExposed);
+	}
+
+	void OperatorController::updateWindowRefreshed()
+	{
+		control(ControlSignal::WindowRefreshed);
 	}
 
 	void OperatorController::updateWindowSizeChanged(std::uint16_t width, std::uint16_t height)
 	{
 		// TODO: corresponding UI logic goes here
+	}
+
+	void OperatorController::control(ControlSignal signal)
+	{
+		switch (m_state)
+		{
+			case ControlState::Initializing:
+			{
+				switch (signal)
+				{
+					case ControlSignal::WindowExposed:
+					{
+						// A contract: Before calling this method with this signal ControlSignal::WindowExposed as its argument,
+						//             the member m_exposedWindowId must have already been set by the caller.
+						//
+						assert(m_exposedWindowId != 0);
+
+						m_operatorHeadset->setWindowId(m_exposedWindowId);
+						m_view->initialize();
+						m_operatorDisplay->refresh();
+
+						m_state = ControlState::Rendering;
+					}
+					break;
+
+					default:
+					{
+						// For now let's put an assert here
+						// to see how things will operate.
+						//
+						assert(false);
+					}
+				}
+				
+			}
+			break;
+
+			case ControlState::Rendering:
+			{
+				switch (signal)
+				{
+					case ControlSignal::WindowRefreshed:
+					{
+						m_view->render();
+						m_operatorDisplay->refresh();
+					}
+					break;
+
+					default:
+					{
+						// For now let's put an assert here
+						// to see how things will operate.
+						//
+						assert(false);
+					}
+				}
+			}
+			break;
+
+			default:
+			{
+				assert(false);
+			}
+		}
 	}
 }

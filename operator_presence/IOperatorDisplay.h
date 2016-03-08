@@ -11,5 +11,8 @@ namespace operator_controller
 	{
 	public:
 		virtual ~IOperatorDisplay() { }
+
+	public:
+		virtual void refresh() = 0;
 	};
 }

@@ -81,6 +81,17 @@ namespace operator_view
 			setHeight(operatorDisplayHeight);
 		}
 
+		bool OperatorDisplayRenderer::event(QEvent * e)
+		{
+			if (e->type() == QEvent::UpdateRequest)
+			{
+				m_controller->updateWindowRefreshed();
+				return true;
+			}
+
+			return QWindow::event(e);
+		}
+
 		void OperatorDisplayRenderer::exposeEvent(QExposeEvent * exposeEvent)
 		{
 			Q_UNUSED(exposeEvent);
@@ -115,6 +126,11 @@ namespace operator_view
 			{
 				m_controller->updateWindowSizeChanged(resizeEvent->size().width(), resizeEvent->size().height());
 			}
+		}
+
+		void OperatorDisplayRenderer::refresh()
+		{
+			QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest));
 		}
 	}
 }

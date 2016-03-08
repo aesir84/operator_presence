@@ -42,6 +42,12 @@ namespace operator_view
 			ovrSession m_ovrSession;
 			ovrGraphicsLuid m_luid;
 			ovrHmdDesc m_ovrHMDDescriptor;
+
+		private:
+			virtual void setWindowId(WId winId) override;
+
+		private:
+			WId m_winId;
 		};
 	}
 }

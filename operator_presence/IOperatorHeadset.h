@@ -11,5 +11,8 @@ namespace operator_controller
 	{
 	public:
 		virtual ~IOperatorHeadset() { }
+
+	public:
+		virtual void setWindowId(WId winId) = 0;
 	};
 }

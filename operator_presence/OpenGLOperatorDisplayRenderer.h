@@ -36,9 +36,13 @@ namespace operator_view
 			QOpenGLContext m_context;
 
 		private:
+			virtual bool event(QEvent * e) override;
 			virtual void exposeEvent(QExposeEvent * exposeEvent) override;
 			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;
 			virtual void resizeEvent(QResizeEvent * resizeEvent) override;
+
+		private:
+			virtual void refresh() override;
 		};
 	}
 }

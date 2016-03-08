@@ -14,6 +14,7 @@ namespace operator_view
 		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller)
 			: m_renderer(renderer)
 			, m_controller(controller)
+			, m_winId(0)
 		{
 			m_controller->registerOperatorHeadset(this);
 		}
@@ -31,6 +32,10 @@ namespace operator_view
 			std::uint16_t const height = m_ovrHMDDescriptor.Resolution.h;
 
 			m_renderer->initialize(width, height);
+
+			// Make sure the controller has already set a proper value in this member.
+			//
+			assert(m_winId != 0);
 
 			// TODO: configure Oculus Rift rendering...
 		}
@@ -71,6 +76,11 @@ namespace operator_view
 
 			ovrCreationReverse.dismiss();
 			ovrInitializationReverse.dismiss();
+		}
+
+		void OperatorOculusRiftStrategy::setWindowId(WId winId)
+		{
+			m_winId = winId;
 		}
 	}
 }

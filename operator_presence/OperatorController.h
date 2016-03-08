@@ -41,6 +41,21 @@ namespace operator_controller
 		virtual void updateHeadsetOrientationChanged(double yaw, double pitch, double roll) override;
 		virtual void updateKeyPressed(Qt::Key key) override;
 		virtual void updateWindowExposed(WId windowId) override;
+		virtual void updateWindowRefreshed() override;
 		virtual void updateWindowSizeChanged(std::uint16_t width, std::uint16_t height) override;
+
+	private:
+		WId m_exposedWindowId;
+		Qt::Key m_pressedKey;
+
+	private:
+		enum class ControlSignal { KeyPressed, WindowExposed, WindowRefreshed };
+		enum class ControlState { Initializing, Rendering, Terminating };
+
+	private:
+		void control(ControlSignal signal);
+
+	private:
+		ControlState m_state;
 	};
 }

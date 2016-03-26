@@ -2,21 +2,21 @@
 
 #include "OperatorView.h"
 
-#include "IOperatorViewStrategy.h"
+#include "IOperatorViewDevice.h"
 
 namespace operator_view
 {
-	OperatorView::OperatorView(std::shared_ptr<IOperatorViewStrategy> viewStrategy)
-		: m_viewStrategy(viewStrategy)
+	OperatorView::OperatorView(std::shared_ptr<IDevice> device)
+		: m_device(device)
 	{ }
 
 	void OperatorView::initialize()
 	{
-		m_viewStrategy->initialize();
+		m_device->initialize();
 	}
 
 	void OperatorView::render()
 	{
-		m_viewStrategy->render();
+		m_device->render();
 	}
 }

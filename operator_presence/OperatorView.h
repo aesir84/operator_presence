@@ -4,20 +4,20 @@
 
 namespace operator_view
 {
-	class IOperatorViewStrategy;
+	class IDevice;
 }
 
 namespace operator_view
 {
 	class OperatorView : public IOperatorView
 	{
-		friend class OperatorViewBuilder;
+		friend class Builder;
 
 	private:
-		OperatorView(std::shared_ptr<IOperatorViewStrategy> viewStrategy);
+		OperatorView(std::shared_ptr<IDevice> device);
 
 	private:
-		std::shared_ptr<IOperatorViewStrategy> m_viewStrategy;
+		std::shared_ptr<IDevice> m_device;
 
 	private:
 		virtual void initialize() override;

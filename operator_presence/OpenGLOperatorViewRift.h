@@ -1,35 +1,30 @@
 #pragma once
 
-#include "IOperatorHeadset.h"
-#include "IOperatorOculusRiftStrategy.h"
-
-namespace operator_controller
-{
-	class IOperatorController;
-}
+#include "IOperatorViewDevice.h"
 
 namespace operator_view
 {
-	class IOperatorViewRenderer;
+	class IMediator;
+	class IRenderer;
 }
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorOculusRiftStrategy : public IOperatorOculusRiftStrategy, public operator_controller::IOperatorHeadset
+		class Rift : public IDevice
 		{
-			friend class OperatorViewFactory;
+			friend class Factory;
 
 		private:
-			explicit OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller);
+			Rift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator);
 
 		public:
-			~OperatorOculusRiftStrategy();
+			~Rift();
 
 		private:
-			std::shared_ptr<IOperatorViewRenderer> m_renderer;
-			std::shared_ptr<operator_controller::IOperatorController> m_controller;
+			std::shared_ptr<IRenderer> m_renderer;
+			std::shared_ptr<IMediator> m_mediator;
 
 		private:
 			virtual void initialize() override;
@@ -45,10 +40,10 @@ namespace operator_view
 			ovrHmdDesc m_ovrHMDDescriptor;
 
 		private:
-			virtual void setWindowId(WId winId) override;
+			virtual void setWindowId(std::uint32_t windowId) override;
 
 		private:
-			WId m_winId;
+			std::uint32_t m_windowId;
 		};
 	}
 }

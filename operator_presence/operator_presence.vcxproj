@@ -141,7 +141,7 @@
     </CustomBuild>
     <ClInclude Include="IOperatorViewWindow.h" />
     <ClInclude Include="IOperatorModel.h" />
-    <ClInclude Include="IOperatorOculusRiftStrategy.h" />
+    <ClInclude Include="IOperatorViewRift.h" />
     <ClInclude Include="IOperatorView.h" />
     <ClInclude Include="IOperatorVisionObserver.h" />
     <ClInclude Include="IOperatorViewRenderer.h" />

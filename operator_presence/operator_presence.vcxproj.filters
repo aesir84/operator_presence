@@ -204,9 +204,6 @@
     <ClInclude Include="OperatorViewImageType.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorOculusRiftStrategy.h">
-      <Filter>Header Files\operator_view</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLOperatorViewFactory.h">
       <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
@@ -239,6 +236,9 @@
     </ClInclude>
     <ClInclude Include="OpenGLOperatorViewRift.h">
       <Filter>Header Files\operator_view\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewRift.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

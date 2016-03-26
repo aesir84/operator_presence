@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorOculusRiftStrategy.h"
+#include "OpenGLOperatorViewRift.h"
 
-#include "IOperatorController.h"
+#include "IOperatorViewMediator.h"
 #include "IOperatorViewRenderer.h"
 
 #include "scope_guard.h"
@@ -11,20 +11,20 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorOculusRiftStrategy::OperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller)
+		Rift::Rift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator)
 			: m_renderer(renderer)
-			, m_controller(controller)
-			, m_winId(0)
+			, m_mediator(mediator)
+			, m_windowId(0)
 		{
-			m_controller->registerOperatorHeadset(this);
+			m_mediator->registerDevice(this);
 		}
 
-		OperatorOculusRiftStrategy::~OperatorOculusRiftStrategy()
+		Rift::~Rift()
 		{
 			finishOculusVR();
 		}
 
-		void OperatorOculusRiftStrategy::initialize()
+		void Rift::initialize()
 		{
 			startOculusVR();
 
@@ -33,20 +33,20 @@ namespace operator_view
 
 			m_renderer->initialize(width, height);
 
-			// Make sure the controller has already set a proper value in this member.
+			// Make sure the mediator has already set a proper value in this member.
 			//
-			assert(m_winId != 0);
+			assert(m_windowId != 0);
 
 			// TODO: configure Oculus Rift rendering...
 		}
 
-		void OperatorOculusRiftStrategy::render()
+		void Rift::render()
 		{
 			// TODO: update the headset orientation
 			// TODO: render
 		}
 
-		void OperatorOculusRiftStrategy::startOculusVR()
+		void Rift::startOculusVR()
 		{
 			ovrResult result = ovrSuccess;
 
@@ -78,15 +78,15 @@ namespace operator_view
 			ovrInitializationReverse.dismiss();
 		}
 
-		void OperatorOculusRiftStrategy::finishOculusVR()
+		void Rift::finishOculusVR()
 		{
 			ovr_Destroy(m_ovrSession);
 			ovr_Shutdown();
 		}
 
-		void OperatorOculusRiftStrategy::setWindowId(WId winId)
+		void Rift::setWindowId(std::uint32_t windowId)
 		{
-			m_winId = winId;
+			m_windowId = windowId;
 		}
 	}
 }

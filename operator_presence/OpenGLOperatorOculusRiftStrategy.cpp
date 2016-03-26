@@ -21,7 +21,7 @@ namespace operator_view
 
 		OperatorOculusRiftStrategy::~OperatorOculusRiftStrategy()
 		{
-			ovr_Shutdown();
+			finishOculusVR();
 		}
 
 		void OperatorOculusRiftStrategy::initialize()
@@ -70,12 +70,18 @@ namespace operator_view
 
 				// TODO: throw an appropriate exception
 			}
-			auto ovrCreationReverse = helpers::guard_scope([this] {ovr_Destroy(m_ovrSession); });
+			auto ovrCreationReverse = helpers::guard_scope([this] { ovr_Destroy(m_ovrSession); });
 
 			m_ovrHMDDescriptor = ovr_GetHmdDesc(m_ovrSession);
 
 			ovrCreationReverse.dismiss();
 			ovrInitializationReverse.dismiss();
+		}
+
+		void OperatorOculusRiftStrategy::finishOculusVR()
+		{
+			ovr_Destroy(m_ovrSession);
+			ovr_Shutdown();
 		}
 
 		void OperatorOculusRiftStrategy::setWindowId(WId winId)

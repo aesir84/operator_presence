@@ -30,7 +30,7 @@ namespace operator_controller
 		/// \brief Registration of the components of the operator's view
 		///
 		/// The controller requires the components to register themselves
-		/// in order to be able to act on them once a decision is taken
+		/// in order to be able to act on them once a decision is taken.
 		///
 		virtual void registerOperatorDisplay(IOperatorDisplay * operatorDisplay) = 0;
 		virtual void registerOperatorHeadset(IOperatorHeadset * operatorHeadset) = 0;

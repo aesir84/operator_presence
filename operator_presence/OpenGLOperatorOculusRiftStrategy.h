@@ -37,6 +37,7 @@ namespace operator_view
 
 		private:
 			void startOculusVR();
+			void finishOculusVR();
 
 		private:
 			ovrSession m_ovrSession;

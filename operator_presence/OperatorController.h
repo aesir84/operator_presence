@@ -38,6 +38,13 @@ namespace operator_controller
 		IOperatorHeadset * m_operatorHeadset;
 
 	private:
+		/// \brief Overriden mediator interface methods
+		///
+		/// These methods serve as a gateway to the main routine of this controller, control() method.
+		/// Therefore, their only tasks are:
+		/// 1. save any passed parameters to the corresponding fields in the object
+		/// 2. delegate the correct signal to the control() method
+		///
 		virtual void updateHeadsetOrientationChanged(double yaw, double pitch, double roll) override;
 		virtual void updateKeyPressed(Qt::Key key) override;
 		virtual void updateWindowExposed(WId windowId) override;
@@ -45,11 +52,18 @@ namespace operator_controller
 		virtual void updateWindowSizeChanged(std::uint16_t width, std::uint16_t height) override;
 
 	private:
+		double m_yaw;
+		double m_pitch;
+		double m_roll;
+
 		WId m_exposedWindowId;
 		Qt::Key m_pressedKey;
 
+		std::uint16_t m_windowWidth;
+		std::uint16_t m_windowHeight;
+
 	private:
-		enum class ControlSignal { KeyPressed, WindowExposed, WindowRefreshed };
+		enum class ControlSignal { HeadOrientationChanged, KeyPressed, WindowExposed, WindowRefreshed, WindowSizeChanged };
 		enum class ControlState { Initializing, Rendering, Terminating };
 
 	private:

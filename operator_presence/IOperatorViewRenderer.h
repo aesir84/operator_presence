@@ -17,9 +17,10 @@ namespace operator_view
 	public:
 		/// \brief A method to perform delayed initialization
 		///
-		/// This method may be used to perform rendering
-		/// specific initialization, which which should be delayed
-		/// until some proper conditions for initialization are met.
+		/// By providing a separate method for initialization,
+		/// the initialization of an object is separated from its creation.
+		/// This can be useful if the object needs to perform a delayed initialization,
+		/// i.e. to initialize only when certain conditions are met.
 		/// \param The width of the operator's view
 		/// \param The height of the operator's view
 		///

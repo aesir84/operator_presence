@@ -4,7 +4,7 @@ namespace operator_view
 {
 	/// \brief An interface for the operator's view
 	///
-	/// The operator's view as a 'dumb device' in a sense
+	/// The operator's view is a 'dumb device' in a sense
 	/// that it does not contain any UI business logic.
 	/// The main purpose of the view is to render certain
 	/// things in one way or another. All the decisions related

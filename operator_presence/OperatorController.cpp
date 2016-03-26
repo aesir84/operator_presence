@@ -44,7 +44,11 @@ namespace operator_controller
 
 	void OperatorController::updateHeadsetOrientationChanged(double yaw, double pitch, double roll)
 	{
-		m_model->turnHead(yaw, pitch, roll);
+		m_yaw = yaw;
+		m_pitch = pitch;
+		m_roll = roll;
+
+		control(ControlSignal::HeadOrientationChanged);
 	}
 
 	void OperatorController::updateKeyPressed(Qt::Key key)
@@ -66,7 +70,10 @@ namespace operator_controller
 
 	void OperatorController::updateWindowSizeChanged(std::uint16_t width, std::uint16_t height)
 	{
-		// TODO: corresponding UI logic goes here
+		m_windowWidth = width;
+		m_windowHeight = height;
+
+		control(ControlSignal::WindowSizeChanged);
 	}
 
 	void OperatorController::control(ControlSignal signal)
@@ -89,6 +96,24 @@ namespace operator_controller
 						m_operatorDisplay->refresh();
 
 						m_state = ControlState::Rendering;
+					}
+					break;
+
+					case ControlSignal::KeyPressed:
+					{
+						switch (m_pressedKey)
+						{
+							case Qt::Key_Escape:
+							{
+								m_state = ControlState::Terminating;
+							}
+							break;
+
+							default:
+							{
+
+							}
+						}
 					}
 					break;
 
@@ -115,6 +140,36 @@ namespace operator_controller
 					}
 					break;
 
+					case ControlSignal::WindowSizeChanged:
+					{
+
+					}
+					break;
+
+					case ControlSignal::HeadOrientationChanged:
+					{
+						m_model->turnHead(m_yaw, m_pitch, m_roll);
+					}
+					break;
+
+					case ControlSignal::KeyPressed:
+					{
+						switch (m_pressedKey)
+						{
+							case Qt::Key_Escape:
+							{
+								m_state = ControlState::Terminating;
+							}
+							break;
+
+							default:
+							{
+
+							}
+						}
+					}
+					break;
+
 					default:
 					{
 						// For now let's put an assert here
@@ -123,6 +178,12 @@ namespace operator_controller
 						assert(false);
 					}
 				}
+			}
+			break;
+
+			case ControlState::Terminating:
+			{
+
 			}
 			break;
 

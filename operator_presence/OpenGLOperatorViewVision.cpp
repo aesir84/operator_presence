@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorVisionDecorator.h"
+#include "OpenGLOperatorViewVision.h"
 
 namespace operator_view
 {
@@ -21,12 +21,12 @@ namespace operator_view
 			};
 		}
 
-		OperatorVisionDecorator::OperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer)
-			: IOperatorVisionDecorator(decoratedRenderer)
+		Vision::Vision(std::shared_ptr<IRenderer> decoratedRenderer)
+			: IVision(decoratedRenderer)
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
 		{ }
 
-		void OperatorVisionDecorator::initialize(std::uint16_t width, std::uint16_t height)
+		void Vision::initialize(std::uint16_t width, std::uint16_t height)
 		{
 			// Firstly, let the decorated renderer (most likely the window) perform its initialization.
 			//
@@ -54,19 +54,19 @@ namespace operator_view
 			m_vao.release();
 		}
 
-		void OperatorVisionDecorator::renderLeftEye()
+		void Vision::renderLeftEye()
 		{
 			m_decoratedRenderer->renderLeftEye();
 			render(Eye::Left);
 		}
 
-		void OperatorVisionDecorator::renderRightEye()
+		void Vision::renderRightEye()
 		{
 			m_decoratedRenderer->renderRightEye();
 			render(Eye::Right);
 		}
 
-		void OperatorVisionDecorator::render(Eye eye)
+		void Vision::render(Eye eye)
 		{
 			std::lock_guard<std::mutex> textureAccess(m_eyeTextureMutexes[helpers::as_integer(eye)]);
 
@@ -81,7 +81,7 @@ namespace operator_view
 			m_shader.release();
 		}
 
-		void OperatorVisionDecorator::initShader()
+		void Vision::initShader()
 		{
 			QString const vertexShaderSource("#version 330 core\n"
 				"layout(location = 0) in vec3 vertexPosition;\n"
@@ -106,17 +106,17 @@ namespace operator_view
 			m_shader.link();
 		}
 
-		void OperatorVisionDecorator::updateLeftEyeImageChanged(Image leftEyeImage)
+		void Vision::updateLeftEyeImageChanged(Image leftEyeImage)
 		{
 			updateEyeImage(Eye::Left, leftEyeImage);
 		}
 
-		void OperatorVisionDecorator::updateRightEyeImageChanged(Image rightEyeImage)
+		void Vision::updateRightEyeImageChanged(Image rightEyeImage)
 		{
 			updateEyeImage(Eye::Right, rightEyeImage);
 		}
 
-		void OperatorVisionDecorator::updateEyeImage(Eye eye, Image image)
+		void Vision::updateEyeImage(Eye eye, Image image)
 		{
 			// Convert the image to a format which is used by OpenGL textures in Qt.
 			// RGBA8888 is a 32-bit byte-ordered RGBA format (8-8-8-8).

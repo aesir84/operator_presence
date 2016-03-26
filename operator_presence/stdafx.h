@@ -9,6 +9,7 @@
 #include <QtCore\qobject.h>
 #include <QtGui\qimage.h>
 #include <QtGui\qopenglbuffer.h>
+#include <QtGui\qopenglfunctions.h>
 #include <QtGui\qopenglshaderprogram.h>
 #include <QtGui\qopengltexture.h>
 #include <QtGui\qopenglvertexarrayobject.h>

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "OpenGLOperatorDisplayRenderer.h"
+#include "OpenGLOperatorViewWindow.h"
 
 #include "IOperatorViewMediator.h"
 
@@ -31,7 +31,6 @@ namespace operator_view
 
 		void Window::render()
 		{
-			m_context.makeCurrent(this);
 		}
 
 		void Window::setOperatorDisplaySize(std::uint16_t width, std::uint16_t height)

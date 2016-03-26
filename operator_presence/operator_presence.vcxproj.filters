@@ -129,9 +129,6 @@
     <ClInclude Include="scoped_enum_as_integer.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLOperatorDisplayRenderer.h">
-      <Filter>Header Files\operator_view\opengl</Filter>
-    </ClInclude>
     <ClInclude Include="scope_guard.h">
       <Filter>Header Files\helpers</Filter>
     </ClInclude>
@@ -239,6 +236,9 @@
     </ClInclude>
     <ClInclude Include="IOperatorViewWindow.h">
       <Filter>Header Files\operator_view</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLOperatorViewWindow.h">
+      <Filter>Header Files\operator_view\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

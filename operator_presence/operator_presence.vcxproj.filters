@@ -234,14 +234,11 @@
     <ClInclude Include="IOperatorController.h">
       <Filter>Header Files\operator_controller</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorDisplay.h">
-      <Filter>Header Files\operator_controller</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorHeadset.h">
-      <Filter>Header Files\operator_controller</Filter>
-    </ClInclude>
     <ClInclude Include="OperatorController.h">
       <Filter>Header Files\operator_controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorViewMediator.h">
+      <Filter>Header Files\operator_view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

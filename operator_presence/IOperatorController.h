@@ -1,25 +1,19 @@
 #pragma once
 
-/// \brief Forward declaration of the components of the operator's view
-///
-/// These components are represented as their corresponding interfaces,
-/// which serve as links between the controller - the mediator - and
-/// concrete instances of the components of the operator's view.
-///
-namespace operator_controller
-{
-	class IOperatorDisplay;
-	class IOperatorHeadset;
-}
-
 namespace operator_controller
 {
 	/// \brief An interface for the operator's controller
 	///
-	/// The controller serves as a mediator for the operator's view.
-	/// Therefore, the main tasks of the controller are:
-	/// * take a decision once some event is detected by the view
-	/// * act correspondingly to the taken decision
+	/// The controller provides a 'game' loop for the application.
+	/// Therefore, the tasks of the controller are as follows:
+	///    * update/render the view
+	///    * handle user input
+	///    * update the model
+	///    * ...
+	///
+	/// The controller should not depend on a particular windowing system,
+	/// i.e. on some specific library which provides windowing capabilities.
+	/// Rather than that, the controller should be abstracted from these details.
 	///
 	class IOperatorController
 	{
@@ -27,19 +21,11 @@ namespace operator_controller
 		virtual ~IOperatorController() { }
 
 	public:
-		/// \brief Registration of the components of the operator's view
+		/// \brief The 'game' loop
 		///
-		/// The controller requires the components to register themselves
-		/// in order to be able to act on them once a decision is taken.
+		/// This method should implement a traditional blocking gaming loop.
+		/// The intent is to make things very straightforward and understandable.
 		///
-		virtual void registerOperatorDisplay(IOperatorDisplay * operatorDisplay) = 0;
-		virtual void registerOperatorHeadset(IOperatorHeadset * operatorHeadset) = 0;
-
-	public:
-		virtual void updateHeadsetOrientationChanged(double yaw, double pitch, double roll) = 0;
-		virtual void updateKeyPressed(Qt::Key key) = 0;
-		virtual void updateWindowExposed(WId windowId) = 0;
-		virtual void updateWindowRefreshed() = 0;
-		virtual void updateWindowSizeChanged(std::uint16_t width, std::uint16_t height) = 0;
+		virtual void run() = 0;
 	};
 }

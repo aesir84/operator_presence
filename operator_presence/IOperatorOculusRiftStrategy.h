@@ -4,11 +4,6 @@
 
 namespace operator_view
 {
-	class IOperatorViewObserver;
-}
-
-namespace operator_view
-{
 	/// \brief An interface for rendering the operator's view using Oculus Rift strategy
 	///
 	/// The reason to provide this layer of abstraction is that Oculus Rift

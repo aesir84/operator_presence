@@ -4,11 +4,6 @@
 
 namespace operator_view
 {
-	class IOperatorViewObserver;
-}
-
-namespace operator_view
-{
 	/// \brief An interface for the operator's display rendering
 	///
 	/// The main objective of the classes that implement this interface is to

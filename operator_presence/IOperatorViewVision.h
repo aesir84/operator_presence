@@ -16,8 +16,6 @@ namespace operator_view
 	class IVision : public IDecorator, public operator_model::IOperatorVisionObserver
 	{
 	public:
-		IVision(std::shared_ptr<IRenderer> decoratedRenderer)
-			: IDecorator(decoratedRenderer)
-		{ }
+		IVision(std::shared_ptr<IRenderer> decoratedRenderer) : IDecorator(decoratedRenderer) { }
 	};
 }

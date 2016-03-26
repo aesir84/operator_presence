@@ -13,9 +13,7 @@ namespace operator_view
 	class IDecorator : public IRenderer
 	{
 	public:
-		IDecorator(std::shared_ptr<IRenderer> decoratedRenderer)
-			: m_decoratedRenderer(decoratedRenderer)
-		{ }
+		IDecorator(std::shared_ptr<IRenderer> decoratedRenderer) : m_decoratedRenderer(decoratedRenderer) { }
 
 	protected:
 		std::shared_ptr<IRenderer> m_decoratedRenderer;

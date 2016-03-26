@@ -87,7 +87,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLOperatorViewRift.cpp" />
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
-    <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorViewVision.cpp" />
     <ClCompile Include="OpenGLOperatorViewFactory.cpp" />
     <ClCompile Include="OpenGLOperatorViewWindow.cpp" />
@@ -116,7 +115,6 @@
     <ClInclude Include="IOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
-    <ClInclude Include="OpenGLOperatorViewRendererFactory.h" />
     <ClInclude Include="OperatorController.h" />
     <ClInclude Include="OperatorView.h" />
     <ClInclude Include="OperatorViewImageType.h" />

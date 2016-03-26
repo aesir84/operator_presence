@@ -10,14 +10,14 @@ namespace operator_view
 	/// The decorators must not depend on a concrete windowing subsystem, all they have
 	/// to care about is drawing their 3-D scenes using one low level 3-D API or another.
 	///
-	class IOperatorViewDecorator : public IOperatorViewRenderer
+	class IDecorator : public IRenderer
 	{
 	public:
-		IOperatorViewDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer)
+		IDecorator(std::shared_ptr<IRenderer> decoratedRenderer)
 			: m_decoratedRenderer(decoratedRenderer)
 		{ }
 
 	protected:
-		std::shared_ptr<IOperatorViewRenderer> m_decoratedRenderer;
+		std::shared_ptr<IRenderer> m_decoratedRenderer;
 	};
 }

@@ -73,9 +73,6 @@
     <ClCompile Include="OperatorVision.cpp">
       <Filter>Source Files\operator_model</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLOperatorDisplayRenderer.cpp">
-      <Filter>Source Files\operator_view\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="OperatorViewBuilder.cpp">
       <Filter>Source Files\operator_view</Filter>
     </ClCompile>
@@ -117,6 +114,9 @@
     </ClCompile>
     <ClCompile Include="OperatorController.cpp">
       <Filter>Source Files\operator_controller</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLOperatorViewWindow.cpp">
+      <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,12 +6,12 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorViewFactory : public IOperatorViewFactory
+		class Factory : public IFactory
 		{
 		private:
-			virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller) override;
-			virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller) override;
-			virtual std::shared_ptr<IOperatorVisionDecorator> createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer) override;
+			virtual std::shared_ptr<IRift> createRift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator) override;
+			virtual std::shared_ptr<IVision> createVision(std::shared_ptr<IRenderer> decoratedRenderer) override;
+			virtual std::shared_ptr<IWindow> createWindow(std::shared_ptr<IMediator> mediator) override;
 		};
 	}
 }

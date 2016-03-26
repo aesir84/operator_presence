@@ -1,28 +1,24 @@
 #pragma once
 
-namespace operator_controller
+namespace operator_view
 {
-	class IOperatorController;
+	class IMediator;
+	class IRenderer;
+	class IRift;
+	class IVision;
+	class IWindow;
 }
 
 namespace operator_view
 {
-	class IOperatorDisplayRenderer;
-	class IOperatorOculusRiftStrategy;
-	class IOperatorViewRenderer;
-	class IOperatorVisionDecorator;
-}
-
-namespace operator_view
-{
-	class IOperatorViewFactory
+	class IFactory
 	{
 	public:
-		virtual ~IOperatorViewFactory() { }
+		virtual ~IFactory() { }
 
 	public:
-		virtual std::shared_ptr<IOperatorDisplayRenderer> createOperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller) = 0;
-		virtual std::shared_ptr<IOperatorOculusRiftStrategy> createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller) = 0;
-		virtual std::shared_ptr<IOperatorVisionDecorator> createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer) = 0;
+		virtual std::shared_ptr<IRift> createRift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator) = 0;
+		virtual std::shared_ptr<IVision> createVision(std::shared_ptr<IRenderer> decoratedRenderer) = 0;
+		virtual std::shared_ptr<IWindow> createWindow(std::shared_ptr<IMediator> mediator) = 0;
 	};
 }

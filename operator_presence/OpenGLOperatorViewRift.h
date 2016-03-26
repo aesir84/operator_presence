@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOperatorViewDevice.h"
+#include "IOperatorViewRift.h"
 
 namespace operator_view
 {
@@ -12,7 +12,7 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class Rift : public IDevice
+		class Rift : public IRift
 		{
 			friend class Factory;
 

@@ -2,27 +2,27 @@
 
 #include "OpenGLOperatorViewFactory.h"
 
-#include "OpenGLOperatorDisplayRenderer.h"
-#include "OpenGLOperatorOculusRiftStrategy.h"
-#include "OpenGLOperatorVisionDecorator.h"
+#include "OpenGLOperatorViewRift.h"
+#include "OpenGLOperatorViewVision.h"
+#include "OpenGLOperatorViewWindow.h"
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		std::shared_ptr<IOperatorDisplayRenderer> OperatorViewFactory::createOperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller)
+		std::shared_ptr<IRift> Factory::createRift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator)
 		{
-			return std::shared_ptr<IOperatorDisplayRenderer>(new OperatorDisplayRenderer(controller));
+			return std::shared_ptr<IRift>(new Rift(renderer, mediator));
 		}
 
-		std::shared_ptr<IOperatorOculusRiftStrategy> OperatorViewFactory::createOperatorOculusRiftStrategy(std::shared_ptr<IOperatorViewRenderer> renderer, std::shared_ptr<operator_controller::IOperatorController> controller)
+		std::shared_ptr<IVision> Factory::createVision(std::shared_ptr<IRenderer> decoratedRenderer)
 		{
-			return std::shared_ptr<IOperatorOculusRiftStrategy>(new OperatorOculusRiftStrategy(renderer, controller));
+			return std::shared_ptr<IVision>(new Vision(decoratedRenderer));
 		}
 
-		std::shared_ptr<IOperatorVisionDecorator> OperatorViewFactory::createOperatorVisionDecorator(std::shared_ptr<IOperatorViewRenderer> decoratedRenderer)
+		std::shared_ptr<IWindow> Factory::createWindow(std::shared_ptr<IMediator> mediator)
 		{
-			return std::shared_ptr<IOperatorVisionDecorator>(new OperatorVisionDecorator(decoratedRenderer));
+			return std::shared_ptr<IWindow>(new Window(mediator));
 		}
 	}
 }

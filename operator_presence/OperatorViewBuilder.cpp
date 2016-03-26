@@ -2,47 +2,49 @@
 
 #include "OperatorViewBuilder.h"
 
-#include "IOperatorDisplayRenderer.h"
 #include "IOperatorModel.h"
-#include "IOperatorOculusRiftStrategy.h"
+
 #include "IOperatorViewFactory.h"
-#include "IOperatorVisionDecorator.h"
+#include "IOperatorViewRift.h"
+#include "IOperatorViewVision.h"
+#include "IOperatorViewWindow.h"
+
 #include "OperatorView.h"
 
 namespace operator_view
 {
-	OperatorViewBuilder::OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<operator_controller::IOperatorController> controller, std::unique_ptr<IOperatorViewFactory> viewFactory)
+	Builder::Builder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory)
 		: m_model(model)
-		, m_controller(controller)
-		, m_viewFactory(std::move(viewFactory))
+		, m_mediator(mediator)
+		, m_factory(std::move(factory))
 	{
 		//
 		// Compose what is a must for the view.
 		//
 
-		auto displayRenderer = m_viewFactory->createOperatorDisplayRenderer(m_controller);
-		auto visionDecorator = m_viewFactory->createOperatorVisionDecorator(displayRenderer);
+		auto window = m_factory->createWindow(m_mediator);
+		auto vision = m_factory->createVision(window);
 		
-		m_model->registerObserver(visionDecorator);
+		m_model->registerObserver(vision);
 
-		m_viewRenderer = visionDecorator;
+		m_renderer = vision;
 	}
 
-	OperatorViewBuilder::~OperatorViewBuilder() = default;
+	Builder::~Builder() = default;
 
-	std::shared_ptr<IOperatorView> OperatorViewBuilder::build(Strategy strategy)
+	std::shared_ptr<IOperatorView> Builder::build(DeviceType deviceType)
 	{
 		//
 		// Take what has been built so far and apply the requested strategy.
 		//
 
-		std::shared_ptr<IOperatorViewStrategy> viewStrategy;
+		std::shared_ptr<IDevice> device;
 
-		switch (strategy)
+		switch (deviceType)
 		{
-			case Strategy::OculusRift:
+			case DeviceType::Rift:
 			{
-				viewStrategy = m_viewFactory->createOperatorOculusRiftStrategy(m_viewRenderer, m_controller);
+				device = m_factory->createRift(m_renderer, m_mediator);
 			}
 			break;
 
@@ -52,8 +54,8 @@ namespace operator_view
 			}
 		}
 
-		// Return the view parametrized with the requested strategy.
+		// Return the view parametrized with the requested device type.
 		//
-		return std::shared_ptr<IOperatorView>(new OperatorView(viewStrategy));
+		return std::shared_ptr<IOperatorView>(new OperatorView(device));
 	}
 }

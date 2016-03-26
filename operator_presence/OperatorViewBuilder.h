@@ -1,10 +1,5 @@
 #pragma once
 
-namespace operator_controller
-{
-	class IOperatorController;
-}
-
 namespace operator_model
 {
 	class IOperatorModel;
@@ -12,9 +7,10 @@ namespace operator_model
 
 namespace operator_view
 {
+	class IFactory;
+	class IMediator;
 	class IOperatorView;
-	class IOperatorViewFactory;
-	class IOperatorViewRenderer;
+	class IRenderer;
 }
 
 namespace operator_view
@@ -32,10 +28,10 @@ namespace operator_view
 	/// so that appropriate rendering objects -
 	/// OpenGL, Direct3D, etc - can be created.
 	///
-	class OperatorViewBuilder
+	class Builder
 	{
 	protected:
-		OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<operator_controller::IOperatorController> controller, std::unique_ptr<IOperatorViewFactory> viewFactory);
+		Builder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory);
 
 	public:
 		/// \brief A destructor
@@ -51,20 +47,20 @@ namespace operator_view
 		/// of the class's destructor in the source file,
 		/// because the source file has the required includes.
 		///
-		~OperatorViewBuilder();
+		~Builder();
 
 	private:
 		std::shared_ptr<operator_model::IOperatorModel> m_model;
-		std::shared_ptr<operator_controller::IOperatorController> m_controller;
+		std::shared_ptr<IMediator> m_mediator;
 
-		std::unique_ptr<IOperatorViewFactory> m_viewFactory;
+		std::unique_ptr<IFactory> m_factory;
 
 	public:
 		/// \brief Additional views
 		///
 
 	public:
-		enum class Strategy { OculusRift };
+		enum class DeviceType { Rift };
 
 	public:
 		/// \brief The final result output
@@ -72,9 +68,9 @@ namespace operator_view
 		/// The method returns a pointer to the interface IOperatorView which is an
 		/// abstraction meant to be used by other system parts like the operator controller.
 		///
-		std::shared_ptr<IOperatorView> build(Strategy strategy);
+		std::shared_ptr<IOperatorView> build(DeviceType deviceType);
 
 	private:
-		std::shared_ptr<IOperatorViewRenderer> m_viewRenderer;
+		std::shared_ptr<IRenderer> m_renderer;
 	};
 }

@@ -8,8 +8,8 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		OperatorViewBuilder::OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<operator_controller::IOperatorController> controller)
-			: operator_view::OperatorViewBuilder(model, controller, std::make_unique<OperatorViewFactory>())
+		Builder::Builder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IMediator> mediator)
+			: operator_view::Builder(model, mediator, std::make_unique<Factory>())
 		{ }
 	}
 }

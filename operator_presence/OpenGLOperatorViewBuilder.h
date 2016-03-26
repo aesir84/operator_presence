@@ -6,10 +6,10 @@ namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorViewBuilder : public operator_view::OperatorViewBuilder
+		class Builder : public operator_view::Builder
 		{
 		public:
-			OperatorViewBuilder(std::shared_ptr<operator_model::IOperatorModel> operatorModel, std::shared_ptr<operator_controller::IOperatorController> controller);
+			Builder(std::shared_ptr<operator_model::IOperatorModel> operatorModel, std::shared_ptr<IMediator> mediator);
 		};
 	}
 }

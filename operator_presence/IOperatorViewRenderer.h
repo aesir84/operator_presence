@@ -5,14 +5,14 @@ namespace operator_view
 	/// \brief An interface for rendering the operator's view
 	///
 	/// Each class implementing this interface shall render its own
-	/// specific part of the whole view, e.g. a display, vision, HUD, etc.
+	/// specific part of the whole view, e.g. a window, vision, HUD, etc.
 	/// Since the operator has two eyes, this interface allows rendering to each eye separately.
 	/// The interface also favors delayed initialization.
 	///
-	class IOperatorViewRenderer
+	class IRenderer
 	{
 	public:
-		virtual ~IOperatorViewRenderer() { }
+		virtual ~IRenderer() { }
 
 	public:
 		/// \brief A method to perform delayed initialization

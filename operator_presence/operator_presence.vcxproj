@@ -85,7 +85,7 @@
     <ClCompile Include="ImageInputStreamRotator.cpp" />
     <ClCompile Include="ImageInputStreamSharer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OpenGLOperatorOculusRiftStrategy.cpp" />
+    <ClCompile Include="OpenGLOperatorViewRift.cpp" />
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp" />
     <ClCompile Include="OpenGLOperatorViewRendererFactory.cpp" />
     <ClCompile Include="OpenGLOperatorViewVision.cpp" />
@@ -112,7 +112,7 @@
     <ClInclude Include="ImageType.h" />
     <ClInclude Include="IOperatorController.h" />
     <ClInclude Include="IOperatorViewMediator.h" />
-    <ClInclude Include="IOperatorViewStrategy.h" />
+    <ClInclude Include="IOperatorViewDevice.h" />
     <ClInclude Include="IOperatorVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
@@ -147,7 +147,7 @@
     <ClInclude Include="IOperatorViewRenderer.h" />
     <ClInclude Include="IOperatorViewFactory.h" />
     <ClInclude Include="IOperatorViewVision.h" />
-    <ClInclude Include="OpenGLOperatorOculusRiftStrategy.h" />
+    <ClInclude Include="OpenGLOperatorViewRift.h" />
     <ClInclude Include="OpenGLOperatorViewBuilder.h" />
     <ClInclude Include="OpenGLOperatorViewVision.h" />
     <ClInclude Include="OpenGLOperatorViewFactory.h" />

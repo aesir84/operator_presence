@@ -1,26 +1,25 @@
 #pragma once
 
-#include "IOperatorDisplay.h"
-#include "IOperatorDisplayRenderer.h"
+#include "IOperatorViewWindow.h"
 
-namespace operator_controller
+namespace operator_view
 {
-	class IOperatorController;
+	class IMediator;
 }
 
 namespace operator_view
 {
 	namespace opengl
 	{
-		class OperatorDisplayRenderer : public QWindow, public IOperatorDisplayRenderer, public operator_controller::IOperatorDisplay
+		class Window : public IWindow
 		{
-			friend class OperatorViewFactory;
+			friend class Factory;
 
 		private:
-			OperatorDisplayRenderer(std::shared_ptr<operator_controller::IOperatorController> controller);
+			Window(std::shared_ptr<IMediator> mediator);
 
 		private:
-			std::shared_ptr<operator_controller::IOperatorController> m_controller;
+			std::shared_ptr<IMediator> m_mediator;
 
 		private:
 			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
@@ -31,18 +30,6 @@ namespace operator_view
 		private:
 			void render();
 			void setOperatorDisplaySize(std::uint16_t width, std::uint16_t height);
-
-		private:
-			QOpenGLContext m_context;
-
-		private:
-			virtual bool event(QEvent * e) override;
-			virtual void exposeEvent(QExposeEvent * exposeEvent) override;
-			virtual void keyReleaseEvent(QKeyEvent * keyEvent) override;
-			virtual void resizeEvent(QResizeEvent * resizeEvent) override;
-
-		private:
-			virtual void refresh() override;
 		};
 	}
 }

@@ -139,7 +139,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
-    <ClInclude Include="IOperatorDisplayRenderer.h" />
+    <ClInclude Include="IOperatorViewWindow.h" />
     <ClInclude Include="IOperatorModel.h" />
     <ClInclude Include="IOperatorOculusRiftStrategy.h" />
     <ClInclude Include="IOperatorView.h" />

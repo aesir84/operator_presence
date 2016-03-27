@@ -2,10 +2,11 @@
 
 #include "OperatorController.h"
 
-#include "IOperatorDisplay.h"
-#include "IOperatorHeadset.h"
 #include "IOperatorModel.h"
+
 #include "IOperatorView.h"
+#include "IOperatorViewDevice.h"
+#include "IOperatorViewWindow.h"
 
 #include "OpenGLOperatorViewBuilder.h"
 
@@ -27,7 +28,7 @@ namespace operator_controller
 
 	void OperatorController::initializeView()
 	{
-		m_view = operator_view::opengl::OperatorViewBuilder(m_model, shared_from_this()).build(operator_view::OperatorViewBuilder::Strategy::OculusRift);
+		m_view = operator_view::opengl::Builder(m_model, shared_from_this()).build(operator_view::Builder::DeviceType::Rift);
 	}
 
 	void OperatorController::run()
@@ -43,9 +44,16 @@ namespace operator_controller
 
 		while (!stopped)
 		{
+			//
+			// TODO : handle the timing
+			//
+
 			while (!m_events.empty())
 			{
-				switch (m_events.front())
+				auto event = m_events.front();
+				m_events.pop();
+
+				switch (event)
 				{
 					case Event::EscapeKeyPressed:
 					{
@@ -53,8 +61,6 @@ namespace operator_controller
 					}
 					break;
 				}
-
-				m_events.pop();
 			}
 
 			m_view->render();
@@ -76,8 +82,13 @@ namespace operator_controller
 		m_events.push(Event::EscapeKeyPressed);
 	}
 
+	void OperatorController::notifyDeviceOrientationChanged(double yaw, double pitch, double roll)
+	{
+		m_model->turnHead(yaw, pitch, roll);
+	}
+
 	void OperatorController::notifyWindowCreated(std::uint32_t windowId)
 	{
-		m_device->updateWindowId(windowId);
+		m_device->setWindowId(windowId);
 	}
 }

@@ -43,6 +43,7 @@ namespace operator_controller
 
 	private:
 		virtual void notifyEscapeKeyPressed() override;
+		virtual void notifyDeviceOrientationChanged(double yaw, double pitch, double roll) override;
 		virtual void notifyWindowCreated(std::uint32_t windowId) override;
 
 	private:

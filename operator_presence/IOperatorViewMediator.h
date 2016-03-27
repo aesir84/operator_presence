@@ -19,6 +19,7 @@ namespace operator_view
 
 	public:
 		virtual void notifyEscapeKeyPressed() = 0;
+		virtual void notifyDeviceOrientationChanged(double yaw, double pitch, double roll) = 0;
 		virtual void notifyWindowCreated(std::uint32_t windowId) = 0;
 	};
 }

@@ -15,6 +15,9 @@ namespace operator_view
 		{
 			friend class Factory;
 
+		public:
+			~Window();
+
 		private:
 			Window(std::shared_ptr<IMediator> mediator);
 
@@ -28,8 +31,12 @@ namespace operator_view
 			virtual void renderRightEye() override;
 
 		private:
+			SDL_Window * m_window;
+			SDL_GLContext m_context;
+
+		private:
 			void render();
-			void setOperatorDisplaySize(std::uint16_t width, std::uint16_t height);
+			void adaptWindowSizeToScreenSize(std::uint16_t & width, std::uint16_t & height);
 		};
 	}
 }

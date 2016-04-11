@@ -30,7 +30,7 @@ namespace operator_view
 			m_mediator->registerWindow(this);
 		}
 
-		void Window::initialize(std::uint16_t width, std::uint16_t height)
+		void Window::initialize(std::uint16_t & width, std::uint16_t & height)
 		{
 			bool const sdlInitialized = SDL_Init(SDL_INIT_VIDEO) != 0;
 			if (!sdlInitialized)
@@ -79,11 +79,12 @@ namespace operator_view
 				// TODO : handle the error, throw | to log use glewGetErrorString(glewInitializationResult)
 			}
 
-			m_mediator->notifyWindowCreated(SDL_GetWindowID(window));
-
 			contextCreationReverse.dismiss();
 			windowCreationReverse.dismiss();
 			sdlInitializationReverse.dismiss();
+
+			width = windowWidth;
+			height = windowHeight;
 
 			m_context = context;
 			m_window = window;
@@ -115,7 +116,7 @@ namespace operator_view
 			}
 		}
 
-		void adaptWindowSizeToScreenSize(std::uint16_t & width, std::uint16_t & height)
+		void Window::adaptWindowSizeToScreenSize(std::uint16_t & width, std::uint16_t & height)
 		{
 			auto const displaysCount = SDL_GetNumVideoDisplays();
 

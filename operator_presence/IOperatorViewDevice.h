@@ -12,6 +12,6 @@ namespace operator_view
 		virtual void render() = 0;
 
 	public:
-		virtual void setWindowId(std::uint32_t windowId) = 0;
+		virtual void resize(std::uint16_t width, std::uint16_t height) = 0;
 	};
 }

@@ -44,10 +44,10 @@ namespace operator_controller
 
 		while (!stopped)
 		{
-			//
-			// TODO : handle the timing
-			//
+			m_view->render();
 
+			// After the rendering has been performed, handle the events.
+			//
 			while (!m_events.empty())
 			{
 				auto event = m_events.front();
@@ -60,10 +60,14 @@ namespace operator_controller
 						stopped = true;
 					}
 					break;
+
+					case Event::WindowSizeChanged:
+					{
+						m_device->resize(m_windowWidth, m_windowHeight);
+					}
+					break;
 				}
 			}
-
-			m_view->render();
 		}
 	}
 
@@ -87,8 +91,11 @@ namespace operator_controller
 		m_model->turnHead(yaw, pitch, roll);
 	}
 
-	void OperatorController::notifyWindowCreated(std::uint32_t windowId)
+	void OperatorController::notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height)
 	{
-		m_device->setWindowId(windowId);
+		m_windowWidth = width;
+		m_windowHeight = height;
+
+		m_events.push(Event::WindowSizeChanged);
 	}
 }

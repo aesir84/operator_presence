@@ -21,10 +21,11 @@ namespace operator_view
 		/// the initialization of an object is separated from its creation.
 		/// This can be useful if the object needs to perform a delayed initialization,
 		/// i.e. to initialize only when certain conditions are met.
-		/// \param The width of the operator's view
-		/// \param The height of the operator's view
 		///
-		virtual void initialize(std::uint16_t width, std::uint16_t height) = 0;
+		/// \param The proposed width of the operator's view
+		/// \param The proposed height of the operator's view
+		///
+		virtual void initialize(std::uint16_t & width, std::uint16_t & height) = 0;
 
 		virtual void renderLeftEye() = 0;
 		virtual void renderRightEye() = 0;

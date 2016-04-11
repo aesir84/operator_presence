@@ -42,17 +42,21 @@ namespace operator_controller
 		operator_view::IWindow * m_window;
 
 	private:
-		virtual void notifyEscapeKeyPressed() override;
 		virtual void notifyDeviceOrientationChanged(double yaw, double pitch, double roll) override;
-		virtual void notifyWindowCreated(std::uint32_t windowId) override;
+		virtual void notifyEscapeKeyPressed() override;
+		virtual void notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height) override;
 
 	private:
 		enum class Event
 		{
-			EscapeKeyPressed
+			EscapeKeyPressed,
+			WindowSizeChanged,
 		};
 
 	private:
 		std::queue<Event> m_events;
+
+		std::uint16_t m_windowWidth;
+		std::uint16_t m_windowHeight;
 	};
 }

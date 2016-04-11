@@ -34,16 +34,21 @@ namespace operator_view
 			void startOculusVR();
 			void finishOculusVR();
 
-		private:
-			ovrSession m_ovrSession;
-			ovrGraphicsLuid m_luid;
-			ovrHmdDesc m_ovrHMDDescriptor;
+			void setupOculusRiftRendering();
 
 		private:
-			virtual void setWindowId(std::uint32_t windowId) override;
+			ovrSession m_session;
+			ovrSwapTextureSet * m_textureSet;
+			ovrGLTexture * m_mirrorTexture;
 
 		private:
-			std::uint32_t m_windowId;
+			GLuint m_fboId;
+			GLuint m_fboDepthAttachmentId;
+
+			GLuint m_mirrorFBOId;
+
+		private:
+			virtual void resize(std::uint16_t width, std::uint16_t height) override;
 		};
 	}
 }

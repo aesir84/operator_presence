@@ -4,6 +4,7 @@ namespace operator_view
 {
 	class IDevice;
 	class IWindow;
+	class IVision;
 }
 
 namespace operator_view
@@ -16,6 +17,7 @@ namespace operator_view
 	public:
 		virtual void registerDevice(IDevice * device) = 0;
 		virtual void registerWindow(IWindow * window) = 0;
+		virtual void registerVision(IVision * vision) = 0;
 
 	public:
 		virtual void notifyDeviceOrientationChanged(double yaw, double pitch, double roll) = 0;

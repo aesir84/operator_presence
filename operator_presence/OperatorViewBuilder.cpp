@@ -2,8 +2,6 @@
 
 #include "OperatorViewBuilder.h"
 
-#include "IOperatorModel.h"
-
 #include "IOperatorViewFactory.h"
 #include "IOperatorViewRift.h"
 #include "IOperatorViewVision.h"
@@ -13,9 +11,8 @@
 
 namespace operator_view
 {
-	Builder::Builder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory)
-		: m_model(model)
-		, m_mediator(mediator)
+	Builder::Builder(std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory)
+		: m_mediator(mediator)
 		, m_factory(std::move(factory))
 	{
 		//
@@ -23,9 +20,7 @@ namespace operator_view
 		//
 
 		auto window = m_factory->createWindow(m_mediator);
-		auto vision = m_factory->createVision(window);
-		
-		m_model->registerObserver(vision);
+		auto vision = m_factory->createVision(window, m_mediator);
 
 		m_renderer = vision;
 	}

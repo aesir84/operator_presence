@@ -2,6 +2,8 @@
 
 #include "OpenGLOperatorViewVision.h"
 
+#include "IOperatorViewMediator.h"
+
 namespace operator_view
 {
 	namespace opengl
@@ -21,12 +23,15 @@ namespace operator_view
 			};
 		}
 
-		Vision::Vision(std::shared_ptr<IRenderer> decoratedRenderer)
+		Vision::Vision(std::shared_ptr<IRenderer> decoratedRenderer, std::shared_ptr<IMediator> mediator)
 			: IVision(decoratedRenderer)
+			, m_mediator(mediator)
 			, m_verticesPositions(QOpenGLBuffer::VertexBuffer)
-		{ }
+		{
+			m_mediator->registerVision(this);
+		}
 
-		void Vision::initialize(std::uint16_t width, std::uint16_t height)
+		void Vision::initialize(std::uint16_t & width, std::uint16_t & height)
 		{
 			// Firstly, let the decorated renderer (most likely the window) perform its initialization.
 			//
@@ -106,12 +111,12 @@ namespace operator_view
 			m_shader.link();
 		}
 
-		void Vision::updateLeftEyeImageChanged(Image leftEyeImage)
+		void Vision::updateLeftEyeImage(Image leftEyeImage)
 		{
 			updateEyeImage(Eye::Left, leftEyeImage);
 		}
 
-		void Vision::updateRightEyeImageChanged(Image rightEyeImage)
+		void Vision::updateRightEyeImage(Image rightEyeImage)
 		{
 			updateEyeImage(Eye::Right, rightEyeImage);
 		}

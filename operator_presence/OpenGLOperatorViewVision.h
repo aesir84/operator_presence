@@ -6,6 +6,11 @@
 
 namespace operator_view
 {
+	class IMediator;
+}
+
+namespace operator_view
+{
 	namespace opengl
 	{
 		class Vision : public IVision
@@ -13,10 +18,13 @@ namespace operator_view
 			friend class Factory;
 
 		private:
-			Vision(std::shared_ptr<IRenderer> decoratedRenderer);
+			Vision(std::shared_ptr<IRenderer> decoratedRenderer, std::shared_ptr<IMediator> mediator);
 
 		private:
-			virtual void initialize(std::uint16_t width, std::uint16_t height) override;
+			std::shared_ptr<IMediator> m_mediator;
+
+		private:
+			virtual void initialize(std::uint16_t & width, std::uint16_t & height) override;
 
 			virtual void renderLeftEye() override;
 			virtual void renderRightEye() override;
@@ -27,10 +35,6 @@ namespace operator_view
 				Left, Right,
 				Count
 			};
-
-		private:
-			std::array<std::unique_ptr<QOpenGLTexture>, helpers::as_integer(Eye::Count)> m_eyeTextures;
-			std::array<std::mutex, helpers::as_integer(Eye::Count)> m_eyeTextureMutexes;
 
 		private:
 			void render(Eye eye);
@@ -47,11 +51,15 @@ namespace operator_view
 			QOpenGLShaderProgram m_shader;
 
 		private:
-			virtual void updateLeftEyeImageChanged(Image leftEyeImage) override;
-			virtual void updateRightEyeImageChanged(Image rightEyeImage) override;
+			virtual void updateLeftEyeImage(Image leftEyeImage) override;
+			virtual void updateRightEyeImage(Image rightEyeImage) override;
 
 		private:
 			void updateEyeImage(Eye eye, Image image);
+
+		private:
+			std::array<std::unique_ptr<QOpenGLTexture>, helpers::as_integer(Eye::Count)> m_eyeTextures;
+			std::array<std::mutex, helpers::as_integer(Eye::Count)> m_eyeTextureMutexes;
 		};
 	}
 }

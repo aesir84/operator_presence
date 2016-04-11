@@ -15,9 +15,9 @@ namespace operator_view
 			return std::shared_ptr<IRift>(new Rift(renderer, mediator));
 		}
 
-		std::shared_ptr<IVision> Factory::createVision(std::shared_ptr<IRenderer> decoratedRenderer)
+		std::shared_ptr<IVision> Factory::createVision(std::shared_ptr<IRenderer> decoratedRenderer, std::shared_ptr<IMediator> mediator)
 		{
-			return std::shared_ptr<IVision>(new Vision(decoratedRenderer));
+			return std::shared_ptr<IVision>(new Vision(decoratedRenderer, mediator));
 		}
 
 		std::shared_ptr<IWindow> Factory::createWindow(std::shared_ptr<IMediator> mediator)

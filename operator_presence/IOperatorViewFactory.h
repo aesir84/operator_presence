@@ -18,7 +18,7 @@ namespace operator_view
 
 	public:
 		virtual std::shared_ptr<IRift> createRift(std::shared_ptr<IRenderer> renderer, std::shared_ptr<IMediator> mediator) = 0;
-		virtual std::shared_ptr<IVision> createVision(std::shared_ptr<IRenderer> decoratedRenderer) = 0;
+		virtual std::shared_ptr<IVision> createVision(std::shared_ptr<IRenderer> decoratedRenderer, std::shared_ptr<IMediator> mediator) = 0;
 		virtual std::shared_ptr<IWindow> createWindow(std::shared_ptr<IMediator> mediator) = 0;
 	};
 }

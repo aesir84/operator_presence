@@ -1,10 +1,5 @@
 #pragma once
 
-namespace operator_model
-{
-	class IOperatorModel;
-}
-
 namespace operator_view
 {
 	class IFactory;
@@ -31,7 +26,7 @@ namespace operator_view
 	class Builder
 	{
 	protected:
-		Builder(std::shared_ptr<operator_model::IOperatorModel> model, std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory);
+		Builder(std::shared_ptr<IMediator> mediator, std::unique_ptr<IFactory> factory);
 
 	public:
 		/// \brief A destructor
@@ -50,7 +45,6 @@ namespace operator_view
 		~Builder();
 
 	private:
-		std::shared_ptr<operator_model::IOperatorModel> m_model;
 		std::shared_ptr<IMediator> m_mediator;
 
 		std::unique_ptr<IFactory> m_factory;
@@ -71,6 +65,8 @@ namespace operator_view
 		std::shared_ptr<IOperatorView> build(DeviceType deviceType);
 
 	private:
+		/// \brief An intermediate result before the final build
+		///
 		std::shared_ptr<IRenderer> m_renderer;
 	};
 }

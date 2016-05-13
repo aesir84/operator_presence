@@ -2,12 +2,6 @@
 
 namespace operator_model
 {
-	class IOperatorHeadOrientationObserver;
-	class IOperatorVisionObserver;
-}
-
-namespace operator_model
-{
 	class IOperatorModel
 	{
 	public:
@@ -21,7 +15,6 @@ namespace operator_model
 		virtual void switchVision(std::uint32_t visionId) = 0;
 
 	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer) = 0;
-		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) = 0;
+		virtual bool getEyeImages(EyeImage & leftEyeImage, EyeImage & rightEyeImage) = 0;
 	};
 }

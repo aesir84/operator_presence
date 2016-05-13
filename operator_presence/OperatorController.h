@@ -35,10 +35,12 @@ namespace operator_controller
 
 	public:
 		virtual void registerDevice(operator_view::IDevice * device) override;
+		virtual void registerVision(operator_view::IVision * vision) override;
 		virtual void registerWindow(operator_view::IWindow * window) override;
 
 	private:
 		operator_view::IDevice * m_device;
+		operator_view::IVision * m_vision;
 		operator_view::IWindow * m_window;
 
 	private:

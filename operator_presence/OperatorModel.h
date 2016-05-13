@@ -25,11 +25,10 @@ namespace operator_model
 		virtual void switchVision(std::uint32_t visionId) override;
 
 	private:
-		std::shared_ptr<IOperatorHeadOrientation> m_operatorHeadOrientation;
-		std::shared_ptr<IOperatorVision> m_operatorVision;
+		virtual bool getEyeImages(EyeImage & leftEyeImage, EyeImage & rightEyeImage) override;
 
 	private:
-		virtual void registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer) override;
-		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) override;
+		std::shared_ptr<IOperatorHeadOrientation> m_operatorHeadOrientation;
+		std::shared_ptr<IOperatorVision> m_operatorVision;
 	};
 }

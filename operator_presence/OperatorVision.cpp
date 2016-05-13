@@ -122,44 +122,35 @@ namespace operator_model
 		m_rightEyeImageUpdater->setUpdatingStrategy(rightEyeStream);
 	}
 
-	void OperatorVision::updateLeftEyeImage(EyeImage eyeImage)
+	void OperatorVision::updateLeftEyeImage(EyeImage leftEyeImage)
 	{
-		notifyLeftEyeImageChanged(eyeImage);
+		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
+
+		m_leftEyeImage = leftEyeImage;
+		m_leftEyeImageUpdated = true;
 	}
 
-	void OperatorVision::updateRightEyeImage(EyeImage eyeImage)
+	void OperatorVision::updateRightEyeImage(EyeImage rightEyeImage)
 	{
-		notifyRightEyeImageChanged(eyeImage);
+		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
+
+		m_rightEyeImage = rightEyeImage;
+		m_rightEyeImageUpdated = true;
 	}
 
-	void OperatorVision::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)
+	bool OperatorVision::getUpdate(EyeImage & leftEyeImage, EyeImage & rightEyeImage)
 	{
-		m_observers.push_back(observer);
-	}
-
-	void OperatorVision::notifyLeftEyeImageChanged(EyeImage leftEyeImage)
-	{
-		for (auto & observer : m_observers)
+		if (!m_leftEyeImageUpdated || !m_rightEyeImageUpdated)
 		{
-			auto existingObserver = observer.lock();
-
-			if (existingObserver)
-			{
-				existingObserver->updateLeftEyeImageChanged(leftEyeImage);
-			}
+			return false;
 		}
-	}
 
-	void OperatorVision::notifyRightEyeImageChanged(EyeImage rightEyeImage)
-	{
-		for (auto & observer : m_observers)
-		{
-			auto existingObserver = observer.lock();
+		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
 
-			if (existingObserver)
-			{
-				existingObserver->updateRightEyeImageChanged(rightEyeImage);
-			}
-		}
+		leftEyeImage = m_leftEyeImage;
+		rightEyeImage = m_rightEyeImage;
+
+		m_leftEyeImageUpdated = false;
+		m_rightEyeImageUpdated = false;
 	}
 }

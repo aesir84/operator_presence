@@ -2,10 +2,13 @@
 
 #include "OperatorController.h"
 
+#include "OperatorEyeImageType.h"
+
 #include "IOperatorModel.h"
 
 #include "IOperatorView.h"
 #include "IOperatorViewDevice.h"
+#include "IOperatorViewVision.h"
 #include "IOperatorViewWindow.h"
 
 #include "OpenGLOperatorViewBuilder.h"
@@ -44,6 +47,15 @@ namespace operator_controller
 
 		while (!stopped)
 		{
+			operator_model::EyeImage leftEyeImage;
+			operator_model::EyeImage rightEyeImage;
+
+			if (m_model->getEyeImages(leftEyeImage, rightEyeImage))
+			{
+				m_vision->updateLeftEyeImage(leftEyeImage);
+				m_vision->updateRightEyeImage(rightEyeImage);
+			}
+
 			m_view->render();
 
 			// After the rendering has been performed, handle the events.
@@ -74,6 +86,11 @@ namespace operator_controller
 	void OperatorController::registerDevice(operator_view::IDevice * device)
 	{
 		m_device = device;
+	}
+
+	void OperatorController::registerVision(operator_view::IVision * vision)
+	{
+		m_vision = vision;
 	}
 
 	void OperatorController::registerWindow(operator_view::IWindow * window)

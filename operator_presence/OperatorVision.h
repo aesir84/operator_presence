@@ -19,18 +19,22 @@ namespace operator_model
 		std::unique_ptr<EyeImageUpdater> m_rightEyeImageUpdater;
 
 	private:
-		void updateLeftEyeImage(EyeImage eyeImage);
-		void updateRightEyeImage(EyeImage eyeImage);
-
-	public:
-		virtual void registerObserver(std::shared_ptr<IOperatorVisionObserver> observer) override;
+		void updateLeftEyeImage(EyeImage leftEyeImage);
+		void updateRightEyeImage(EyeImage rightEyeImage);
 
 	private:
-		virtual void notifyLeftEyeImageChanged(EyeImage leftEyeImage) override;
-		virtual void notifyRightEyeImageChanged(EyeImage rightEyeImage) override;
+		std::atomic<bool> m_leftEyeImageUpdated;
+		std::atomic<bool> m_rightEyeImageUpdated;
 
 	private:
-		std::vector<std::weak_ptr<IOperatorVisionObserver>> m_observers;
+		EyeImage m_leftEyeImage;
+		EyeImage m_rightEyeImage;
+
+	private:
+		virtual bool getUpdate(EyeImage & leftEyeImage, EyeImage & rightEyeImage) override;
+
+	private:
+		std::mutex m_eyeImagesGuard;
 	};
 }
 

@@ -25,13 +25,8 @@ namespace operator_model
 		/* not yet implemented */
 	}
 
-	void OperatorModel::registerObserver(std::shared_ptr<IOperatorHeadOrientationObserver> observer)
+	bool OperatorModel::getEyeImages(EyeImage & leftEyeImage, EyeImage & rightEyeImage)
 	{
-		m_operatorHeadOrientation->registerObserver(observer);
-	}
-
-	void OperatorModel::registerObserver(std::shared_ptr<IOperatorVisionObserver> observer)
-	{
-		m_operatorVision->registerObserver(observer);
+		/* not yet implemented */
 	}
 }

@@ -70,9 +70,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OperatorVision.cpp">
-      <Filter>Source Files\operator_model</Filter>
-    </ClCompile>
     <ClCompile Include="OperatorViewBuilder.cpp">
       <Filter>Source Files\operator_view</Filter>
     </ClCompile>
@@ -114,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="OpenGLOperatorViewRift.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorModelVision.cpp">
+      <Filter>Source Files\operator_model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +180,6 @@
     <ClInclude Include="IImageOutputStream.h">
       <Filter>Header Files\operator_model\utils</Filter>
     </ClInclude>
-    <ClInclude Include="IOperatorVision.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
     <ClInclude Include="OperatorModel.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
@@ -234,9 +231,12 @@
     <ClInclude Include="IOperatorViewRift.h">
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
+    <ClInclude Include="IOperatorModelVision.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="OperatorVision.h">
+    <CustomBuild Include="OperatorModelVision.h">
       <Filter>Header Files\operator_model</Filter>
     </CustomBuild>
   </ItemGroup>

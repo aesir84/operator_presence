@@ -97,7 +97,7 @@
     <ClCompile Include="OperatorModel.cpp" />
     <ClCompile Include="OperatorView.cpp" />
     <ClCompile Include="OperatorViewBuilder.cpp" />
-    <ClCompile Include="OperatorVision.cpp" />
+    <ClCompile Include="OperatorModelVision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -114,7 +114,7 @@
     <ClInclude Include="IOperatorController.h" />
     <ClInclude Include="IOperatorViewMediator.h" />
     <ClInclude Include="IOperatorViewDevice.h" />
-    <ClInclude Include="IOperatorVision.h" />
+    <ClInclude Include="IOperatorModelVision.h" />
     <ClInclude Include="IOperatorHeadOrientation.h" />
     <ClInclude Include="IOperatorHeadOrientationObserver.h" />
     <ClInclude Include="OperatorController.h" />
@@ -125,7 +125,7 @@
     <ClInclude Include="OperatorModel.h" />
     <ClInclude Include="threadsafe_queue.h" />
     <ClInclude Include="WebcamImageInputStreamBuilder.h" />
-    <CustomBuild Include="OperatorVision.h">
+    <CustomBuild Include="OperatorModelVision.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

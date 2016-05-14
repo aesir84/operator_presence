@@ -30,7 +30,7 @@ namespace operator_view
 
 		void Window::initialize(std::uint16_t & width, std::uint16_t & height)
 		{
-			bool const sdlInitialized = SDL_Init(SDL_INIT_VIDEO) != 0;
+			bool const sdlInitialized = SDL_Init(SDL_INIT_VIDEO) == 0;
 			if (!sdlInitialized)
 			{
 				// TODO : handle the error, throw | to log use SDL_GetError()
@@ -42,9 +42,9 @@ namespace operator_view
 
 			adaptWindowSizeToScreenSize(windowWidth, windowHeight);
 
-			auto x = SDL_WINDOWPOS_CENTERED;
-			auto y = SDL_WINDOWPOS_CENTERED;
-			auto flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+			auto const x = SDL_WINDOWPOS_CENTERED;
+			auto const y = SDL_WINDOWPOS_CENTERED;
+			auto const flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
 
 			SDL_Window * window = SDL_CreateWindow("operator presence", x, y, windowWidth, windowHeight, flags);
 			if (window == nullptr)

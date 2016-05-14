@@ -2,8 +2,6 @@
 
 #include "ImageInputStreamSharer.h"
 
-#include "threadsafe_queue.h"
-
 namespace operator_model
 {
 	namespace utils

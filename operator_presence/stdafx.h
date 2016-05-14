@@ -56,4 +56,6 @@
 // Helpers
 //
 
+#include "scope_guard.h"
 #include "scoped_enum_as_integer.h"
+#include "threadsafe_queue.h"

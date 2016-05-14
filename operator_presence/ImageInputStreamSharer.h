@@ -2,12 +2,6 @@
 
 #include "IImageInputStreamFilter.h"
 
-namespace helpers
-{
-	template<typename T>
-	class threadsafe_queue;
-}
-
 namespace operator_model
 {
 	namespace utils

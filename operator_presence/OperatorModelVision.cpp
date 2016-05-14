@@ -5,7 +5,6 @@
 #include "IOperatorModelMediator.h"
 
 #include "IImageInputStream.h"
-#include "threadsafe_queue.h"
 
 namespace operator_model
 {

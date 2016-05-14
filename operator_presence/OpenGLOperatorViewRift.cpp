@@ -5,8 +5,6 @@
 #include "IOperatorViewMediator.h"
 #include "IOperatorViewRenderer.h"
 
-#include "scope_guard.h"
-
 namespace operator_view
 {
 	namespace opengl

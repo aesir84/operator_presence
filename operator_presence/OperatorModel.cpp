@@ -2,18 +2,13 @@
 
 #include "OperatorModel.h"
 
-#include "IOperatorHeadOrientation.h"
-#include "IOperatorVision.h"
+#include "OperatorModelVision.h"
 
 namespace operator_model
 {
-	OperatorModel::OperatorModel()
+	OperatorModel::OperatorModel(std::shared_ptr<IMediator> mediator)
+		: m_vision(std::make_unique<Vision>(mediator))
 	{ }
-
-	void OperatorModel::turnBody(double yaw)
-	{
-		/* not yet implemented */
-	}
 
 	void OperatorModel::turnHead(double yaw, double pitch, double roll)
 	{
@@ -21,11 +16,6 @@ namespace operator_model
 	}
 
 	void OperatorModel::switchVision(std::uint32_t visionId)
-	{
-		/* not yet implemented */
-	}
-
-	bool OperatorModel::getEyeImages(EyeImage & leftEyeImage, EyeImage & rightEyeImage)
 	{
 		/* not yet implemented */
 	}

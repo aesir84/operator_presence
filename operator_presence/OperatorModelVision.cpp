@@ -1,32 +1,33 @@
 #include "stdafx.h"
 
-#include "OperatorVision.h"
+#include "OperatorModelVision.h"
+
+#include "IOperatorModelMediator.h"
 
 #include "IImageInputStream.h"
-#include "IOperatorVisionObserver.h"
 #include "threadsafe_queue.h"
 
 namespace operator_model
 {
 	/// \brief An updater of operator eye images
 	///
-	/// This is a helper class of OperatorVision
+	/// This is a helper class of Vision,
 	/// which is used to simplify the use of blocking utils::IImageInputStream interface.
-	/// In order to hide the details of this updater class and also not to overencumber the main class OperatorVision
-	/// this class is designed using the pimpl idiom.
+	/// In order to hide the details of this updater class and also not to overencumber the main class Vision,
+	/// this class is designed using the Pimpl idiom.
 	/// The class uses the Strategy pattern to allow changing
 	/// the way the images are updated during run-time.
 	/// Since the class uses utils::IImageInputStream objects as a strategy,
 	/// and the latter one is synchronous, therefore, the class utilizes
 	/// a thread to run the strategy.
 	///
-	class OperatorVision::EyeImageUpdater
+	class Vision::EyeImageUpdater
 	{
 	public:
-		using UpdateCallbackPtr = void(OperatorVision::*)(EyeImage);
+		using UpdateCallbackPtr = void(Vision::*)(EyeImage);
 
 	public:
-		EyeImageUpdater(OperatorVision & vision, UpdateCallbackPtr update)
+		EyeImageUpdater(Vision & vision, UpdateCallbackPtr update)
 			: m_vision(vision)
 			, m_update(update)
 		{ }
@@ -37,7 +38,7 @@ namespace operator_model
 		}
 
 	private:
-		OperatorVision & m_vision;
+		Vision & m_vision;
 		UpdateCallbackPtr m_update;
 
 	public:
@@ -79,7 +80,7 @@ namespace operator_model
 
 	private:
 		UpdatingStrategy m_updatingStrategy;
-		std::atomic<bool> m_updatingStrategyAvailable;
+		std::atomic<bool> m_updatingStrategyAvailable{ false };
 		std::mutex m_updatingStrategyGuard;
 
 	private:
@@ -108,49 +109,30 @@ namespace operator_model
 		}
 
 	private:
-		std::atomic<bool> m_updatingStopped;
+		std::atomic<bool> m_updatingStopped{ false };
 	};
 
-	OperatorVision::OperatorVision()
-		: m_leftEyeImageUpdater(std::make_unique<EyeImageUpdater>(*this, &OperatorVision::updateLeftEyeImage))
-		, m_rightEyeImageUpdater(std::make_unique<EyeImageUpdater>(*this, &OperatorVision::updateRightEyeImage))
-	{ }
+	Vision::Vision(std::shared_ptr<IMediator> mediator)
+		: m_mediator(mediator)
+		, m_leftEyeImageUpdater(std::make_unique<EyeImageUpdater>(*this, &Vision::updateLeftEyeImage))
+		, m_rightEyeImageUpdater(std::make_unique<EyeImageUpdater>(*this, &Vision::updateRightEyeImage))
+	{
+		m_mediator->registerVision(this);
+	}
 
-	void OperatorVision::setUpdateStrategy(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream)
+	void Vision::setUpdateStrategy(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream)
 	{
 		m_leftEyeImageUpdater->setUpdatingStrategy(leftEyeStream);
 		m_rightEyeImageUpdater->setUpdatingStrategy(rightEyeStream);
 	}
 
-	void OperatorVision::updateLeftEyeImage(EyeImage leftEyeImage)
+	void Vision::updateLeftEyeImage(EyeImage leftEyeImage)
 	{
-		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
-
-		m_leftEyeImage = leftEyeImage;
-		m_leftEyeImageUpdated = true;
+		m_mediator->notifyLeftEyeImageUpdated(leftEyeImage);
 	}
 
-	void OperatorVision::updateRightEyeImage(EyeImage rightEyeImage)
+	void Vision::updateRightEyeImage(EyeImage rightEyeImage)
 	{
-		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
-
-		m_rightEyeImage = rightEyeImage;
-		m_rightEyeImageUpdated = true;
-	}
-
-	bool OperatorVision::getUpdate(EyeImage & leftEyeImage, EyeImage & rightEyeImage)
-	{
-		if (!m_leftEyeImageUpdated || !m_rightEyeImageUpdated)
-		{
-			return false;
-		}
-
-		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
-
-		leftEyeImage = m_leftEyeImage;
-		rightEyeImage = m_rightEyeImage;
-
-		m_leftEyeImageUpdated = false;
-		m_rightEyeImageUpdated = false;
+		m_mediator->notifyRightEyeImageUpdated(rightEyeImage);
 	}
 }

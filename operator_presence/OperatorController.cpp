@@ -2,8 +2,6 @@
 
 #include "OperatorController.h"
 
-#include "OperatorEyeImageType.h"
-
 #include "IOperatorModel.h"
 
 #include "IOperatorView.h"
@@ -11,96 +9,99 @@
 #include "IOperatorViewVision.h"
 #include "IOperatorViewWindow.h"
 
+#include "OperatorModelBuilder.h"
 #include "OpenGLOperatorViewBuilder.h"
 
 namespace operator_controller
 {
-	std::shared_ptr<OperatorController> OperatorController::create(std::shared_ptr<operator_model::IOperatorModel> model)
+	std::shared_ptr<OperatorController> OperatorController::create()
 	{
-		auto controller = std::shared_ptr<OperatorController>(new OperatorController(model));
+		auto controller = std::shared_ptr<OperatorController>(new OperatorController);
+
+		controller->initializeModel();
 		controller->initializeView();
 
 		return controller;
 	}
 
-	OperatorController::OperatorController(std::shared_ptr<operator_model::IOperatorModel> model)
-		: m_model(model)
-		, m_device(nullptr)
-		, m_window(nullptr)
+	OperatorController::OperatorController()
 	{ }
+
+	void OperatorController::initializeModel()
+	{
+		m_model = operator_model::Builder(shared_from_this()).build();
+	}
 
 	void OperatorController::initializeView()
 	{
-		m_view = operator_view::opengl::Builder(m_model, shared_from_this()).build(operator_view::Builder::DeviceType::Rift);
+		m_view = operator_view::opengl::Builder(shared_from_this()).build(operator_view::Builder::DeviceType::Rift);
 	}
 
 	void OperatorController::run()
 	{
 		m_view->initialize();
 
-
-		//
-		// Run the game loop.
-		//
-
-		bool stopped = false;
-
-		while (!stopped)
+		while (!m_controllerStopped)
 		{
-			operator_model::EyeImage leftEyeImage;
-			operator_model::EyeImage rightEyeImage;
-
-			if (m_model->getEyeImages(leftEyeImage, rightEyeImage))
-			{
-				m_vision->updateLeftEyeImage(leftEyeImage);
-				m_vision->updateRightEyeImage(rightEyeImage);
-			}
-
+			handleModelEvents();
 			m_view->render();
+			handleViewEvents();
+		}
+	}
 
-			// After the rendering has been performed, handle the events.
-			//
-			while (!m_events.empty())
-			{
-				auto event = m_events.front();
-				m_events.pop();
+	void OperatorController::registerVision(operator_model::IVision * vision)
+	{
+		m_modelVision = vision;
+	}
 
-				switch (event)
-				{
-					case Event::EscapeKeyPressed:
-					{
-						stopped = true;
-					}
-					break;
+	void OperatorController::notifyLeftEyeImageUpdated(operator_model::EyeImage leftEyeImage)
+	{
+		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
 
-					case Event::WindowSizeChanged:
-					{
-						m_device->resize(m_windowWidth, m_windowHeight);
-					}
-					break;
-				}
-			}
+		m_leftEyeImage = leftEyeImage;
+		m_leftEyeImageUpdated = true;
+	}
+
+	void OperatorController::notifyRightEyeImageUpdated(operator_model::EyeImage rightEyeImage)
+	{
+		std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
+
+		m_rightEyeImage = rightEyeImage;
+		m_rightEyeImageUpdated = true;
+	}
+
+	void OperatorController::handleModelEvents()
+	{
+		if (m_leftEyeImageUpdated && m_rightEyeImageUpdated)
+		{
+			std::lock_guard<std::mutex> lock(m_eyeImagesGuard);
+
+			m_viewVision->updateLeftEyeImage(m_leftEyeImage);
+			m_viewVision->updateRightEyeImage(m_rightEyeImage);
+
+			m_leftEyeImageUpdated = false;
+			m_rightEyeImageUpdated = false;
 		}
 	}
 
 	void OperatorController::registerDevice(operator_view::IDevice * device)
 	{
-		m_device = device;
+		m_viewDevice = device;
 	}
 
 	void OperatorController::registerVision(operator_view::IVision * vision)
 	{
-		m_vision = vision;
+		m_viewVision = vision;
 	}
 
 	void OperatorController::registerWindow(operator_view::IWindow * window)
 	{
-		m_window = window;
+		m_viewWindow = window;
 	}
 
 	void OperatorController::notifyEscapeKeyPressed()
 	{
-		m_events.push(Event::EscapeKeyPressed);
+		m_viewEvents.push(ViewEvent::EscapeKeyPressed);
 	}
 
 	void OperatorController::notifyDeviceOrientationChanged(double yaw, double pitch, double roll)
@@ -113,6 +114,30 @@ namespace operator_controller
 		m_windowWidth = width;
 		m_windowHeight = height;
 
-		m_events.push(Event::WindowSizeChanged);
+		m_viewEvents.push(ViewEvent::WindowSizeChanged);
+	}
+
+	void OperatorController::handleViewEvents()
+	{
+		while (!m_viewEvents.empty())
+		{
+			auto event = m_viewEvents.front();
+			m_viewEvents.pop();
+
+			switch (event)
+			{
+				case ViewEvent::EscapeKeyPressed:
+				{
+					m_controllerStopped = true;
+				}
+				break;
+
+				case ViewEvent::WindowSizeChanged:
+				{
+					m_viewDevice->resize(m_windowWidth, m_windowHeight);
+				}
+				break;
+			}
+		}
 	}
 }

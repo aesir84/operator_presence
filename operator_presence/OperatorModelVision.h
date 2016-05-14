@@ -1,13 +1,28 @@
 #pragma once
 
-#include "IOperatorVision.h"
+#include "IOperatorModelVision.h"
 
 namespace operator_model
 {
-	class OperatorVision : public IOperatorVision
+	class IMediator;
+}
+
+namespace operator_model
+{
+	/// \brief The implementation of the operator's vision
+	///
+	/// This class realizes the IVision interface.
+	/// The responsabilities of this class include:
+	///  * managing the dataflow strategies;
+	///  * notifying the mediator about state updates.
+	///
+	class Vision : public IVision
 	{
 	public:
-		OperatorVision();
+		explicit Vision(std::shared_ptr<IMediator> mediator);
+
+	private:
+		std::shared_ptr<IMediator> m_mediator;
 
 	public:
 		virtual void setUpdateStrategy(std::shared_ptr<utils::IImageInputStream> leftEyeStream, std::shared_ptr<utils::IImageInputStream> rightEyeStream) override;
@@ -21,20 +36,5 @@ namespace operator_model
 	private:
 		void updateLeftEyeImage(EyeImage leftEyeImage);
 		void updateRightEyeImage(EyeImage rightEyeImage);
-
-	private:
-		std::atomic<bool> m_leftEyeImageUpdated;
-		std::atomic<bool> m_rightEyeImageUpdated;
-
-	private:
-		EyeImage m_leftEyeImage;
-		EyeImage m_rightEyeImage;
-
-	private:
-		virtual bool getUpdate(EyeImage & leftEyeImage, EyeImage & rightEyeImage) override;
-
-	private:
-		std::mutex m_eyeImagesGuard;
 	};
 }
-

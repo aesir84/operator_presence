@@ -76,9 +76,6 @@
     <ClCompile Include="OpenGLOperatorViewBuilder.cpp">
       <Filter>Source Files\operator_view\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="OperatorHeadOrientation.cpp">
-      <Filter>Source Files\operator_model</Filter>
-    </ClCompile>
     <ClCompile Include="ImageInputStreamRotator.cpp">
       <Filter>Source Files\operator_model\utils</Filter>
     </ClCompile>
@@ -115,13 +112,13 @@
     <ClCompile Include="OperatorModelVision.cpp">
       <Filter>Source Files\operator_model</Filter>
     </ClCompile>
+    <ClCompile Include="OperatorModelBuilder.cpp">
+      <Filter>Source Files\operator_model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorVisionObserver.h">
-      <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="scoped_enum_as_integer.h">
       <Filter>Header Files\helpers</Filter>
@@ -143,15 +140,6 @@
     </ClInclude>
     <ClInclude Include="threadsafe_queue.h">
       <Filter>Header Files\helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorHeadOrientation.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="IOperatorHeadOrientationObserver.h">
-      <Filter>Header Files\operator_model</Filter>
-    </ClInclude>
-    <ClInclude Include="OperatorHeadOrientation.h">
-      <Filter>Header Files\operator_model</Filter>
     </ClInclude>
     <ClInclude Include="IImageInputStream.h">
       <Filter>Header Files\operator_model\utils</Filter>
@@ -232,6 +220,12 @@
       <Filter>Header Files\operator_view</Filter>
     </ClInclude>
     <ClInclude Include="IOperatorModelVision.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="IOperatorModelMediator.h">
+      <Filter>Header Files\operator_model</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorModelBuilder.h">
       <Filter>Header Files\operator_model</Filter>
     </ClInclude>
   </ItemGroup>

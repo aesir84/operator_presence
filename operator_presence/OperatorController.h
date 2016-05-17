@@ -78,13 +78,13 @@ namespace operator_controller
 
 	private:
 		virtual void notifyDeviceOrientationChanged(double yaw, double pitch, double roll) override;
-		virtual void notifyEscapeKeyPressed() override;
+		virtual void notifyWindowClosed() override;
 		virtual void notifyWindowSizeChanged(std::uint16_t width, std::uint16_t height) override;
 
 	private:
 		enum class ViewEvent
 		{
-			EscapeKeyPressed,
+			WindowClosed,
 			WindowSizeChanged,
 		};
 		std::queue<ViewEvent> m_viewEvents;

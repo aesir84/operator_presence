@@ -22,6 +22,12 @@ namespace operator_view
 		/// This can be useful if the object needs to perform a delayed initialization,
 		/// i.e. to initialize only when certain conditions are met.
 		///
+		/// The arguments of the method are the proposed width and the height of the window.
+		/// Since they are proposed, then the underlying layers,
+		/// which implement the windowing system,
+		/// may actually change these proposed values and return the new ones.
+		/// This is why the arguments are passed as non-const references.
+		///
 		/// \param The proposed width of the operator's view
 		/// \param The proposed height of the operator's view
 		///

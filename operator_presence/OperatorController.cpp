@@ -99,9 +99,9 @@ namespace operator_controller
 		m_viewWindow = window;
 	}
 
-	void OperatorController::notifyEscapeKeyPressed()
+	void OperatorController::notifyWindowClosed()
 	{
-		m_viewEvents.push(ViewEvent::EscapeKeyPressed);
+		m_viewEvents.push(ViewEvent::WindowClosed);
 	}
 
 	void OperatorController::notifyDeviceOrientationChanged(double yaw, double pitch, double roll)
@@ -126,7 +126,7 @@ namespace operator_controller
 
 			switch (event)
 			{
-				case ViewEvent::EscapeKeyPressed:
+				case ViewEvent::WindowClosed:
 				{
 					m_controllerStopped = true;
 				}

@@ -2,12 +2,11 @@
 
 
 //
-// SDL2 + GLEW
+// SFML + GLEW
 //
 
+#include <SFML\Window.hpp>
 #include "GL\glew.h"
-#include "SDL.h"
-#include "SDL_syswm.h"
 
 
 //

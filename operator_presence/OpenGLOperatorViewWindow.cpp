@@ -9,61 +9,38 @@ namespace operator_view
 	namespace opengl
 	{
 		Window::~Window()
-		{
-			if (m_window != nullptr)
-			{
-				assert(m_context != nullptr);
-
-				SDL_GL_DeleteContext(m_context);
-				SDL_DestroyWindow(m_window);
-				SDL_Quit();
-			}
-		}
+		{ }
 
 		Window::Window(std::shared_ptr<IMediator> mediator)
 			: m_mediator(mediator)
-			, m_window(nullptr)
-			, m_context(nullptr)
 		{
 			m_mediator->registerWindow(this);
 		}
 
 		void Window::initialize(std::uint16_t & width, std::uint16_t & height)
 		{
-			bool const sdlInitialized = SDL_Init(SDL_INIT_VIDEO) == 0;
-			if (!sdlInitialized)
-			{
-				// TODO : handle the error, throw | to log use SDL_GetError()
-			}
-			auto sdlInitializationReverse = helpers::guard_scope([] { SDL_Quit(); });
+			assert(!m_window.isOpen());
 
 			auto windowWidth = width;
 			auto windowHeight = height;
-
 			adaptWindowSizeToScreenSize(windowWidth, windowHeight);
 
-			auto const x = SDL_WINDOWPOS_CENTERED;
-			auto const y = SDL_WINDOWPOS_CENTERED;
-			auto const flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+			// Setup the parameters of the required OpenGL context.
+			//
+			unsigned int const depthBufferBits = 24;
+			unsigned int const stencilBufferBits = 8;
+			unsigned int const antialiasingLevel = 0;
+			unsigned int const contextVersionMajorNumber = 3;
+			unsigned int const contextVersionMinorNumber = 3;
+			sf::ContextSettings contextSetings(depthBufferBits, stencilBufferBits, antialiasingLevel, contextVersionMajorNumber, contextVersionMinorNumber);
 
-			SDL_Window * window = SDL_CreateWindow("operator presence", x, y, windowWidth, windowHeight, flags);
-			if (window == nullptr)
-			{
-				// TODO : handle the error, throw | to log use SDL_GetError()
-			}
-			auto windowCreationReverse = helpers::guard_scope([window] { SDL_DestroyWindow(window); });
+			// By creating a window in SFML the required OpenGL context is created as well.
+			//
+			m_window.create(sf::VideoMode(windowWidth, windowHeight), "Operator Presence Application", sf::Style::Default, contextSetings);
 
-			SDL_GLContext context = SDL_GL_CreateContext(window);
-			if (context == nullptr)
+			if (!m_window.isOpen())
 			{
-				// TODO : handle the error, throw | to log use SDL_GetError()
-			}
-			auto contextCreationReverse = helpers::guard_scope([context] { SDL_GL_DeleteContext(context); });
-
-			auto const glewInitializationResult = glewInit();
-			if (glewInitializationResult != GLEW_OK)
-			{
-				// TODO : handle the error, throw | to log use glewGetErrorString(glewInitializationResult)
+				// TODO: handle
 			}
 
 			// The swap interval setting controls when the front and back frame buffers are actually swapped.
@@ -71,21 +48,24 @@ namespace operator_view
 			// A swap interval of 0 specifies that the GPU should not wait for any v-blanks,
 			// but rather perform buffer swaps as soon as possible when rendering for a frame is finished.
 			//
-			bool const vSyncTurnedOff = SDL_GL_SetSwapInterval(0) == 0;
-			if (!vSyncTurnedOff)
+			m_window.setVerticalSyncEnabled(false);
+
+			// GLEW is initialized only once the required OpenGL context has been created.
+			//
+			GLenum glewError = glewInit();
+
+			if (glewError != GLEW_OK)
 			{
-				// TODO : handle the error, throw | to log use glewGetErrorString(glewInitializationResult)
+				glewGetErrorString(glewError);
+				// TODO: handle
 			}
 
-			contextCreationReverse.dismiss();
-			windowCreationReverse.dismiss();
-			sdlInitializationReverse.dismiss();
-
+			// When everything is done, propagate back the adjusted window dimensions.
+			//
 			width = windowWidth;
 			height = windowHeight;
 
-			m_context = context;
-			m_window = window;
+			assert(m_window.isOpen());
 		}
 
 		void Window::renderLeftEye()
@@ -100,44 +80,38 @@ namespace operator_view
 
 		void Window::render()
 		{
-			SDL_Event event;
+			assert(m_window.isOpen());
 
-			while (SDL_PollEvent(&event))
+			sf::Event event;
+			while (m_window.pollEvent(event))
 			{
-				if (event.type == SDL_KEYUP)
+				switch (event.type)
 				{
-					if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+					case sf::Event::Closed:
 					{
-						m_mediator->notifyEscapeKeyPressed();
+						m_mediator->notifyWindowClosed();
 					}
+					break;
+
+					case sf::Event::Resized:
+					{
+						m_mediator->notifyWindowSizeChanged(event.size.width, event.size.height);
+					}
+					break;
 				}
 			}
 		}
 
 		void Window::adaptWindowSizeToScreenSize(std::uint16_t & width, std::uint16_t & height)
 		{
-			auto const displaysCount = SDL_GetNumVideoDisplays();
-
-			if (displaysCount == 0)
-			{
-				// TODO : handle the error, throw
-			}
-			
-			int const currentDisplayIndex = 0;
-			SDL_DisplayMode currentDisplayMode;
-
-			bool const currentDisplayModeRetrieved = SDL_GetCurrentDisplayMode(currentDisplayIndex, &currentDisplayMode) == 0;
-			if (!currentDisplayModeRetrieved)
-			{
-				// TODO : handle the error, throw
-			}
+			auto currentVideoMode = sf::VideoMode::getDesktopMode();
 
 			// There can be different display sizes, e.g. big, small, etc...
 			// In order to fit the operator window on a display nicely
 			// we should check and decrease the operator window size as necessary.
 			//
-			std::uint16_t const displayWidth = static_cast<std::uint16_t>(currentDisplayMode.w);
-			std::uint16_t const displayHeight = static_cast<std::uint16_t>(currentDisplayMode.h);
+			std::uint16_t const displayWidth = static_cast<std::uint16_t>(currentVideoMode.width);
+			std::uint16_t const displayHeight = static_cast<std::uint16_t>(currentVideoMode.height);
 
 			while (width >= displayWidth || height >= displayHeight)
 			{

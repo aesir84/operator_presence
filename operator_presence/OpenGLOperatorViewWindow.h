@@ -31,8 +31,7 @@ namespace operator_view
 			virtual void renderRightEye() override;
 
 		private:
-			SDL_Window * m_window;
-			SDL_GLContext m_context;
+			sf::Window m_window;
 
 		private:
 			void render();

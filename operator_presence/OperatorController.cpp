@@ -14,7 +14,7 @@
 
 namespace operator_controller
 {
-	std::shared_ptr<OperatorController> OperatorController::create()
+	std::shared_ptr<IOperatorController> OperatorController::create()
 	{
 		auto controller = std::shared_ptr<OperatorController>(new OperatorController);
 

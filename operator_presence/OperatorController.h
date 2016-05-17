@@ -25,7 +25,7 @@ namespace operator_controller
 		, public std::enable_shared_from_this<OperatorController>
 	{
 	public:
-		static std::shared_ptr<OperatorController> create();
+		static std::shared_ptr<IOperatorController> create();
 
 	private:
 		OperatorController();
